@@ -19,7 +19,7 @@ var webView = Ti.UI.createWebView({
 win.add(webView);
 
 var titleLabel = Titanium.UI.createLabel({
-    color:'#000',
+    color:'#fff',
     height:42,
     width:'100%',
     text:win.title,

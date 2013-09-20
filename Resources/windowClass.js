@@ -18,7 +18,6 @@ else{
         title:title,
         //fullscreen : true,
         barColor:'#980012',
-        barImage:'images/navbar.png',
         backButtonTitle:'Back',
         backgroundColor:'#fff',
         url:url,
@@ -27,7 +26,7 @@ else{
     
     // create the label
 var titleLabel = Titanium.UI.createLabel({
-    color:'#000',
+    color:'#fff',
     //backgroundColor:'#f6f5f1',
     height:42,
     width:'100%',

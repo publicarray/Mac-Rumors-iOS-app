@@ -19,12 +19,12 @@ var Window = require('windowClass');
 else{
     //create tab bar
     var tabGroup = Ti.UI.createTabGroup({
-        barColor :'#980012', // for 'more' tab
+        barColor :'#980012',//650000 // for more tab
         tabsBackgroundColor: '#000', // inactive icon tint
-        tabsBackgroundImage:'images/tapbar.png', // background for tab bar
+        tabsBackgroundImage:'images/tabbar.png', // background for tab bar
         backgroundColor: '#fff', // of View
         activeTabIconTint : '#fff', // active icon tint
-        activeTabBackgroundImage : 'images/tabbar2.png', //active icon background image
+        activeTabBackgroundImage : 'images/tabbar3.png', //active icon background image
     });
 };   
     //create app windows
