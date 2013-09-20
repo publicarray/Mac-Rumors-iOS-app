@@ -6,7 +6,12 @@ if(Ti.Platform.name === 'iPhone OS') {
 } else {
     var activityStyle = Ti.UI.ActivityIndicatorStyle.DARK;
 }
-//Show the activity indicator
+
+//innitialise the array
+var data = [];
+//if internet connection is on - continue
+if(Titanium.Network.online) {
+    //Show the activity indicator
 var activityIndicator = Ti.UI.createActivityIndicator({
     height: '100%',
     width: '100%',
@@ -22,10 +27,6 @@ var activityIndicator = Ti.UI.createActivityIndicator({
 });
 win.add(activityIndicator);
 activityIndicator.show();
-//innitialise the array
-var data = [];
-//if internet connection is on - continue
-if(Titanium.Network.online) {
     //open network connection
     var xhr = Ti.Network.createHTTPClient({
         cache: Ti.App.Properties.getBool('cache', false),
