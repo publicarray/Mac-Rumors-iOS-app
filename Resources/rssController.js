@@ -66,9 +66,12 @@ else if(!f.exists()) {
 function showTable() {
     var searchBar = Titanium.UI.createSearchBar({
     barColor:'#bbb',
+    tintColor :'#980012',
     height:43,
     top:0,
+    value: null,
     });
+    Ti.App.Properties.setString('search', null); //reset search
     // create table
     var tableView = Ti.UI.createTableView({
         data: data,
@@ -97,6 +100,15 @@ function showTable() {
         });
         //Hide the activity indicator when the funtion has completed
         activityIndicator.hide();
+    });
+    searchBar.addEventListener('change', function (e) {
+        Ti.App.Properties.setString('search', searchBar.value);
+    });
+    win.addEventListener('focus', function(e) {
+        if(searchBar.value){
+        searchBar.value=Ti.App.Properties.getString('search','');
+        tableView.searchHidden=false; 
+        }
     });
 };
 
