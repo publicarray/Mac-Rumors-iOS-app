@@ -1,9 +1,8 @@
+// http://developer.appcelerator.com/question/122327/save-and-reload-state-from-edited-tab-view
+
 Ti.include('model.js');
 //Window class
 var Window = require('windowClass');
-
-// Change status bar to translucent
-//Titanium.UI.iPhone.statusBarStyle = Titanium.UI.iPhone.StatusBar.OPAQUE_BLACK;
  
     var version = Ti.Platform.version;
     var device = Ti.Platform.name;
@@ -33,76 +32,94 @@ else{
         macWin = new Window('Mac Blog', 'macView.js'),
         iOSWin = new Window('iOS Blog', 'iosView.js'),
         buyWin = new Window("Buyer's Guide", "buyView.js"),
-        //MoreWin = new Window('More', 'moreView.js');
         roundupWin = new Window('Roundups', 'roundupView.js');
         forumWin = new Window('Form', 'forumView.js');
         settingsWin = new Window('Settings', 'settingsView.js');
     
-    // add windows to tab
-tabGroup.addTab(MainTab = Ti.UI.createTab({
+    // create tabs
+var tab0 = Ti.UI.createTab({
         title: L('Main'),
-        icon: '/images/apple_off.png', // apple 2
+        id:0,
+        icon: '/images/apple_off.png',
         activeIcon: '/images/apple.png',
         window: mainWin,
-    }));
-    mainWin.containingTab = MainTab;
+    });
     
-tabGroup.addTab(MacTab = Ti.UI.createTab({
+var tab1 = Ti.UI.createTab({
         title: L('Mac'),
+        id:1,
         icon: '/images/mac_off.png',
         activeIcon: '/images/mac2.png',
         window: macWin
-    }));
-    macWin.containingTab = MacTab;
+    });
     
-tabGroup.addTab(iOSTab = Ti.UI.createTab({
+var tab2 = Ti.UI.createTab({
         title: L('iOS'),
+        id:2,
         icon: '/images/ios.png',
         //activeIcon: '/images/ios_off.png',
         window: iOSWin
-    }));
-    iOSWin.containingTab = iOSTab;
+    });
     
-tabGroup.addTab(BuyTab = Ti.UI.createTab({
+var tab3 = Ti.UI.createTab({
         title: L("Buyer's Guide"),
+        id:3,
         icon: '/images/buy.png',
         //activeIcon: '/images/buy_off.png',
         window: buyWin
-    }));
-    buyWin.containingTab = BuyTab;
+    });
     
-/*tabGroup.addTab(MoreTab = Ti.UI.createTab({
-        title: L('More'),
-        icon: Ti.UI.iPhone.SystemIcon.MORE,
-        //backgroundImage:'/images/more.png',
-        window: MoreWin
-    }));
-
-   MoreWin.containingTab = MoreTab;
-   forumWin.containingTab = forumTab;
-*/
-    
-tabGroup.addTab(roundupTab = Ti.UI.createTab({
+var tab4 = Ti.UI.createTab({
         title: L('Roundups'),
+        id:4,
         icon: '/images/roundup1.png',
         //activeIcon: '/images/roundup1_off.png',
         window: roundupWin
-    }));
-
-    roundupWin.containingTab = roundupTab;
+    });
     
-tabGroup.addTab(forumTab = Ti.UI.createTab({
+var tab5 = Ti.UI.createTab({
         title: L('Forum'),
+        id:5,
         icon: '/images/forum.png',
         //activeIcon: '/images/forum_off.png',
         window: forumWin
-    }));
+    });
     
-tabGroup.addTab(settingsTab = Ti.UI.createTab({
+var tab6 = Ti.UI.createTab({
         title: L('Settings'),
+        id:6,
         icon: '/images/settings.png',
         window: settingsWin
-    }));
+    });
+
+// Save Tab order on Pause/Exit
+Ti.App.addEventListener('pause', function(e){
+        var k = [];
+        for(i=0;i<7;i++){
+          k.push(tabGroup.tabs[i].id);
+        }
+        Ti.App.Properties.setList('TB', k);
+        Ti.API.info(Ti.App.Properties.getList('TB'));
+        Ti.App.Properties.remove('Tabs');
+});
+
+// Load Tabs in Order
+for(i=0;i<7;i++){
+    // Try to get saved values for Tab Order
+    var k = Ti.App.Properties.getList('TB');
+    if(k==null){
+        // If don't have saved, populate in Designer order
+        var temp = eval('tab'+[i]);
+        tabGroup.addTab(temp);
+    }else{
+        var temp = eval('tab'+parseInt(k[i]));
+        // if have saves, populate
+        tabGroup.addTab(temp);
+    }
+}
+// Set First Tab Active
+tabGroup.setActiveTab(0); 
+
 // open tab Group
 tabGroup.open();
 
