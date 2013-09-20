@@ -100,7 +100,6 @@ Ti.App.addEventListener('pause', function(e)
     }
     Ti.App.Properties.setList('TB', k);
     Ti.API.info(Ti.App.Properties.getList('TB'));
-    Ti.App.Properties.remove('Tabs');
 });
 // Load Tabs in Order
 for (i = 0; i < 7; i++)
