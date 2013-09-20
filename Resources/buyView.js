@@ -1,6 +1,6 @@
-var win = Ti.UI.currentWindow;
-var url = 'http://buyersguide.macrumors.com';
+var buyWin = new Window("Buyer's Guide");
 
+var url = 'http://buyersguide.macrumors.com';
 var webView = Ti.UI.createWebView({
     url: url,
     top:0,left:0,
@@ -8,12 +8,11 @@ var webView = Ti.UI.createWebView({
     scalePageToFit:true,
     enableZoomControls:true,
 });
-
-win.add(webView);
+buyWin.add(webView);
 
 //refresh button
 var refreshBtn = Titanium.UI.createButton({
     systemButton: Ti.UI.iPhone.SystemButton.REFRESH,
 });
-win.setRightNavButton(refreshBtn);
+buyWin.setRightNavButton(refreshBtn);
 Ti.include('buyController.js');

@@ -1,4 +1,6 @@
 var win = Ti.UI.currentWindow;
+var version = Ti.Platform.version;
+var device = Ti.Platform.name;
 var description = '<head><link rel="stylesheet" type="text/css" href="style.css" media="all"></head><body>'+ win.desc +'</body>';
 
 //display content via web view
@@ -18,6 +20,8 @@ var webView = Ti.UI.createWebView({
 //win.add(label);
 win.add(webView);
 
+// devices with lower ios than 7 display text as white
+if (version < 7 && (device === 'iPhone OS' || device === 'iPad OS' || device === 'iPod Touch OS')){
 var titleLabel = Titanium.UI.createLabel({
     color:'#fff',
     height:42,
@@ -30,8 +34,7 @@ var titleLabel = Titanium.UI.createLabel({
 
 // associate label to title
 win.setTitleControl(titleLabel);
-
-
+};
 
 
 //refresh button

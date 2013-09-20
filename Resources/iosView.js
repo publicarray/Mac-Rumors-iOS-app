@@ -1,8 +1,8 @@
-var win = Ti.UI.currentWindow;
+var iOSWin = new Window('iOS Blog');
 
 //refresh button
 var refreshBtn = Titanium.UI.createButton({
     systemButton: Ti.UI.iPhone.SystemButton.REFRESH
 });
-win.setRightNavButton(refreshBtn);
+iOSWin.setRightNavButton(refreshBtn);
 Ti.include('iosController.js');

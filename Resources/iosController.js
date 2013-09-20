@@ -3,7 +3,7 @@ var feedUrl = 'http://feeds.macrumors.com/MacRumors-iPhone.xml';
 var file = Titanium.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, 'iPhone.txt');
 // get rss feed and display it
 Ti.include('rssController.js');
-getData(feedUrl, file);
+getData(feedUrl, file, iOSWin);
 
 //refresh button
 refreshBtn.addEventListener('click', function (e) {

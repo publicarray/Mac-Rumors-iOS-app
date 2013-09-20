@@ -1,6 +1,6 @@
-var win = Ti.UI.currentWindow;
-var url = 'http://forums.macrumors.com/';
+var forumWin = new Window('Form');
 
+var url = 'http://forums.macrumors.com/';
 var webView = Ti.UI.createWebView({
     url: url,
     top:0,left:0,
@@ -8,11 +8,11 @@ var webView = Ti.UI.createWebView({
     //scalePageToFit:false,
 });
 
-win.add(webView);
+forumWin.add(webView);
 
 //refresh button
 var refreshBtn = Titanium.UI.createButton({
     systemButton: Ti.UI.iPhone.SystemButton.REFRESH,
 });
-win.setRightNavButton(refreshBtn);
+forumWin.setRightNavButton(refreshBtn);
 Ti.include('forumController.js');

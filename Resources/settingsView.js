@@ -1,5 +1,5 @@
-var win = Ti.UI.currentWindow;
-win.backgroundGradient = {colors: ["white", "#C7D6E9"]};
+var settingsWin = new Window('Settings');
+settingsWin.backgroundGradient = {colors: ["white", "#C7D6E9"]};
 
 var cacheLabel = Ti.UI.createLabel({
     text:'Network Cache:',
@@ -20,9 +20,9 @@ var onCacheButton = Titanium.UI.createSwitch({
    height: 40,
 });
 
-win.add(onCacheButton);
-win.add(cacheLabel);
-win.add(cacheLabel2);
+settingsWin.add(onCacheButton);
+settingsWin.add(cacheLabel);
+settingsWin.add(cacheLabel2);
 
 onCacheButton.addEventListener('change', function (e) {
     if(e.value){

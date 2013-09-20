@@ -2,8 +2,6 @@
 Ti.include('model.js');
 //Window class
 var Window = require('windowClass');
-var version = Ti.Platform.version;
-var device = Ti.Platform.name;
 if (version >= 7 && (device === 'iPhone OS' || device === 'iPad OS' || device === 'iPod Touch OS'))
 {
     //create io7 tab bar
@@ -26,15 +24,9 @@ else
         activeTabBackgroundImage: 'images/highlight.png',//active icon background image
     });
 };
-//create app windows
-var mainWin = new Window('Mac Rumours', 'mainView.js'),
-    macWin = new Window('Mac Blog', 'macView.js'),
-    iOSWin = new Window('iOS Blog', 'iosView.js'),
-    buyWin = new Window("Buyer's Guide", "buyView.js"),
-    roundupWin = new Window('Roundups', 'roundupView.js'),
-    forumWin = new Window('Form', 'forumView.js'),
-    settingsWin = new Window('Settings', 'settingsView.js');
-// create tabs
+
+// create Views
+Ti.include('mainView.js');
 var tab0 = Ti.UI.createTab(
 {
     title: L('Main'),
@@ -43,6 +35,8 @@ var tab0 = Ti.UI.createTab(
     activeIcon: '/images/apple.png',
     window: mainWin,
 });
+
+Ti.include('macView.js');
 var tab1 = Ti.UI.createTab(
 {
     title: L('Mac'),
@@ -51,6 +45,8 @@ var tab1 = Ti.UI.createTab(
     activeIcon: '/images/mac2.png',
     window: macWin
 });
+
+Ti.include('iosView.js');
 var tab2 = Ti.UI.createTab(
 {
     title: L('iOS'),
@@ -59,6 +55,8 @@ var tab2 = Ti.UI.createTab(
     //activeIcon: '/images/ios_off.png',
     window: iOSWin
 });
+
+Ti.include('buyView.js');
 var tab3 = Ti.UI.createTab(
 {
     title: L("Buyer's Guide"),
@@ -67,6 +65,8 @@ var tab3 = Ti.UI.createTab(
     //activeIcon: '/images/buy_off.png',
     window: buyWin
 });
+
+Ti.include('roundupView.js');
 var tab4 = Ti.UI.createTab(
 {
     title: L('Roundups'),
@@ -75,6 +75,8 @@ var tab4 = Ti.UI.createTab(
     //activeIcon: '/images/roundup1_off.png',
     window: roundupWin
 });
+
+Ti.include('forumView.js');
 var tab5 = Ti.UI.createTab(
 {
     title: L('Forum'),
@@ -83,6 +85,8 @@ var tab5 = Ti.UI.createTab(
     //activeIcon: '/images/forum_off.png',
     window: forumWin
 });
+
+Ti.include('settingsView.js');
 var tab6 = Ti.UI.createTab(
 {
     title: L('Settings'),
@@ -90,16 +94,30 @@ var tab6 = Ti.UI.createTab(
     icon: '/images/settings.png',
     window: settingsWin
 });
+
+
 // Save Tab order on Pause/Exit
 Ti.App.addEventListener('pause', function(e)
 {
+    var currentTabId = tabGroup.activeTab.id;
+    var currentTab = null;
     var k = [];
     for (i = 0; i < 7; i++)
     {
-        k.push(tabGroup.tabs[i].id);
+        var tabId = tabGroup.tabs[i].id;
+        k.push(tabId);
+        //get the current Tab order number of the current Tab by checking it againts it's Id'
+        if (tabId===currentTabId){
+            currentTab = i;
+        };
     }
+    //set properties
+    Ti.App.Properties.setInt('lastTB', currentTab);
     Ti.App.Properties.setList('TB', k);
+    
+    //debug
     Ti.API.info(Ti.App.Properties.getList('TB'));
+    Ti.API.info(Ti.App.Properties.getInt('lastTB', 0));
 });
 // Load Tabs in Order
 for (i = 0; i < 7; i++)
@@ -119,5 +137,7 @@ for (i = 0; i < 7; i++)
         tabGroup.addTab(temp);
     }
 }
+//open last opened tab
+tabGroup.setActiveTab(Ti.App.Properties.getInt('lastTB', 0));
 // open tab Group
 tabGroup.open();

@@ -3,7 +3,7 @@ var feedUrl = 'http://feeds.macrumors.com/MacRumors-Front.xml';
 var file = Titanium.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, 'Front.txt');
 // get rss feed and display it
 Ti.include('rssController.js');
-getData(feedUrl, file);
+getData(feedUrl, file, mainWin);
 
 //refresh button
 refreshBtn.addEventListener('click', function (e) {

@@ -1,5 +1,5 @@
 // http://developer.appcelerator.com/question/124014/saving-xml-file-offline-for-read-later
-function getData(url, f){
+function getData(url, f, win){
 
 if(Ti.Platform.name === 'iPhone OS') {
     var activityStyle = Ti.UI.iPhone.ActivityIndicatorStyle.DARK;
@@ -82,18 +82,18 @@ function showTable() {
     // add event handeler
     tableView.addEventListener('click', function (e) {
         /*
-        var win = Ti.UI.createWindow({
+        var detailWin = Ti.UI.createWindow({
             //title of the label that the user selected
             title: e.row.children[0].text,
             barColor: '#650000',
             url: 'tableDetail.js',
-            */
-            //alternative method:
-            var Window;{Window = require('windowClass');}
-            var win = new Window (e.row.children[0].text, 'tableDetail.js');
-       // });
-        win.desc = e.row.desc;
-        Ti.UI.currentTab.open(win, {
+       });
+       */
+           //alternative method:
+           // var Window = require('windowClass');
+        var detailWin = new Window (e.row.children[0].text, 'tableDetail.js');
+        detailWin.desc = e.row.desc;
+        tabGroup.activeTab.open(detailWin, {
             animation: true
         });
         //Hide the activity indicator when the funtion has completed
