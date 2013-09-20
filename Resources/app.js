@@ -19,11 +19,11 @@ var Window = require('windowClass');
 else{
     //create tab bar
     var tabGroup = Ti.UI.createTabGroup({
-        barColor :'#980012',//650000 // for more tab
-        tabsBackgroundColor: '#000', // inactive icon tint
+        barColor: '#650000',//barColor :'#980012', // for more tab
+        tabsBackgroundColor: '#fff', // inactive icon tint
         tabsBackgroundImage:'images/tabbar.png', // background for tab bar
         backgroundColor: '#fff', // of View
-        activeTabIconTint : '#fff', // active icon tint
+        activeTabIconTint : '#000', // active icon tint
         activeTabBackgroundImage : 'images/tabbar3.png', //active icon background image
     });
 };   
@@ -40,16 +40,16 @@ else{
     // add windows to tab
 tabGroup.addTab(MainTab = Ti.UI.createTab({
         title: L('Main'),
-        icon: '/images/apple.png', // apple 2
-        activeIcon: '/images/apple_off.png',
+        icon: '/images/apple_off.png', // apple 2
+        activeIcon: '/images/apple.png',
         window: mainWin,
     }));
     mainWin.containingTab = MainTab;
     
 tabGroup.addTab(MacTab = Ti.UI.createTab({
         title: L('Mac'),
-        icon: '/images/mac.png',
-        activeIcon: '/images/mac_off.png',
+        icon: '/images/mac_off.png',
+        activeIcon: '/images/mac.png',
         window: macWin
     }));
     macWin.containingTab = MacTab;

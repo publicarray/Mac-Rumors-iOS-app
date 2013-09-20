@@ -25,7 +25,7 @@ var titleLabel = Titanium.UI.createLabel({
     text:win.title,
     textAlign:'center',
     font:{fontFamily:'Helvetica Neue',fontSize:14,fontWeight:'bold'},
-    //shadowColor:'#eee',shadowOffset:{x:0,y:1}
+    shadowColor:'#000',shadowOffset:{x:0,y:-1}
 });
 
 // associate label to title
