@@ -69,9 +69,7 @@ function showTable() {
     tintColor :'#980012',
     height:43,
     top:0,
-    value: null,
     });
-    Ti.App.Properties.setString('search', null); //reset search
     // create table
     var tableView = Ti.UI.createTableView({
         data: data,
