@@ -39,10 +39,10 @@ var titleLabel = Titanium.UI.createLabel({
 // landscape orientation will hide navBar and statusBar
 function changeOrientation (e) {
     if(e.orientation == '3' || e.orientation == '4'){  //landscape
-        Titanium.UI.iPhone.hideStatusBar();
+        //Titanium.UI.iPhone.hideStatusBar();
         self.hideNavBar();
     } else if (e.orientation == '1' || e.orientation == '2'){ //portrait
-        Titanium.UI.iPhone.showStatusBar();
+        //Titanium.UI.iPhone.showStatusBar();
         self.showNavBar();
     }
   
