@@ -1,0 +1,40 @@
+html {
+    -webkit-text-size-adjust: none;
+    font-size-adjust: none;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5em;
+    /*text-shadow: 1px 1px 1px rgba(0,0,0,0.004);*/
+}
+
+body{
+    color: #333;
+    font-size: 1em;
+    font-family: 'Helvetica Neue', Sans-serif;
+    font-weight: 300;
+}
+
+a{
+    color: #650600;
+}
+img, iframe{
+    max-width: 100%;
+    width:auto;
+    height: auto;
+    padding: 2px;
+    display: block;
+    margin: auto;
+    float: none;
+    clear: both;
+}
+blockquote{
+    color: #3e6184;
+    font-style: italic;
+    margin: 20px auto;
+    margin-left: 10%;
+}
+
+/* hide -hopeffuly- unessesary items */
+
+div ,table{
+    display: none; 
+}
