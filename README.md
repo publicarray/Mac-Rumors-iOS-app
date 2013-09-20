@@ -1,6 +1,6 @@
 # Mac Rumors iOS app
 
-### This project is developed for a uni assment using Appcelerator Titanium Studio.
+#### This project is developed for a uni assment using Appcelerator Titanium Studio.
 
 
 
