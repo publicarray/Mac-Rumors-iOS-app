@@ -19,12 +19,13 @@ var Window = require('windowClass');
 else{
     //create tab bar
     var tabGroup = Ti.UI.createTabGroup({
-        barColor :'#980012', // for 'more' tab
-        tabsBackgroundColor: '#000', // inactive icon tint
-        tabsBackgroundImage:'images/tapbar.png', // background for tab bar
+        barColor: '#650000',//barColor :'#980012', // for more tab
+        tabsBackgroundColor: '#fff', // inactive icon tint
+        //tabsBackgroundColor:'#650000', // or bar colour
+        tabsBackgroundImage:'images/tabbar.png', // background for tab bar
         backgroundColor: '#fff', // of View
-        activeTabIconTint : '#fff', // active icon tint
-        activeTabBackgroundImage : 'images/tabbar2.png', //active icon background image
+        activeTabIconTint : '#000', // active icon tint
+        activeTabBackgroundImage : 'images/highlight.png', //active icon background image
     });
 };   
     //create app windows
@@ -40,16 +41,16 @@ else{
     // add windows to tab
 tabGroup.addTab(MainTab = Ti.UI.createTab({
         title: L('Main'),
-        icon: '/images/apple.png', // apple 2
-        activeIcon: '/images/apple_off.png',
+        icon: '/images/apple_off.png', // apple 2
+        activeIcon: '/images/apple.png',
         window: mainWin,
     }));
     mainWin.containingTab = MainTab;
     
 tabGroup.addTab(MacTab = Ti.UI.createTab({
         title: L('Mac'),
-        icon: '/images/mac.png',
-        activeIcon: '/images/mac_off.png',
+        icon: '/images/mac_off.png',
+        activeIcon: '/images/mac2.png',
         window: macWin
     }));
     macWin.containingTab = MacTab;
@@ -57,6 +58,7 @@ tabGroup.addTab(MacTab = Ti.UI.createTab({
 tabGroup.addTab(iOSTab = Ti.UI.createTab({
         title: L('iOS'),
         icon: '/images/ios.png',
+        //activeIcon: '/images/ios_off.png',
         window: iOSWin
     }));
     iOSWin.containingTab = iOSTab;
@@ -64,6 +66,7 @@ tabGroup.addTab(iOSTab = Ti.UI.createTab({
 tabGroup.addTab(BuyTab = Ti.UI.createTab({
         title: L("Buyer's Guide"),
         icon: '/images/buy.png',
+        //activeIcon: '/images/buy_off.png',
         window: buyWin
     }));
     buyWin.containingTab = BuyTab;
@@ -82,6 +85,7 @@ tabGroup.addTab(BuyTab = Ti.UI.createTab({
 tabGroup.addTab(roundupTab = Ti.UI.createTab({
         title: L('Roundups'),
         icon: '/images/roundup1.png',
+        //activeIcon: '/images/roundup1_off.png',
         window: roundupWin
     }));
 
@@ -90,12 +94,13 @@ tabGroup.addTab(roundupTab = Ti.UI.createTab({
 tabGroup.addTab(forumTab = Ti.UI.createTab({
         title: L('Forum'),
         icon: '/images/forum.png',
+        //activeIcon: '/images/forum_off.png',
         window: forumWin
     }));
     
 tabGroup.addTab(settingsTab = Ti.UI.createTab({
         title: L('Settings'),
-        //icon: '/images/forum.png',
+        icon: '/images/settings.png',
         window: settingsWin
     }));
 // open tab Group

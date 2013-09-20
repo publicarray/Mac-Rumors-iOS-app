@@ -17,8 +17,7 @@ else{
     var self = Ti.UI.createWindow({
         title:title,
         //fullscreen : true,
-        barColor:'#980012',
-        barImage:'images/navbar.png',
+        barColor: '#650000',//barColor:'#980012',
         backButtonTitle:'Back',
         backgroundColor:'#fff',
         url:url,
@@ -27,23 +26,23 @@ else{
     
     // create the label
 var titleLabel = Titanium.UI.createLabel({
-    color:'#000',
+    color:'#fff',
     //backgroundColor:'#f6f5f1',
     height:42,
     width:'100%',
     text:title,
     textAlign:'center',
     font:{fontFamily:'Helvetica Neue',fontSize:16,fontWeight:'bold'},
-    shadowColor:'#eee',shadowOffset:{x:0,y:1}
+    shadowColor:'#000',shadowOffset:{x:0,y:-1}
 });
 }
 // landscape orientation will hide navBar and statusBar
 function changeOrientation (e) {
     if(e.orientation == '3' || e.orientation == '4'){  //landscape
-        Titanium.UI.iPhone.hideStatusBar();
+        //Titanium.UI.iPhone.hideStatusBar();
         self.hideNavBar();
     } else if (e.orientation == '1' || e.orientation == '2'){ //portrait
-        Titanium.UI.iPhone.showStatusBar();
+        //Titanium.UI.iPhone.showStatusBar();
         self.showNavBar();
     }
   
