@@ -100,8 +100,10 @@ function showTable() {
        */
            //alternative method:
            // var Window = require('windowClass');
-        var detailWin = new Window (e.row.children[0].text, 'tableDetail.js');
+        var detailWin = new Window (e.row.children[0].text);
+        detailWin.url = 'tableDetail.js';
         detailWin.desc = e.row.desc;
+        
         tabGroup.activeTab.open(detailWin, {
             animation: true
         });

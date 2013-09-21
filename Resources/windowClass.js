@@ -3,7 +3,7 @@
  * The Window Class makes sure all windows look identical, have the same properties and functons.
  * It also checks if the device is running ios7 and will display windows differently.
  */
-function windowClass(title, url) {
+function windowClass(title) {
     var version = Ti.Platform.version;
     var device = Ti.Platform.name;
     // ios 7 windows withought bar image
@@ -11,7 +11,6 @@ if (version >= 7 && (device === 'iPhone OS' || device === 'iPad OS' || device ==
         var self = Ti.UI.createWindow({
         backgroundColor:'#fff',
         title:title,
-        url:url,
     });
     }
 // ios 6 and lower
