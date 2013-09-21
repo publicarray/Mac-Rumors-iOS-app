@@ -29,7 +29,7 @@ win.add(activityIndicator);
 activityIndicator.show();
     //open network connection
     var xhr = Ti.Network.createHTTPClient({
-        cache: Ti.App.Properties.getBool('cache', false),
+        cache: Ti.App.Properties.getBool('cache', true),
         timeout:5000,
     });
     xhr.open('GET', url);
