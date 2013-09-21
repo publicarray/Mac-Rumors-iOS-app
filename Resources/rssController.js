@@ -38,7 +38,7 @@ activityIndicator.show();
         //Writing data to a file
         f.write(this.responseData);
         getXMLdata(f);
-        showTable(win);
+        showTable();
     };
     
     xhr.onerror = function() {
@@ -47,7 +47,7 @@ activityIndicator.show();
      if(xhr.status != 200) {
         if(f.exists()) {
         getXMLdata(f);
-        showTable(win);
+        showTable();
         alert('Offline Mode');
        } 
         else if(!f.exists()) {
@@ -65,14 +65,14 @@ activityIndicator.show();
 }
 else if(f.exists()) {
         getXMLdata(f);
-        showTable(win);
+        showTable();
     } 
 else if(!f.exists()) {
         activityIndicator.hide();
         alert('Your device is not connected to the internet.');
 }
 
-function showTable(win) {
+function showTable() {
     var searchBar = Titanium.UI.createSearchBar({
     barColor:'#bbb',
     tintColor :'#980012',
