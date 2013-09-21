@@ -1,8 +1,8 @@
 var mainWin = new Window('Mac Rumours');
 
 //refresh button
-var refreshBtn = Titanium.UI.createButton({
+var refreshBtnMain = Titanium.UI.createButton({
     systemButton: Ti.UI.iPhone.SystemButton.REFRESH,
 });
-mainWin.setRightNavButton(refreshBtn);
+mainWin.setRightNavButton(refreshBtnMain);
 Ti.include('mainController.js');

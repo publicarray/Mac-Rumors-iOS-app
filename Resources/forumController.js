@@ -1,12 +1,11 @@
-webView.addEventListener ('error', function(e){
+webViewForum.addEventListener ('error', function(e){
     //alert(e.message);
-    webView.setHtml(Ti.App.Properties.getString('htmlErrorMessage'),
-        {baseURL:url});
+    webViewForum.setHtml(htmlErrorMessage);
 });
 
 //refresh button
-refreshBtn.addEventListener('click', function (e) {
-    webView.setHtml(null);
-    webView.setUrl = (url);
-    webView.reload();
+refreshBtnForum.addEventListener('click', function (e) {
+    webViewForum.setHtml(null);
+    webViewForum.setUrl = (urlForum);
+    webViewForum.reload();
 });

@@ -1,9 +1,9 @@
 var macWin = new Window('Mac Blog');
 
 //refresh button
-var refreshBtn = Titanium.UI.createButton({
+var refreshBtnMac = Titanium.UI.createButton({
     systemButton: Ti.UI.iPhone.SystemButton.REFRESH,
     backgroundImage :'images/topbar.png',
 });
-macWin.setRightNavButton(refreshBtn);
+macWin.setRightNavButton(refreshBtnMac);
 Ti.include('macController.js');

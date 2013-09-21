@@ -1,18 +1,18 @@
 var roundupWin = new Window('Roundups');
 
-var url = 'http://www.macrumors.com/roundup/';
-var webView = Ti.UI.createWebView({
-    url: url,
+var urlR = 'http://www.macrumors.com/roundup/';
+var webViewR = Ti.UI.createWebView({
+    url: urlR,
     top:0,left:0,
     width: '100%', height: '100%',
     scalePageToFit:true,
 });
 
-roundupWin.add(webView);
+roundupWin.add(webViewR);
 
 //refresh button
-var refreshBtn = Titanium.UI.createButton({
-    systemButton: Ti.UI.iPhone.SystemButton.REFRESH
+var refreshBtnR = Titanium.UI.createButton({
+    systemButtonR: Ti.UI.iPhone.SystemButton.REFRESH
 });
-roundupWin.setRightNavButton(refreshBtn);
+roundupWin.setRightNavButton(refreshBtnR);
 Ti.include('roundupController.js');

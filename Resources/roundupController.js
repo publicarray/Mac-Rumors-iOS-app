@@ -1,12 +1,11 @@
-webView.addEventListener ('error', function(e){
+webViewR.addEventListener ('error', function(e){
     //alert(e.message);
-    webView.setHtml(Ti.App.Properties.getString('htmlErrorMessage'),
-        {baseURL:url});
+    webViewR.setHtml(htmlErrorMessage);
 });
 
 //refresh button
-refreshBtn.addEventListener('click', function (e) {
-    webView.setHtml(null);
-    webView.setUrl = (url);
-    webView.reload();
+refreshBtnR.addEventListener('click', function (e) {
+    webViewR.setHtml(null);
+    webViewR.setUrl = (urlR);
+    webViewR.reload();
 });
