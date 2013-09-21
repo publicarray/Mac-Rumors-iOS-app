@@ -1,6 +1,6 @@
 // http://developer.appcelerator.com/question/124014/saving-xml-file-offline-for-read-later
 function getData(url, f, win){
-
+    
 if(Ti.Platform.name === 'iPhone OS') {
     var activityStyle = Ti.UI.iPhone.ActivityIndicatorStyle.DARK;
 } else {
@@ -27,6 +27,7 @@ var activityIndicator = Ti.UI.createActivityIndicator({
 });
 win.add(activityIndicator);
 activityIndicator.show();
+
     //open network connection
     var xhr = Ti.Network.createHTTPClient({
         cache: Ti.App.Properties.getBool('cache', true),
@@ -37,15 +38,22 @@ activityIndicator.show();
         //Writing data to a file
         f.write(this.responseData);
         getXMLdata(f);
-        showTable();
+        showTable(win);
     };
-    xhr.onerror = function (e) {
-    //check response status and act aaccordingly.
-    if(xhr.status != 200) {
+    
+    xhr.onerror = function() {
+        Ti.API.info('XHR Error: ' + xhr.status + ' - ' + xhr.statusText);
+     //check response status and act aaccordingly.
+     if(xhr.status != 200) {
+        if(f.exists()) {
+        getXMLdata(f);
+        showTable(win);
+        alert('Offline Mode');
+       } 
+        else if(!f.exists()) {
         activityIndicator.hide();
-        xhr.abort();
-        alert("The service is currently unavailable. Please Try Again Later.");
-        return;
+        alert('The service is currently unavailable. Please Try Again Later.');
+        }
     }};
     try {
         xhr.send();
@@ -57,14 +65,14 @@ activityIndicator.show();
 }
 else if(f.exists()) {
         getXMLdata(f);
-        showTable();
+        showTable(win);
     } 
 else if(!f.exists()) {
         activityIndicator.hide();
         alert('Your device is not connected to the internet.');
 }
 
-function showTable() {
+function showTable(win) {
     var searchBar = Titanium.UI.createSearchBar({
     barColor:'#bbb',
     tintColor :'#980012',

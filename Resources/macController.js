@@ -12,6 +12,6 @@ refreshBtn.addEventListener('click', function (e) {
     alert("You must be connected to the internet to retrieve the latest information");
     }
     else if(Titanium.Network.online){
-    getData(feedUrl, file);
+    getData(feedUrl, file, macWin);
     }
 });
