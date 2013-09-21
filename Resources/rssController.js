@@ -9,9 +9,7 @@ if(Ti.Platform.name === 'iPhone OS') {
 
 //innitialise the array
 var data = [];
-//if internet connection is on - continue
-if(Titanium.Network.online) {
-    //Show the activity indicator
+//Show the activity indicator
 var activityIndicator = Ti.UI.createActivityIndicator({
     height: '100%',
     width: '100%',
@@ -27,6 +25,10 @@ var activityIndicator = Ti.UI.createActivityIndicator({
 });
 win.add(activityIndicator);
 activityIndicator.show();
+
+
+//if internet connection is on - continue
+if(Titanium.Network.online) {
 
     //open network connection
     var xhr = Ti.Network.createHTTPClient({
