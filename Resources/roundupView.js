@@ -12,7 +12,7 @@ roundupWin.add(webViewR);
 
 //refresh button
 var refreshBtnR = Titanium.UI.createButton({
-    systemButtonR: Ti.UI.iPhone.SystemButton.REFRESH
+    systemButton: Ti.UI.iPhone.SystemButton.REFRESH
 });
 roundupWin.setRightNavButton(refreshBtnR);
 Ti.include('roundupController.js');
