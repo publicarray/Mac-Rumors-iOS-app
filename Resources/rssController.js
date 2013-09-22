@@ -136,8 +136,8 @@ function getXMLdata(file) {
             var item = items.item(i);
             var title = item.getElementsByTagName('title').item(0).text;
             var description = item.getElementsByTagName('description').item(0).text;
-            var pubDate = item.getElementsByTagName('pubDate').item(0).text;
-            var link = item.getElementsByTagName('link').item(0).text;
+            //var pubDate = item.getElementsByTagName('pubDate').item(0).text;
+            //var link = item.getElementsByTagName('link').item(0).text;
             //display content and create objects
             var row = Ti.UI.createTableViewRow({
                 height: 80,

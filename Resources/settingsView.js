@@ -31,19 +31,9 @@ onCacheButton.addEventListener('change', function (e) {
     else if(!e.value){
     Ti.App.Properties.setBool('cache', false);
     
-var dir = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory);
-Ti.API.info('Directory list to start: ' + dir.getDirectoryListing());
-
-var    file = 'Front.txt';
-var deleteFile = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, file);
-if (deleteFile.exists() && deleteFile.writable) { deleteFile.deleteFile(); }
-
-    file = 'Mac.txt';
-    deleteFile = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, file);
-if (deleteFile.exists() && deleteFile.writable) { deleteFile.deleteFile(); }
-
-    file = 'iPhone.txt';
-    deleteFile = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, file);
-if (deleteFile.exists() && deleteFile.writable) { deleteFile.deleteFile(); }
+//Ti.API.info('Directory list to start: ' + Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory).getDirectoryListing());
+if (fileMain.exists() && fileMain.writable) { fileMain.deleteFile(); }
+if (fileMac.exists() && fileMac.writable) { fileMac.deleteFile(); }
+if (fileIos.exists() && fileIos.writable) { fileIos.deleteFile(); }
 }
 });

@@ -1,8 +1,7 @@
 var roundupWin = new Window('Roundups');
 
-var urlR = 'http://www.macrumors.com/roundup/';
 var webViewR = Ti.UI.createWebView({
-    url: urlR,
+    url: urlRoundup,
     top:0,left:0,
     width: '100%', height: '100%',
     scalePageToFit:true,

@@ -1,6 +1,5 @@
 var buyWin = new Window("Buyer's Guide");
 
-var urlBuy = 'http://buyersguide.macrumors.com';
 var webViewBuy = Ti.UI.createWebView({
     url: urlBuy,
     top:0,left:0,

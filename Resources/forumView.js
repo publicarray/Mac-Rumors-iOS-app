@@ -1,6 +1,5 @@
 var forumWin = new Window('Form');
 
-var urlForum = 'http://forums.macrumors.com/';
 var webViewForum = Ti.UI.createWebView({
     url: urlForum,
     top:0,left:0,

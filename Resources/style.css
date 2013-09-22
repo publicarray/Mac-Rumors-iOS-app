@@ -1,6 +1,5 @@
 html {
     -webkit-text-size-adjust: none;
-    font-size-adjust: none;
     -webkit-font-smoothing: antialiased;
     line-height: 1.5em;
     /*text-shadow: 1px 1px 1px rgba(0,0,0,0.004);*/
@@ -33,7 +32,9 @@ blockquote{
     margin-left: 10%;
 }
 
-/* hide -hopeffuly- unessesary items */
+/* hide -hopeffuly- unessesary items 
+ * and unclutter the webview
+ */
 
 div ,table{
     display: none; 

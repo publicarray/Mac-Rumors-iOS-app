@@ -1,6 +1,3 @@
-// initialise vareables
-var feedUrlMain = 'http://feeds.macrumors.com/MacRumors-Front.xml';
-var fileMain = Titanium.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, 'Front.txt');
 // get rss feed and display it
 Ti.include('rssController.js');
 getData(feedUrlMain, fileMain, mainWin);
