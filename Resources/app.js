@@ -25,10 +25,10 @@ else
     var tabGroup = Ti.UI.createTabGroup(
     {
         barColor: '#650000',//#980012, // for more tab
-        tabsBackgroundColor: '#fff',// inactive icon tint
-        tabsBackgroundImage: 'images/tabbar.png',// background for tab bar
+        tabsBackgroundColor: '#000',// inactive icon tint
+        tabsBackgroundImage: 'images/tabbar3.png',// background for tab bar
         backgroundColor: '#fff',// of View
-        activeTabIconTint: '#000',// active icon tint
+        activeTabIconTint: '#fff',// active icon tint
         activeTabBackgroundImage: 'images/highlight.png',//active icon background image
     });
 };
@@ -41,8 +41,8 @@ var tab0 = Ti.UI.createTab(
 {
     title: L('Main'),
     id: 0,
-    icon: '/images/apple_off.png',
-    activeIcon: '/images/apple.png',
+    icon: '/images/apple.png',
+    activeIcon: '/images/apple_off.png',
     window: mainWin,
 });
 
@@ -53,8 +53,8 @@ var tab1 = Ti.UI.createTab(
 {
     title: L('Mac'),
     id: 1,
-    icon: '/images/mac_off.png',
-    activeIcon: '/images/mac2.png',
+    icon: '/images/mac2.png',
+    activeIcon: '/images/mac_off.png',
     window: macWin
 });
 
@@ -66,7 +66,7 @@ var tab2 = Ti.UI.createTab(
     title: L('iOS'),
     id: 2,
     icon: '/images/ios.png',
-    //activeIcon: '/images/ios_off.png',
+    activeIcon: '/images/ios_off.png',
     window: iOSWin
 });
 
@@ -78,7 +78,7 @@ var tab3 = Ti.UI.createTab(
     title: L("Buyer's Guide"),
     id: 3,
     icon: '/images/buy.png',
-    //activeIcon: '/images/buy_off.png',
+    activeIcon: '/images/buy_off.png',
     window: buyWin
 });
 
@@ -89,8 +89,8 @@ var tab4 = Ti.UI.createTab(
 {
     title: L('Roundups'),
     id: 4,
-    icon: '/images/roundup1.png',
-    //activeIcon: '/images/roundup1_off.png',
+    icon: '/images/roundup.png',
+    activeIcon: '/images/roundup_off.png',
     window: roundupWin
 });
 
@@ -102,7 +102,7 @@ var tab5 = Ti.UI.createTab(
     title: L('Forum'),
     id: 5,
     icon: '/images/forum.png',
-    //activeIcon: '/images/forum_off.png',
+    activeIcon: '/images/forum_off.png',
     window: forumWin
 });
 
@@ -114,6 +114,7 @@ var tab6 = Ti.UI.createTab(
     title: L('Settings'),
     id: 6,
     icon: '/images/settings.png',
+    activeIcon: '/images/settings_off.png',
     window: settingsWin
 });
 
