@@ -1,11 +1,20 @@
-// http://developer.appcelerator.com/question/124014/saving-xml-file-offline-for-read-later
-function getData(url, f){
-
+/* 
+ * Information I used to get the rss feed and display it:
+ * https://www.youtube.com/watch?v=fZzn6Wp_dGQ
+ * https://www.youtube.com/watch?v=UNAeuPcdF5k
+ * http://developer.appcelerator.com/question/124014/saving-xml-file-offline-for-read-later
+ * 
+ */
+function getData(url, f, win){
+    
 if(Ti.Platform.name === 'iPhone OS') {
     var activityStyle = Ti.UI.iPhone.ActivityIndicatorStyle.DARK;
 } else {
     var activityStyle = Ti.UI.ActivityIndicatorStyle.DARK;
 }
+
+//innitialise the array
+var data = [];
 //Show the activity indicator
 var activityIndicator = Ti.UI.createActivityIndicator({
     height: '100%',
@@ -22,13 +31,14 @@ var activityIndicator = Ti.UI.createActivityIndicator({
 });
 win.add(activityIndicator);
 activityIndicator.show();
-//innitialise the array
-var data = [];
+
+
 //if internet connection is on - continue
 if(Titanium.Network.online) {
+
     //open network connection
     var xhr = Ti.Network.createHTTPClient({
-        cache: Ti.App.Properties.getBool('cache', false),
+        cache: Ti.App.Properties.getBool('cache', true),
         timeout:5000,
     });
     xhr.open('GET', url);
@@ -38,13 +48,20 @@ if(Titanium.Network.online) {
         getXMLdata(f);
         showTable();
     };
-    xhr.onerror = function (e) {
-    //check response status and act aaccordingly.
-    if(xhr.status != 200) {
+    
+    xhr.onerror = function() {
+        Ti.API.info('XHR Error: ' + xhr.status + ' - ' + xhr.statusText);
+     //check response status and act aaccordingly.
+     if(xhr.status != 200) {
+        if(f.exists()) {
+        getXMLdata(f);
+        showTable();
+        alert('Offline Mode');
+       } 
+        else if(!f.exists()) {
         activityIndicator.hide();
-        xhr.abort();
-        alert("The service is currently unavailable. Please Try Again Later.");
-        return;
+        alert('The service is currently unavailable. Please Try Again Later.');
+        }
     }};
     try {
         xhr.send();
@@ -81,19 +98,23 @@ function showTable() {
     win.add(tableView);
     // add event handeler
     tableView.addEventListener('click', function (e) {
+        
+        // - create windows
         /*
-        var win = Ti.UI.createWindow({
+        var detailWin = Ti.UI.createWindow({
             //title of the label that the user selected
             title: e.row.children[0].text,
             barColor: '#650000',
             url: 'tableDetail.js',
-            */
-            //alternative method:
-            var Window;{Window = require('windowClass');}
-            var win = new Window (e.row.children[0].text, 'tableDetail.js');
-       // });
-        win.desc = e.row.desc;
-        Ti.UI.currentTab.open(win, {
+       });
+       */
+           // - alternative method using the window function:
+           // var Window = require('windowClass');
+        var detailWin = new Window (e.row.children[0].text);
+        detailWin.url = 'tableDetailView.js';
+        detailWin.desc = e.row.desc;
+        
+        tabGroup.activeTab.open(detailWin, {
             animation: true
         });
         //Hide the activity indicator when the funtion has completed
@@ -116,16 +137,16 @@ function getXMLdata(file) {
         var contents = f.read().text;
 // Ti.API.info('contents = ' + contents);
         var doc = Ti.XML.parseString(contents); 
-        //var doc = this.responseXML.documentElement;
         var items = doc.getElementsByTagName('item');
         var x = 0;
         for(var i = 0; i < items.length; i++) {
             var item = items.item(i);
             var title = item.getElementsByTagName('title').item(0).text;
             var description = item.getElementsByTagName('description').item(0).text;
-            var pubDate = item.getElementsByTagName('pubDate').item(0).text;
-            var link = item.getElementsByTagName('link').item(0).text;
-            //display content and create objects
+            //var pubDate = item.getElementsByTagName('pubDate').item(0).text;
+            //var link = item.getElementsByTagName('link').item(0).text;
+            
+            // display content and create objects
             var row = Ti.UI.createTableViewRow({
                 height: 80,
                 layout: 'vertical',

@@ -1,6 +1,9 @@
+/*
+ * this CSS file gets loaded into the web views generated from the rss feed from detailTableView.js
+ */
+
 html {
     -webkit-text-size-adjust: none;
-    font-size-adjust: none;
     -webkit-font-smoothing: antialiased;
     line-height: 1.5em;
     /*text-shadow: 1px 1px 1px rgba(0,0,0,0.004);*/
@@ -33,7 +36,10 @@ blockquote{
     margin-left: 10%;
 }
 
-/* hide -hopeffuly- unessesary items */
+/* 
+ * hides -hopeffuly- unessesary items 
+ * and unclutters the webview
+ */
 
 div ,table{
     display: none; 

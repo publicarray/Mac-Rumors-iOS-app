@@ -1,7 +1,5 @@
-var win = Ti.UI.currentWindow;
-var description = '<head><link rel="stylesheet" type="text/css" href="style.css" media="all"></head><body>'+ win.desc +'</body>';
-
-//display content via web view
+Ti.include('tableDetailModel.js');
+//display description of the rss feed via a web view
 var webView = Ti.UI.createWebView({
     html:description,
     scalePageToFit:true,
@@ -9,15 +7,10 @@ var webView = Ti.UI.createWebView({
     width: '100%', height: '100%',
 });
 
-
-//Display content via label
-//var label = Ti.UI.createLabel({
-//    text: description,
-//    backgroundColor: '#fff',
-//});
-//win.add(label);
 win.add(webView);
 
+// devices with lower ios than 7 display text as white
+if (version < 7 && (device === 'iPhone OS' || device === 'iPad OS' || device === 'iPod Touch OS')){
 var titleLabel = Titanium.UI.createLabel({
     color:'#fff',
     height:42,
@@ -30,9 +23,7 @@ var titleLabel = Titanium.UI.createLabel({
 
 // associate label to title
 win.setTitleControl(titleLabel);
-
-
-
+};
 
 //refresh button
 var refreshBtn = Titanium.UI.createButton({

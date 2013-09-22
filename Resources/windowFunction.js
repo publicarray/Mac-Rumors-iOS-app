@@ -1,14 +1,17 @@
-//http://www.clearlyinnovative.com/blog/post/1484840648/titanium-appcelerator-quickie-change-text-style-in-window-title
-function windowClass(title, url) {
+/* 
+ * sorce used to change the title  text //http://www.clearlyinnovative.com/blog/post/1484840648/titanium-appcelerator-quickie-change-text-style-in-window-title
+ * 
+ * The Window Class makes sure all windows look identical, have the same properties and functons.
+ * It also checks if the device is running ios7 and will display windows differently.
+ */
+function windowClass(title) {
     var version = Ti.Platform.version;
     var device = Ti.Platform.name;
     // ios 7 windows withought bar image
-    if (version >= 7 && (device === 'iPhone OS' || device === 'iPad OS' || device === 'iPod Touch OS')){
+if (version >= 7 && (device === 'iPhone OS' || device === 'iPad OS' || device === 'iPod Touch OS')){
         var self = Ti.UI.createWindow({
         backgroundColor:'#fff',
         title:title,
-        translucent:true,
-        url:url,
     });
     }
 // ios 6 and lower
@@ -20,7 +23,8 @@ else{
         barColor: '#650000',//barColor:'#980012',
         backButtonTitle:'Back',
         backgroundColor:'#fff',
-        url:url,
+        //backgroundImage:'images/bg.png',
+        //backgroundRepeat:true,
     });
 
     

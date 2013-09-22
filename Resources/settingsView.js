@@ -1,5 +1,5 @@
-var win = Ti.UI.currentWindow;
-win.backgroundGradient = {colors: ["white", "#C7D6E9"]};
+var settingsWin = new Window('Settings');
+//settingsWin.backgroundGradient = {colors: ["#C7D6E9", "#fff"]};
 
 var cacheLabel = Ti.UI.createLabel({
     text:'Network Cache:',
@@ -20,30 +20,6 @@ var onCacheButton = Titanium.UI.createSwitch({
    height: 40,
 });
 
-win.add(onCacheButton);
-win.add(cacheLabel);
-win.add(cacheLabel2);
-
-onCacheButton.addEventListener('change', function (e) {
-    if(e.value){
-    Ti.App.Properties.setBool('cache', true);
-}
-    else if(!e.value){
-    Ti.App.Properties.setBool('cache', false);
-    
-var dir = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory);
-Ti.API.info('Directory list to start: ' + dir.getDirectoryListing());
-
-var    file = 'Front.txt';
-var deleteFile = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, file);
-if (deleteFile.exists() && deleteFile.writable) { deleteFile.deleteFile(); }
-
-    file = 'Mac.txt';
-    deleteFile = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, file);
-if (deleteFile.exists() && deleteFile.writable) { deleteFile.deleteFile(); }
-
-    file = 'iPhone.txt';
-    deleteFile = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, file);
-if (deleteFile.exists() && deleteFile.writable) { deleteFile.deleteFile(); }
-}
-});
+settingsWin.add(onCacheButton);
+settingsWin.add(cacheLabel);
+settingsWin.add(cacheLabel2);
