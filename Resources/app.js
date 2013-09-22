@@ -26,10 +26,10 @@ else
     {
         barColor: '#650000',//#980012, // for more tab
         tabsBackgroundColor: '#000',// inactive icon tint
-        tabsBackgroundImage: 'images/tabbar3.png',// background for tab bar
+        tabsBackgroundImage: 'images/tapbar.png',// background for tab bar
         backgroundColor: '#fff',// of View
         activeTabIconTint: '#fff',// active icon tint
-        activeTabBackgroundImage: 'images/highlight.png',//active icon background image
+        activeTabBackgroundImage: 'images/tabbar.png',//active icon background image
     });
 };
 

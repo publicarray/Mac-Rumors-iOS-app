@@ -12,13 +12,13 @@ win.add(webView);
 // devices with lower ios than 7 display text as white
 if (version < 7 && (device === 'iPhone OS' || device === 'iPad OS' || device === 'iPod Touch OS')){
 var titleLabel = Titanium.UI.createLabel({
-    color:'#fff',
+    color:'#000',
     height:42,
     width:'100%',
     text:win.title,
     textAlign:'center',
     font:{fontFamily:'Helvetica Neue',fontSize:14,fontWeight:'bold'},
-    shadowColor:'#000',shadowOffset:{x:0,y:-1}
+    shadowColor:'#fff',shadowOffset:{x:0,y:1}
 });
 
 // associate label to title

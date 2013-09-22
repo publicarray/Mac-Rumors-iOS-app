@@ -20,7 +20,8 @@ else{
     var self = Ti.UI.createWindow({
         title:title,
         //fullscreen : true,
-        barColor: '#650000',//barColor:'#980012',
+        barColor:'#980012',//barColor: '#650000',
+        barImage: 'images/navbar.png',
         backButtonTitle:'Back',
         backgroundColor:'#fff',
         //backgroundImage:'images/bg.png',
@@ -30,14 +31,14 @@ else{
     
     // create the label
 var titleLabel = Titanium.UI.createLabel({
-    color:'#fff',
+    color:'#000',
     //backgroundColor:'#f6f5f1',
     height:42,
     width:'100%',
     text:title,
     textAlign:'center',
     font:{fontFamily:'Helvetica Neue',fontSize:16,fontWeight:'bold'},
-    shadowColor:'#000',shadowOffset:{x:0,y:-1}
+    shadowColor:'#fff',shadowOffset:{x:0,y:1}
 });
 }
 // landscape orientation will hide navBar and statusBar

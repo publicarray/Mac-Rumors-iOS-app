@@ -1,5 +1,5 @@
 var settingsWin = new Window('Settings');
-//settingsWin.backgroundGradient = {colors: ["#C7D6E9", "#fff"]};
+settingsWin.backgroundGradient = {colors: ["#C7D6E9", "#fff"]};
 
 var cacheLabel = Ti.UI.createLabel({
     text:'Network Cache:',
