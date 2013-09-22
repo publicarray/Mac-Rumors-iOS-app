@@ -1,17 +1,16 @@
 var roundupWin = new Window('Roundups');
 
-var webViewR = Ti.UI.createWebView({
+var webViewRoundup = Ti.UI.createWebView({
     url: urlRoundup,
     top:0,left:0,
     width: '100%', height: '100%',
     scalePageToFit:true,
 });
 
-roundupWin.add(webViewR);
+roundupWin.add(webViewRoundup);
 
 //refresh button
-var refreshBtnR = Titanium.UI.createButton({
+var refreshBtnRoundup = Titanium.UI.createButton({
     systemButton: Ti.UI.iPhone.SystemButton.REFRESH
 });
-roundupWin.setRightNavButton(refreshBtnR);
-Ti.include('roundupController.js');
+roundupWin.setRightNavButton(refreshBtnRoundup);

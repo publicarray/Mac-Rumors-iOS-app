@@ -12,4 +12,3 @@ var refreshBtnBuy = Titanium.UI.createButton({
     systemButton: Ti.UI.iPhone.SystemButton.REFRESH,
 });
 buyWin.setRightNavButton(refreshBtnBuy);
-Ti.include('buyController.js');

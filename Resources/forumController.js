@@ -1,5 +1,4 @@
 webViewForum.addEventListener ('error', function(e){
-    //alert(e.message);
     webViewForum.setHtml(htmlErrorMessage);
 });
 

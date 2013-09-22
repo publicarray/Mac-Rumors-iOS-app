@@ -1,5 +1,6 @@
-//http://www.clearlyinnovative.com/blog/post/1484840648/titanium-appcelerator-quickie-change-text-style-in-window-title
-/*
+/* 
+ * sorce used to change the title  text //http://www.clearlyinnovative.com/blog/post/1484840648/titanium-appcelerator-quickie-change-text-style-in-window-title
+ * 
  * The Window Class makes sure all windows look identical, have the same properties and functons.
  * It also checks if the device is running ios7 and will display windows differently.
  */

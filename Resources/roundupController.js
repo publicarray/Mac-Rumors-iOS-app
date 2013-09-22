@@ -1,11 +1,10 @@
-webViewR.addEventListener ('error', function(e){
-    //alert(e.message);
-    webViewR.setHtml(htmlErrorMessage);
+webViewRoundup.addEventListener ('error', function(e){
+    webViewRoundup.setHtml(htmlErrorMessage);
 });
 
 //refresh button
-refreshBtnR.addEventListener('click', function (e) {
-    webViewR.setHtml(null);
-    webViewR.setUrl = (urlRoundup);
-    webViewR.reload();
+refreshBtnRoundup.addEventListener('click', function (e) {
+    webViewRoundup.setHtml(null);
+    webViewRoundup.setUrl = (urlRoundup);
+    webViewRoundup.reload();
 });

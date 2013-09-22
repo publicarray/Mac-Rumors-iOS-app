@@ -5,4 +5,3 @@ var refreshBtnMain = Titanium.UI.createButton({
     systemButton: Ti.UI.iPhone.SystemButton.REFRESH,
 });
 mainWin.setRightNavButton(refreshBtnMain);
-Ti.include('mainController.js');

@@ -1,5 +1,4 @@
 webViewBuy.addEventListener ('error', function(e){
-    //alert(e.message);
     webViewBuy.setHtml(htmlErrorMessage);
 });
 

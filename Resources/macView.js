@@ -6,4 +6,3 @@ var refreshBtnMac = Titanium.UI.createButton({
     backgroundImage :'images/topbar.png',
 });
 macWin.setRightNavButton(refreshBtnMac);
-Ti.include('macController.js');

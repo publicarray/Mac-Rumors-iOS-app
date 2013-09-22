@@ -1,7 +1,15 @@
-// http://developer.appcelerator.com/question/122327/save-and-reload-state-from-edited-tab-view
-Ti.include('model.js');
-//Window class
-var Window = require('windowClass');
+/* 
+ * Sebastian Schmidt and Paris Moletti
+ * 
+ * sorce used to save tab state:
+ * http://developer.appcelerator.com/question/122327/save-and-reload-state-from-edited-tab-view
+ */
+
+Ti.include('macRumorsModel.js');
+//load in Window class
+var Window = require('windowFunction');
+
+// create the tab bar and open it
 if (version >= 7 && (device === 'iPhone OS' || device === 'iPad OS' || device === 'iPod Touch OS'))
 {
     //create io7 tab bar
@@ -25,8 +33,10 @@ else
     });
 };
 
-// create Views
+// Create Tabs
+// - create Main tab
 Ti.include('mainView.js');
+Ti.include('mainController.js');
 var tab0 = Ti.UI.createTab(
 {
     title: L('Main'),
@@ -36,7 +46,9 @@ var tab0 = Ti.UI.createTab(
     window: mainWin,
 });
 
+// - create Mac tab
 Ti.include('macView.js');
+Ti.include('macController.js');
 var tab1 = Ti.UI.createTab(
 {
     title: L('Mac'),
@@ -46,7 +58,9 @@ var tab1 = Ti.UI.createTab(
     window: macWin
 });
 
+// - create iOS tab
 Ti.include('iosView.js');
+Ti.include('iosController.js');
 var tab2 = Ti.UI.createTab(
 {
     title: L('iOS'),
@@ -56,7 +70,9 @@ var tab2 = Ti.UI.createTab(
     window: iOSWin
 });
 
+// - create Buyer's Guide tab
 Ti.include('buyView.js');
+Ti.include('buyController.js');
 var tab3 = Ti.UI.createTab(
 {
     title: L("Buyer's Guide"),
@@ -66,7 +82,9 @@ var tab3 = Ti.UI.createTab(
     window: buyWin
 });
 
+// - create Roundups tab
 Ti.include('roundupView.js');
+Ti.include('roundupController.js');
 var tab4 = Ti.UI.createTab(
 {
     title: L('Roundups'),
@@ -76,7 +94,9 @@ var tab4 = Ti.UI.createTab(
     window: roundupWin
 });
 
+// - create Forum tab
 Ti.include('forumView.js');
+Ti.include('forumController.js');
 var tab5 = Ti.UI.createTab(
 {
     title: L('Forum'),
@@ -86,7 +106,9 @@ var tab5 = Ti.UI.createTab(
     window: forumWin
 });
 
+// - create Settings tab
 Ti.include('settingsView.js');
+Ti.include('settingsController.js');
 var tab6 = Ti.UI.createTab(
 {
     title: L('Settings'),
@@ -95,8 +117,7 @@ var tab6 = Ti.UI.createTab(
     window: settingsWin
 });
 
-
-// Save Tab order on Pause/Exit
+// Save Tab order on Pause/Exit --> when running in the background
 Ti.App.addEventListener('pause', function(e)
 {
     var currentTabId = tabGroup.activeTab.id;
@@ -111,15 +132,15 @@ Ti.App.addEventListener('pause', function(e)
             currentTab = i;
         };
     }
-    //set properties
+    //Save properties -> the last tab opened and the tab order list.
     Ti.App.Properties.setInt('lastTB', currentTab);
     Ti.App.Properties.setList('TB', k);
     
-    //debug
-    Ti.API.info(Ti.App.Properties.getList('TB'));
-    Ti.API.info(Ti.App.Properties.getInt('lastTB', 0));
+    // for debuging
+    //Ti.API.info(Ti.App.Properties.getList('TB'));
+    //Ti.API.info(Ti.App.Properties.getInt('lastTB', 0));
 });
-// Load Tabs in Order
+// Load Tabs back in Order
 for (i = 0; i < 7; i++)
 {
     // Try to get saved values for Tab Order
@@ -137,7 +158,7 @@ for (i = 0; i < 7; i++)
         tabGroup.addTab(temp);
     }
 }
-//open last opened tab
+//open last opened tab from property
 tabGroup.setActiveTab(Ti.App.Properties.getInt('lastTB', 0));
 // open tab Group
 tabGroup.open();

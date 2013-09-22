@@ -1,4 +1,10 @@
-// http://developer.appcelerator.com/question/124014/saving-xml-file-offline-for-read-later
+/* 
+ * Information I used to get the rss feed and display it:
+ * https://www.youtube.com/watch?v=fZzn6Wp_dGQ
+ * https://www.youtube.com/watch?v=UNAeuPcdF5k
+ * http://developer.appcelerator.com/question/124014/saving-xml-file-offline-for-read-later
+ * 
+ */
 function getData(url, f, win){
     
 if(Ti.Platform.name === 'iPhone OS') {
@@ -92,6 +98,8 @@ function showTable() {
     win.add(tableView);
     // add event handeler
     tableView.addEventListener('click', function (e) {
+        
+        // - create windows
         /*
         var detailWin = Ti.UI.createWindow({
             //title of the label that the user selected
@@ -100,10 +108,10 @@ function showTable() {
             url: 'tableDetail.js',
        });
        */
-           //alternative method:
+           // - alternative method using the window function:
            // var Window = require('windowClass');
         var detailWin = new Window (e.row.children[0].text);
-        detailWin.url = 'tableDetail.js';
+        detailWin.url = 'tableDetailView.js';
         detailWin.desc = e.row.desc;
         
         tabGroup.activeTab.open(detailWin, {
@@ -129,7 +137,6 @@ function getXMLdata(file) {
         var contents = f.read().text;
 // Ti.API.info('contents = ' + contents);
         var doc = Ti.XML.parseString(contents); 
-        //var doc = this.responseXML.documentElement;
         var items = doc.getElementsByTagName('item');
         var x = 0;
         for(var i = 0; i < items.length; i++) {
@@ -138,7 +145,8 @@ function getXMLdata(file) {
             var description = item.getElementsByTagName('description').item(0).text;
             //var pubDate = item.getElementsByTagName('pubDate').item(0).text;
             //var link = item.getElementsByTagName('link').item(0).text;
-            //display content and create objects
+            
+            // display content and create objects
             var row = Ti.UI.createTableViewRow({
                 height: 80,
                 layout: 'vertical',

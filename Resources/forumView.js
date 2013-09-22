@@ -14,4 +14,3 @@ var refreshBtnForum = Titanium.UI.createButton({
     systemButton: Ti.UI.iPhone.SystemButton.REFRESH,
 });
 forumWin.setRightNavButton(refreshBtnForum);
-Ti.include('forumController.js');
