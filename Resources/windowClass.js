@@ -22,6 +22,8 @@ else{
         barColor: '#650000',//barColor:'#980012',
         backButtonTitle:'Back',
         backgroundColor:'#fff',
+        //backgroundImage:'images/bg.png',
+        //backgroundRepeat:true,
     });
 
     
