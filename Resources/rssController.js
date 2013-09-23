@@ -113,6 +113,8 @@ function showTable() {
         var detailWin = new Window (e.row.children[0].text);
         detailWin.url = 'tableDetailView.js';
         detailWin.desc = e.row.desc;
+        detailWin.link = e.row.link;
+        detailWin.creator = e.row.creator;
         
         tabGroup.activeTab.open(detailWin, {
             animation: true
@@ -144,7 +146,8 @@ function getXMLdata(file) {
             var title = item.getElementsByTagName('title').item(0).text;
             var description = item.getElementsByTagName('description').item(0).text;
             //var pubDate = item.getElementsByTagName('pubDate').item(0).text;
-            //var link = item.getElementsByTagName('link').item(0).text;
+            var link = item.getElementsByTagName('link').item(0).text;
+            var creator = item.getElementsByTagName('dc:creator').item(0).text;
             
             // display content and create objects
             var row = Ti.UI.createTableViewRow({
@@ -165,6 +168,8 @@ function getXMLdata(file) {
             //add objects
             row.add(label);
             row.desc = description;
+            row.link = link;
+            row.creator=creator,
             data[x++] = row;
         }
     }

@@ -121,7 +121,6 @@ var tab6 = Ti.UI.createTab(
 // Save Tab order on Pause/Exit --> when running in the background
 tabGroup.addEventListener('focus', function(e){
     var currentTabId = e.index;
-    var currentTab = null;
     var k = [];
     for (i = 0; i < 7; i++)
     {

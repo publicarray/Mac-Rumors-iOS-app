@@ -40,7 +40,9 @@
         </splash>
         <theme>default</theme>
     </mobileweb>
-    <modules/>
+    <modules>
+        <module platform="iphone">dk.napp.social</module>
+    </modules>
     <deployment-targets>
         <target device="android">false</target>
         <target device="blackberry">false</target>
