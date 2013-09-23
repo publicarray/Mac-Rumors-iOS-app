@@ -10,7 +10,7 @@ shareBtn.addEventListener('click', function (e) {
                 {
                     title:"Open in Safari",
                     type:"open.safari",
-                    image:"/images/safari.png"
+                    image:"images/safari.png"
                 }
               ]
            );
