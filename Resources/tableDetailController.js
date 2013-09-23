@@ -37,17 +37,17 @@ shareBtn.addEventListener('click', function (e) {
     
     Social.addEventListener("facebookRequest", function(e){ //default callback
         Ti.API.info("facebookRequest: "+e.success); 
-        Ti.API.info(e); 
+        //Ti.API.info(e); 
     });
     
     Social.addEventListener("facebookProfile", function(e){
         Ti.API.info("facebook profile: "+e.success);    
-        Ti.API.info(e.response); //json
+        //Ti.API.info(e.response); //json
     });
     
     Social.addEventListener("complete", function(e){
         Ti.API.info("complete: " + e.success);
-        console.log(e); //debug
+        //console.log(e); //debug
 
         if (e.platform == "activityView" || e.platform == "activityPopover") {
             switch (e.activity) {
@@ -73,6 +73,6 @@ shareBtn.addEventListener('click', function (e) {
     });
     
     Social.addEventListener("cancelled", function(e){
-        Ti.API.info("cancelled:");
-        Ti.API.info(e);     
+        Ti.API.info("cancelled");
+        //Ti.API.info(e);     
     });
