@@ -119,28 +119,25 @@ var tab6 = Ti.UI.createTab(
 });
 
 // Save Tab order on Pause/Exit --> when running in the background
-Ti.App.addEventListener('pause', function(e)
-{
-    var currentTabId = tabGroup.activeTab.id;
-    var currentTab = null;
+tabGroup.addEventListener('focus', function(e){
+    var currentTabId = e.index;
     var k = [];
     for (i = 0; i < 7; i++)
     {
-        var tabId = tabGroup.tabs[i].id;
-        k.push(tabId);
-        //get the current Tab order number of the current Tab by checking it againts it's Id'
-        if (tabId===currentTabId){
-            currentTab = i;
-        };
+        if(tabGroup.tabs[i].id != undefined){
+            var tabId = tabGroup.tabs[i].id;
+            k.push(tabId);
+        }
     }
     //Save properties -> the last tab opened and the tab order list.
-    Ti.App.Properties.setInt('lastTB', currentTab);
+    Ti.App.Properties.setInt('lastTB', currentTabId);
     Ti.App.Properties.setList('TB', k);
     
     // for debuging
     //Ti.API.info(Ti.App.Properties.getList('TB'));
     //Ti.API.info(Ti.App.Properties.getInt('lastTB', 0));
 });
+
 // Load Tabs back in Order
 for (i = 0; i < 7; i++)
 {
