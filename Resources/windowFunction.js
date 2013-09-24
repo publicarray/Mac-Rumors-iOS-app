@@ -20,7 +20,7 @@ else{
     var self = Ti.UI.createWindow({
         title:title,
         //fullscreen : true,
-        barColor:'#980012',//barColor: '#650000',
+        barColor: Ti.App.Properties.getString('theme', '#980012'),//barColor: '#650000',
         barImage: 'images/navbar.png',
         backButtonTitle:'Back',
         backgroundColor:'#fff',

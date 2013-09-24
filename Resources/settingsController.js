@@ -11,3 +11,12 @@ if (fileMac.exists() && fileMac.writable) { fileMac.deleteFile(); }
 if (fileIos.exists() && fileIos.writable) { fileIos.deleteFile(); }
 }
 });
+
+themeText.addEventListener('change', function (e){
+    Ti.App.Properties.setString('theme', e.value);
+});
+
+themeBtn.addEventListener('click', function(e){
+     Ti.App.Properties.setString('theme', '#980012');
+});
+
