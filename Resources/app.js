@@ -16,7 +16,7 @@ if (version >= 7 && (device === 'iPhone OS' || device === 'iPad OS' || device ==
     var tabGroup = Ti.UI.createTabGroup(
     {
         backgroundColor: '#fff',// of View
-        tintColor: '#980012',//ios7 only
+        tintColor: Ti.App.Properties.getString('theme', '#980012'),//ios7 only
     });
 }
 else
@@ -24,12 +24,13 @@ else
     //create tab bar for older iOS's'
     var tabGroup = Ti.UI.createTabGroup(
     {
-        barColor: '#980012',//#650000, // for more tab
+        barColor: Ti.App.Properties.getString('theme', '#980012'),//#650000, // for more tab
         tabsBackgroundColor: '#000',// inactive icon tint
-        tabsBackgroundImage: 'images/tapbar.png',// background for tab bar
+        tabsBackgroundImage: '/images/tapbar.png',// background for tab bar
         backgroundColor: '#fff',// of View
         activeTabIconTint: '#fff',// active icon tint
-        activeTabBackgroundImage: 'images/highlight.png',//active icon background image
+        activeTabBackgroundImage: '/images/' + Ti.App.Properties.getString("theme", "#980012") +'.png',//active icon background image
+        //activeTabBackgroundImage: '/images/#980012.png'
     });
 };
 

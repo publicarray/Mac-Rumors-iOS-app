@@ -83,7 +83,7 @@ else if(!f.exists()) {
 function showTable() {
     var searchBar = Titanium.UI.createSearchBar({
     barColor:'#bbb',
-    tintColor :'#980012',
+    tintColor :Ti.App.Properties.getString('theme', '#980012'),
     height:43,
     top:0,
     });
@@ -153,7 +153,7 @@ function getXMLdata(file) {
             var row = Ti.UI.createTableViewRow({
                 height: 80,
                 layout: 'vertical',
-                selectedBackgroundColor: '#650000',
+                selectedBackgroundColor: Ti.App.Properties.getString('theme', '#980012'),
             });
             row.filter = title; //data for search
             var labelText = title;
