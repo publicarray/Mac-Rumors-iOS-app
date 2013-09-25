@@ -29,7 +29,7 @@ themeText.addEventListener('return', function (e){
 });
 // save value of textfield into properties
 themeText.addEventListener('change', function (e){
-    Ti.App.Properties.setString('theme', e.value);
+    Ti.App.Properties.setString('theme', e.value.toLowerCase()); // lowercase filenames - (png files)
 });
 
 // in iOS 6.1 and lower a restart is needed to change the value in the properties & actions on the custom button only looks good in iOS 6
