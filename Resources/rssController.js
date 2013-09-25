@@ -131,12 +131,13 @@ function showTable() {
     searchBar.addEventListener('cancel', function (e) {
         Ti.App.Properties.setString('search', null);
     });
-    // realoads entered search value & updates table <-- IT'S VERY BUGGY!!!
+    // realoads entered search value & updates table <-- IT'S BUGGY!!!
     win.addEventListener('focus', function(e) {;
         searchBar.value=Ti.App.Properties.getString('search','');
-        searchBar.fireEvent('focus');
+        //searchBar.fireEvent('focus');
         if(searchBar.value){
-            searchBar.focus();
+            //searchBar.focus();
+            searchBar.blur();
             tableView.searchHidden=false;
         } 
     });
@@ -152,7 +153,7 @@ function showTable() {
     searchBar.addEventListener('return', function (e) {
         Ti.API.info('search is return with value of:' + e.value);
     });
-    // redisplay the value saved when user returns to the tab - issue is that the table isn't uptadted correctly in ios 7
+    // redisplay the value saved when user returns to the tab - issue is that the table isn't uptated correctly in ios 7
     win.addEventListener('focus', function(e) {
        // searchBar.focus();
         //searchBar.show();
