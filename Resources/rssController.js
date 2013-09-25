@@ -132,6 +132,7 @@ function showTable() {
         Ti.App.Properties.setString('search', null);
     });
     // realoads entered search value & updates table <-- IT'S BUGGY!!!
+    // http://developer.appcelerator.com/apidoc/mobile/1.8.2/Titanium.UI.SearchBar-object
     win.addEventListener('focus', function(e) {;
         searchBar.value=Ti.App.Properties.getString('search','');
         //searchBar.fireEvent('focus');
