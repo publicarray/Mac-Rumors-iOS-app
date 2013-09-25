@@ -15,7 +15,7 @@ var titleLabel = Titanium.UI.createLabel({
     color:'#000',
     height:42,
     width:'100%',
-    text:win.title,
+    text:title,
     textAlign:'center',
     font:{fontFamily:'Helvetica Neue',fontSize:14,fontWeight:'bold'},
     shadowColor:'#fff',shadowOffset:{x:0,y:1}
@@ -26,10 +26,10 @@ win.setTitleControl(titleLabel);
 };
 
 //refresh button
-var refreshBtn = Titanium.UI.createButton({
-    systemButton: Ti.UI.iPhone.SystemButton.REFRESH,
+var shareBtn = Titanium.UI.createButton({
+    systemButton: Ti.UI.iPhone.SystemButton.ACTION,
     backgroundImage :'images/topbar.png',
 });
-win.setRightNavButton(refreshBtn);
+win.setRightNavButton(shareBtn);
 
 Ti.include('tableDetailController.js');
