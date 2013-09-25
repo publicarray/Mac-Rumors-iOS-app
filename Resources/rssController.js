@@ -86,7 +86,6 @@ function showTable() {
     tintColor :Ti.App.Properties.getString('theme', '#980012'),
     height:43,
     top:0,
-    showCancel:true,
     });
     // create table
     var tableView = Ti.UI.createTableView({
@@ -123,65 +122,15 @@ function showTable() {
         //Hide the activity indicator when the funtion has completed
         activityIndicator.hide();
     });
-    //save search when user types
     searchBar.addEventListener('change', function (e) {
-        Ti.App.Properties.setString('search', e.value);
+        Ti.App.Properties.setString('search', searchBar.value);
     });
-    //delete saved value on cancel
-    searchBar.addEventListener('cancel', function (e) {
-        Ti.App.Properties.setString('search', null);
-    });
-    // realoads entered search value & updates table <-- IT'S BUGGY!!!
-    // http://developer.appcelerator.com/apidoc/mobile/1.8.2/Titanium.UI.SearchBar-object
-    win.addEventListener('focus', function(e) {;
-        searchBar.value=Ti.App.Properties.getString('search','');
-        //searchBar.fireEvent('focus');
-        if(searchBar.value){
-            //searchBar.focus();
-            searchBar.blur();
-            tableView.searchHidden=false;
-        } 
-    });
-    /* debuging - bugs sitll presists
-     
-     
-    searchBar.addEventListener('focus', function (e) {
-        Ti.API.info('search is in focus with value:' + e.value);
-    });
-    searchBar.addEventListener('change', function (e) {
-        Ti.API.info('search has changed with value:' + e.value);
-    });
-    searchBar.addEventListener('return', function (e) {
-        Ti.API.info('search is return with value of:' + e.value);
-    });
-    // redisplay the value saved when user returns to the tab - issue is that the table isn't uptated correctly in ios 7
     win.addEventListener('focus', function(e) {
-       // searchBar.focus();
-        //searchBar.show();
-        //searchBar.hide();
-        searchBar.value=Ti.App.Properties.getString('search','');
-        //searchBar.fireEvent('change');
-        //searchBar.setValue(Ti.App.Properties.getString('search',''));
-        //searchBar.blur();
-        //searchBar.show();
-        //searchBar.hide();
-       // searchBar.blur();
-        //searchBar.hide();
-        //searchBar.fireEvent('change', {e:"Ti.App.Properties.getString('search','')"});
-        searchBar.fireEvent('focus');
-        //searchBar.fireEvent('change');
-        //searchBar.fireEvent('return');
         if(searchBar.value){
-            searchBar.focus();
-            searchBar.blur();
-            //tableView.fireEvent('click');
-            tableView.searchHidden=false;
-            //searchBar.show();
-            //searchBar.fireEvent('return');
+        searchBar.value=Ti.App.Properties.getString('search','');
+        tableView.searchHidden=false; 
         }
-        
     });
-    */
 };
 
 function getXMLdata(file) {
