@@ -16,3 +16,4 @@ v.1.2
 +social integration & Email sharing
 +settings to change colour off app
 +code descriptions
++bug fixes

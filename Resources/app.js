@@ -5,7 +5,7 @@
  * http://developer.appcelerator.com/question/122327/save-and-reload-state-from-edited-tab-view
  */
 
-Ti.include('macRumorsModel.js');
+Ti.include('appModel.js');
 //load in Window class
 var Window = require('windowFunction');
 

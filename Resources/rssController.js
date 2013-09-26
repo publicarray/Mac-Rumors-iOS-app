@@ -172,16 +172,16 @@ function showTable() {
         });
     });
 /*
-* my attempt to save the search value, redisplay it and update the table (its a bit buggy)
+* my attempt to save the search value, redisplay it and update the table
 * http://developer.appcelerator.com/apidoc/mobile/1.8.2/Titanium.UI.SearchBar-object
 */
     //save search when user types
-
     searchBar.addEventListener('change', function (e) {
         Ti.App.Properties.setString('search', searchBar.value);
     });
     
 // attempt to reload the entered search value & update the table
+// - this is tested and works for iOS 6.1, but it does not seem to work in the iOS 7 simulator
     win.addEventListener('focus', function(e) {
         if(searchBar.value){
         searchBar.value=Ti.App.Properties.getString('search','');
