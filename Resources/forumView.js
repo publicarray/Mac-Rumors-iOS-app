@@ -1,10 +1,10 @@
 var forumWin = new Window('Form');
 
+// create web view with the url from appModel.js
 var webViewForum = Ti.UI.createWebView({
     url: urlForum,
     top:0,left:0,
     width: '100%', height: '100%',
-    //scalePageToFit:false,
 });
 
 forumWin.add(webViewForum);

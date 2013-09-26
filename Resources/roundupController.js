@@ -1,3 +1,4 @@
+// if web view has an error display the html error message stored in the appModel
 webViewRoundup.addEventListener ('error', function(e){
     webViewRoundup.setHtml(htmlErrorMessage);
 });

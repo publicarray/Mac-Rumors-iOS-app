@@ -1,10 +1,12 @@
+
+// sets the cache for the xhr Ti.Network.HTTPClient
 onCacheButton.addEventListener('change', function (e) {
     if(e.value){
     Ti.App.Properties.setBool('cache', true);
 }
     else if(!e.value){
     Ti.App.Properties.setBool('cache', false);
-    
+    // deletes the off-line txt files in the app directory 
 //Ti.API.info('Directory list to start: ' + Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory).getDirectoryListing());
 if (fileMain.exists() && fileMain.writable) { fileMain.deleteFile(); }
 if (fileMac.exists() && fileMac.writable) { fileMac.deleteFile(); }
@@ -13,9 +15,9 @@ if (fileIos.exists() && fileIos.writable) { fileIos.deleteFile(); }
 });
 
 
-// this is to save and display the centered colour:
+// this is to save and display the centred colour:
 // the view is animated to go up when the text field is selected
-// the button has a different function in ios7 / i am able to update some of the changes withought restarting
+// the button has a different function in ios7 / I am able to update some of the changes without restarting
 themeText.addEventListener('focus', function (e){
     var animation = Titanium.UI.createAnimation();
     animation.top = "-35%";
@@ -27,9 +29,9 @@ themeText.addEventListener('return', function (e){
     animation.top = 0;
     settingsAnimationView.animate(animation);
 });
-// save value of textfield into properties
+// save value of text field into properties
 themeText.addEventListener('change', function (e){
-    Ti.App.Properties.setString('theme', e.value.toLowerCase()); // lowercase filenames - (png files)
+    Ti.App.Properties.setString('theme', e.value.toLowerCase()); // lower-case file names - (png files)
 });
 
 // in iOS 6.1 and lower a restart is needed to change the value in the properties & actions on the custom button only looks good in iOS 6
@@ -52,20 +54,20 @@ themeBtn.addEventListener('touchend', function (e) {
 themeBtn.addEventListener('click', function(e){
     // Create the transform to scale the button
     var transform = Titanium.UI.create2DMatrix({scale: 1.1});
-    // Create the animation with the transform, and autoreverse
+    // Create the animation with the transform, and auto reverse
     var animation = Titanium.UI.createAnimation({transform: transform, autoreverse: true});
     // Start animation
     themeBtn.animate(animation);
     //check for OS and version
   if (version >= 7 && (device === 'iPhone OS' || device === 'iPad OS' || device === 'iPod Touch OS')){
-    //ios 7 stuff- set the y=tint colour of the tabgroup
+    //ios 7 stuff - set the tintColor of the tab group when button is pressed
      var colour = themeText.value;
      //tabGroup.barColor = colour;
      tabGroup.tintColor = colour;
      //save to properties
      Ti.App.Properties.setString('theme', colour);
  }
- //other OS's resets the theme dafult values to the property and displays it in the text box
+ //other OS's resets the theme default values to the property and displays it in the text box
    else{
      Ti.App.Properties.setString('theme', '#980012');
      themeText.value = '#980012';

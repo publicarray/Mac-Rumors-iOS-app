@@ -1,4 +1,4 @@
-// get rss feed and display it
+// get rss feed and display it using rssController.js
 Ti.include('rssController.js');
 getData(feedUrlMain, fileMain, mainWin);
 
