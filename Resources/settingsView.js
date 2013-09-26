@@ -1,6 +1,8 @@
+// - create settings window with blue to white gradient
 var settingsWin = new Window('Settings');
 settingsWin.backgroundGradient = {colors: ["#C7D6E9", "#fff"]};
 
+// this window is animated when the user uses the keyboard
 var settingsAnimationView = Titanium.UI.createView();
 
 var cacheLabel = Ti.UI.createLabel({
@@ -45,6 +47,8 @@ var themeText = Ti.UI.createTextField({
     
 });
 
+// if the device is running iOS 7 or grater don't use the button gradient - it doesn't match visually with the rest of the GUI
+// also the button has a different functionality - in iOS 7 the button sets the given colour Theme while in iOS 7 it resets the colour theme to default
 if (version >= 7 && (device === 'iPhone OS' || device === 'iPad OS' || device === 'iPod Touch OS')){
     var themeBtn = Ti.UI.createButton({
     title:'Set Theme Colour',
@@ -61,14 +65,14 @@ var themeBtn = Ti.UI.createButton({
     height: 40,
     font:{fontSize:18,fontFamily:'Helvetica Neue'},
     top: '55%',
+    // button gradient
     style:Titanium.UI.iPhone.SystemButtonStyle.PLAIN,
-    //selectedColor:'#980012',
     borderRadius:10,
     backgroundGradient:{colors:['#c80050','#500000']}
-    //borderWidth:1,
-    //borderColor:'#666'
+ 
 });
 
+// display a notice to lower than iOS 7 devices that they must restart the app to have the settings applied
 var themeNoticeLabel = Ti.UI.createLabel({
     text:'Please note that the colour change is only visable after a restart.\nPlease use colour names, hex values are currently not supported',
     color:'#777',

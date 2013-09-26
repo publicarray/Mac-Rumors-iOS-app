@@ -6,14 +6,12 @@
  * 
  */
 function getData(url, f, win){
-    
-if(Ti.Platform.name === 'iPhone OS') {
-    var activityStyle = Ti.UI.iPhone.ActivityIndicatorStyle.DARK;
-} else {
-    var activityStyle = Ti.UI.ActivityIndicatorStyle.DARK;
-}
+ /*
+ * ok, this function displays an activity indicator to show that the app is working.
+ * than the app checks for an internet connection -- continue below
+ */
 
-//innitialise the array
+//initialise the array for the table
 var data = [];
 //Show the activity indicator
 var activityIndicator = Ti.UI.createActivityIndicator({
@@ -27,13 +25,16 @@ var activityIndicator = Ti.UI.createActivityIndicator({
         fontWeight: 'normal'
     },
     message: 'Loading...',
-    style: activityStyle,
+    style: Ti.UI.iPhone.ActivityIndicatorStyle.DARK,
 });
 win.add(activityIndicator);
 activityIndicator.show();
 
 
-//if internet connection is on - continue
+ /*
+ * if an internet connection is available, than create a network request, get the xml file and save it as a txt file
+ * than grab the data using loops and store them in the data array and pass it on to the WindowClass
+ */
 if(Titanium.Network.online) {
 
     //open network connection
@@ -42,102 +43,63 @@ if(Titanium.Network.online) {
         timeout:5000,
     });
     xhr.open('GET', url);
+    // if the request was successful go and get the data and show the table
     xhr.onload = function () {
         //Writing data to a file
         f.write(this.responseData);
         getXMLdata(f);
         showTable();
+        activityIndicator.hide();
     };
     
     xhr.onerror = function() {
         Ti.API.info('XHR Error: ' + xhr.status + ' - ' + xhr.statusText);
-     //check response status and act aaccordingly.
+     //check response status and act accordingly.
      if(xhr.status != 200) {
+        // if an error occurred we can still display the stored file, but we should still inform the user that the data isn't current
         if(f.exists()) {
         getXMLdata(f);
         showTable();
-        alert('Offline Mode');
+        activityIndicator.hide();
+        alert('Off-line Mode');
        } 
+       // if the file doesn't exist and an error occurred just display a message letting the user know about it
         else if(!f.exists()) {
         activityIndicator.hide();
         alert('The service is currently unavailable. Please Try Again Later.');
         }
     }};
+
+    // everything above doesn't actually do anything yet, we have to send the request first.
+    // the try catch block catches any errors -- useful for debugging and it prevents the app from crashing.
     try {
         xhr.send();
     } catch(e) {
         Ti.API.info('error with xhr.send(): '+e);
         xhr.abort();
-        activityIndicator.hide();
     }
 }
+/*
+ * if a file exists but there is no internet connection than use the file to display the table
+*/
 else if(f.exists()) {
         getXMLdata(f);
         showTable();
+        activityIndicator.hide();
     } 
+/*
+ * if the file does not exists and there is no internet connection than display a message to the user
+*/
 else if(!f.exists()) {
         activityIndicator.hide();
         alert('Your device is not connected to the internet.');
 }
 
-function showTable() {
-    var searchBar = Titanium.UI.createSearchBar({
-    barColor:'#bbb',
-    tintColor :Ti.App.Properties.getString('theme', '#980012'),
-    height:43,
-    top:0,
-    });
-    // create table
-    var tableView = Ti.UI.createTableView({
-        data: data,
-        search:searchBar,
-        filterAttribute:'filter',
-        searchHidden:true,
-        hideSearchOnSelection: true,
-    });
-    win.add(tableView);
-    // add event handeler
-    tableView.addEventListener('click', function (e) {
-        
-        // - create windows
-        /*
-        var detailWin = Ti.UI.createWindow({
-            //title of the label that the user selected
-            title: e.row.children[0].text,
-            barColor: '#650000',
-            url: 'tableDetail.js',
-       });
-       */
-           // - alternative method using the window function:
-           // var Window = require('windowClass');
-        var detailWin = new Window (e.row.children[0].text);
-        detailWin.url = 'tableDetailView.js';
-        detailWin.desc = e.row.desc;
-        detailWin.link = e.row.link;
-        detailWin.creator = e.row.creator;
-        
-        tabGroup.activeTab.open(detailWin, {
-            animation: true
-        });
-        //Hide the activity indicator when the funtion has completed
-        activityIndicator.hide();
-    });
-    searchBar.addEventListener('change', function (e) {
-        Ti.App.Properties.setString('search', searchBar.value);
-    });
-    win.addEventListener('focus', function(e) {
-        if(searchBar.value){
-        searchBar.value=Ti.App.Properties.getString('search','');
-        tableView.searchHidden=false; 
-        }
-    });
-};
 
 function getXMLdata(file) {
     if(file.exists()) {
         //read file
         var contents = f.read().text;
-// Ti.API.info('contents = ' + contents);
         var doc = Ti.XML.parseString(contents); 
         var items = doc.getElementsByTagName('item');
         var x = 0;
@@ -173,4 +135,75 @@ function getXMLdata(file) {
             data[x++] = row;
         }
     }
-}}
+};
+
+function showTable() {
+    /*
+     * this method/function creates the table from the data array declared at top of getData()
+     */
+    var searchBar = Titanium.UI.createSearchBar({
+    barColor:'#bbb',
+    tintColor :Ti.App.Properties.getString('theme', '#980012'),
+    height:43,
+    top:0,
+    });
+    // create table
+    var tableView = Ti.UI.createTableView({
+        data: data,
+        search:searchBar,
+        filterAttribute:'filter',
+        searchHidden:true,
+        hideSearchOnSelection: true,
+    });
+    win.add(tableView);
+    // add event handler
+    tableView.addEventListener('click', function (e) {
+        
+        // the windows are created from the WindowClass and they open the tableDetailView.js passing the data through properties
+        var detailWin = new Window (e.row.children[0].text);
+        detailWin.url = 'tableDetailView.js';
+        detailWin.desc = e.row.desc;
+        detailWin.link = e.row.link;
+        detailWin.creator = e.row.creator;
+        
+        // open the tab with a default slide animation
+        tabGroup.activeTab.open(detailWin, {
+            animation: true
+        });
+    });
+<<<<<<< HEAD
+=======
+/*
+* my attempt to save the search value, redisplay it and update the table (its a bit buggy)
+* http://developer.appcelerator.com/apidoc/mobile/1.8.2/Titanium.UI.SearchBar-object
+*/
+    //save search when user types
+>>>>>>> sharing
+    searchBar.addEventListener('change', function (e) {
+        Ti.App.Properties.setString('search', searchBar.value);
+    });
+<<<<<<< HEAD
+    win.addEventListener('focus', function(e) {
+        if(searchBar.value){
+        searchBar.value=Ti.App.Properties.getString('search','');
+        tableView.searchHidden=false; 
+        }
+=======
+    //delete saved value on cancel
+    searchBar.addEventListener('cancel', function (e) {
+        Ti.App.Properties.setString('search', null);
+    });
+    // attempt to reload the entered search value & update the table
+    win.addEventListener('focus', function(e) {;
+        searchBar.value=Ti.App.Properties.getString('search','');
+        //searchBar.fireEvent('focus');
+        if(searchBar.value){
+            //searchBar.focus();
+            searchBar.blur();
+            tableView.searchHidden=false;
+        } 
+>>>>>>> sharing
+    });
+};
+
+}
