@@ -1,1 +1,18 @@
-Place your change log text here.  This file will be incorporated with your app at package time.
+v.1.0
+initial app
++tab bar
++table view
++web views
++icons/ splash screens
+
+v.1.0.1
++off-line support
++following MCV model
++iOS 7 support
++save app state
++search
+
+v.1.2
++social integration & Email sharing
++settings to change colour off app
++code descriptions
