@@ -25,10 +25,10 @@ var titleLabel = Titanium.UI.createLabel({
 win.setTitleControl(titleLabel);
 };
 
-//refresh button
+//share button
 var shareBtn = Titanium.UI.createButton({
     systemButton: Ti.UI.iPhone.SystemButton.ACTION,
-    backgroundImage :'images/topbar.png',
+    //backgroundImage :'images/topbar.png',
 });
 win.setRightNavButton(shareBtn);
 

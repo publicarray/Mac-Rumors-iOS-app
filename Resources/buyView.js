@@ -1,5 +1,6 @@
 var buyWin = new Window("Buyer's Guide");
 
+// create web view with the url from appModel.js
 var webViewBuy = Ti.UI.createWebView({
     url: urlBuy,
     top:0,left:0,

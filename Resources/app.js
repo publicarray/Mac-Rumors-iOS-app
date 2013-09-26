@@ -1,7 +1,7 @@
 /* 
- * Sebastian Schmidt and Paris Moletti
+ * © Sebastian Schmidt and Paris Moletti 2013
  * 
- * sorce used to save tab state:
+ * source used to save tab state:
  * http://developer.appcelerator.com/question/122327/save-and-reload-state-from-edited-tab-view
  */
 
@@ -34,7 +34,7 @@ else
     });
 };
 
-// Create Tabs
+// Create Tabs - the names are important to save the state of the tabs
 // - create Main tab
 Ti.include('mainView.js');
 Ti.include('mainController.js');
@@ -119,6 +119,7 @@ var tab6 = Ti.UI.createTab(
     window: settingsWin
 });
 
+// do stuff with the tab group - save the state and load it back up
 Ti.include('appController.js');
 // open tab Group
 tabGroup.open();
