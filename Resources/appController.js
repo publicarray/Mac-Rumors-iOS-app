@@ -18,6 +18,13 @@ tabGroup.addEventListener('focus', function(e){
     //Ti.API.info(Ti.App.Properties.getInt('lastTB', 0));
 });
 
+var pattern=/#/g;
+var pattern2=/\d/g;
+if (pattern.test(tabGroup.activeTabBackgroundImage) || pattern2.test(tabGroup.activeTabBackgroundImage))
+{
+    tabGroup.activeTabBackgroundImage = '/images/#980012.png';
+};
+
 // Load Tabs back in Order
 for (i = 0; i < 7; i++)
 {
