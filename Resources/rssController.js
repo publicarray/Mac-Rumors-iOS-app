@@ -171,38 +171,28 @@ function showTable() {
             animation: true
         });
     });
-<<<<<<< HEAD
-=======
 /*
 * my attempt to save the search value, redisplay it and update the table (its a bit buggy)
 * http://developer.appcelerator.com/apidoc/mobile/1.8.2/Titanium.UI.SearchBar-object
 */
     //save search when user types
->>>>>>> sharing
+
     searchBar.addEventListener('change', function (e) {
         Ti.App.Properties.setString('search', searchBar.value);
     });
-<<<<<<< HEAD
+    
+// attempt to reload the entered search value & update the table
     win.addEventListener('focus', function(e) {
         if(searchBar.value){
         searchBar.value=Ti.App.Properties.getString('search','');
+        searchBar.blur();
         tableView.searchHidden=false; 
         }
-=======
+    });
+
     //delete saved value on cancel
     searchBar.addEventListener('cancel', function (e) {
         Ti.App.Properties.setString('search', null);
-    });
-    // attempt to reload the entered search value & update the table
-    win.addEventListener('focus', function(e) {;
-        searchBar.value=Ti.App.Properties.getString('search','');
-        //searchBar.fireEvent('focus');
-        if(searchBar.value){
-            //searchBar.focus();
-            searchBar.blur();
-            tableView.searchHidden=false;
-        } 
->>>>>>> sharing
     });
 };
 

@@ -6,6 +6,6 @@ webViewForum.addEventListener ('error', function(e){
 //refresh button
 refreshBtnForum.addEventListener('click', function (e) {
     webViewForum.setHtml(null);
-    webViewForum.setUrl = (urlForum);
+    webViewForum.setUrl(urlForum);
     webViewForum.reload();
 });

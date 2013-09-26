@@ -6,6 +6,6 @@ webViewRoundup.addEventListener ('error', function(e){
 //refresh button
 refreshBtnRoundup.addEventListener('click', function (e) {
     webViewRoundup.setHtml(null);
-    webViewRoundup.setUrl = (urlRoundup);
+    webViewRoundup.setUrl(urlRoundup);
     webViewRoundup.reload();
 });

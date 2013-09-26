@@ -23,7 +23,7 @@ var cacheNoticeLabel = Ti.UI.createLabel({
 });
 
 var onCacheButton = Ti.UI.createSwitch({
-   value:true,
+   value: Ti.App.Properties.getBool('cache', true),
    right: '10%',
    width: 'auto',
    top: '10%',
