@@ -18,6 +18,7 @@ if (version >= 7 && (device === 'iPhone OS' || device === 'iPad OS' || device ==
 // ios 6 and lower
 else{
     var self = Ti.UI.createWindow({
+        statusBarStyle:Titanium.UI.iPhone.StatusBar.OPAQUE_BLACK,  // for a black status bar
         title:title,
         barColor: Ti.App.Properties.getString('theme', '#980012'),  // sets user selected colour,
         barImage: 'images/navbar.png',
@@ -32,7 +33,7 @@ var titleLabel = Titanium.UI.createLabel({
     width:'100%',
     text:title,
     textAlign:'center',
-    font:{fontFamily:'Helvetica Neue',fontSize:16,fontWeight:'bold'},
+    font:{fontFamily:'Helvetica Neue',fontSize:24,fontWeight:'normal'},
     shadowColor:'#fff',shadowOffset:{x:0,y:1}
 });
 }

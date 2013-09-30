@@ -121,6 +121,7 @@ function getXMLdata(file) {
             var labelText = title;
             var label = Ti.UI.createLabel({
                 text: labelText,
+                font:{fontFamily: 'HelveticaNeue-Light',fontSize:16, fontWeight:'normal'},
                 highlightedColor: '#fff',
                 left: 5,
                 top: 5,

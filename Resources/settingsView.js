@@ -7,7 +7,7 @@ var settingsAnimationView = Titanium.UI.createView();
 
 var cacheLabel = Ti.UI.createLabel({
     text:'Network Cache:',
-    font:{fontSize:18,fontFamily:'Helvetica Neue'},
+    font:{fontSize:18,fontFamily:'HelveticaNeue-Light'},
     left: '10%',
     width:'auto',
     top: '10%',
@@ -16,7 +16,7 @@ var cacheLabel = Ti.UI.createLabel({
 var cacheNoticeLabel = Ti.UI.createLabel({
     text:'Setting it to off also deletes the offline rss files',
     color:'#777',
-    font:{fontSize:11,fontFamily:'Helvetica Neue'},
+    font:{fontSize:11,fontFamily:'HelveticaNeue-Light'},
     width:'90%',
     textAlign: 'center',
     top: '20%',
@@ -33,7 +33,7 @@ var onCacheButton = Ti.UI.createSwitch({
 var themeLabel = Ti.UI.createLabel({
     text:'Set Theme Colour: ',
     width:'auto',
-    font:{fontSize:18,fontFamily:'Helvetica Neue'},
+    font:{fontSize:18,fontFamily:'HelveticaNeue-Light'},
     top: '40%',
     left: '10%'
 });
@@ -54,7 +54,7 @@ if (version >= 7 && (device === 'iPhone OS' || device === 'iPad OS' || device ==
     title:'Set Theme Colour',
     width: 200,
     height: 40,
-    font:{fontSize:18,fontFamily:'Helvetica Neue'},
+    font:{fontSize:18,fontFamily:'HelveticaNeue-Light'},
     top: '55%',
 });
 }
@@ -63,7 +63,7 @@ var themeBtn = Ti.UI.createButton({
     title:'Load Dafault Theme',
     width: 200,
     height: 40,
-    font:{fontSize:18,fontFamily:'Helvetica Neue'},
+    font:{fontSize:18,fontFamily:'HelveticaNeue-Light'},
     top: '55%',
     // button gradient
     style:Titanium.UI.iPhone.SystemButtonStyle.PLAIN,
@@ -76,7 +76,7 @@ var themeBtn = Ti.UI.createButton({
 var themeNoticeLabel = Ti.UI.createLabel({
     text:'Please note that the colour change is only visable after a restart.\nPlease use colour names, hex values are currently not supported',
     color:'#777',
-    font:{fontSize:11,fontFamily:'Helvetica Neue'},
+    font:{fontSize:11,fontFamily:'HelveticaNeue-Light'},
     width:'90%',
     left:'5%',
     center: {
