@@ -2,7 +2,7 @@
 tabGroup.addEventListener('focus', function(e){
     var currentTabId = e.index; // get the current tab that is in focus. (excluding the more tab - i guess the OS doent see it as a tab)
     var k = [];
-    for (i = 0; i < 7; i++)  // loop through the tabs
+    for (i = 0; i < 8; i++)  // loop through the tabs
     {
         // save the tap's in order as an array
         if(tabGroup.tabs[i].id != undefined){  // check is the tap has an id
@@ -14,10 +14,11 @@ tabGroup.addEventListener('focus', function(e){
     Ti.App.Properties.setInt('lastTB', currentTabId);
     //Save the array of tab id's as a property in 'TB'
     Ti.App.Properties.setList('TB', k);
+    //Ti.App.Properties.setList('TB', null); // reset tabs
 });
 
 // Load saved tabs in 'TB' back in Order
-for (i = 0; i < 7; i++)
+for (i = 0; i < 8; i++)
 {
     // Try to get saved values for Tab Order
     var k = Ti.App.Properties.getList('TB');

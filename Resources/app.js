@@ -6,6 +6,7 @@
  */
 
 Ti.include('appModel.js');
+Ti.include('databaseModel.js');
 //load in Window class
 var Window = require('windowFunction');
 
@@ -117,6 +118,18 @@ var tab6 = Ti.UI.createTab(
     icon: '/images/settings.png',
     activeIcon: '/images/settings_off.png',
     window: settingsWin
+});
+
+// - create Settings tab
+Ti.include('favouritesView.js');
+Ti.include('favouritesController.js');
+var tab7 = Ti.UI.createTab(
+{
+    title: L('Favourites'),
+    id: 7,
+    //icon: '/images/favourites.png',
+    //activeIcon: '/images/settfavouritesings_off.png',
+    window: favouritesWin
 });
 
 // do stuff with the tab group - save the state and load it back up

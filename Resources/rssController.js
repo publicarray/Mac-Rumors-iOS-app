@@ -107,7 +107,7 @@ function getXMLdata(file) {
             var item = items.item(i);
             var title = item.getElementsByTagName('title').item(0).text;
             var description = item.getElementsByTagName('description').item(0).text;
-            //var pubDate = item.getElementsByTagName('pubDate').item(0).text;
+            var pubDate = item.getElementsByTagName('pubDate').item(0).text;
             var link = item.getElementsByTagName('link').item(0).text;
             var creator = item.getElementsByTagName('dc:creator').item(0).text;
             
@@ -132,7 +132,8 @@ function getXMLdata(file) {
             row.add(label);
             row.desc = description;
             row.link = link;
-            row.creator=creator,
+            row.pubDate = pubDate;
+            row.creator = creator;
             data[x++] = row;
         }
     }
@@ -163,9 +164,10 @@ function showTable() {
         // the windows are created from the WindowClass and they open the tableDetailView.js passing the data through properties
         var detailWin = new Window (e.row.children[0].text);
         detailWin.url = 'tableDetailView.js';
-        detailWin.desc = e.row.desc;
-        detailWin.link = e.row.link;
-        detailWin.creator = e.row.creator;
+        detailWin.desc = e.rowData.desc;
+        detailWin.link = e.rowData.link;
+        detailWin.pubDate = e.rowData.pubDate;
+        detailWin.creator = e.rowData.creator;
         
         // open the tab with a default slide animation
         tabGroup.activeTab.open(detailWin, {
