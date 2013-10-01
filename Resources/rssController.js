@@ -123,10 +123,10 @@ function getXMLdata(file) {
                 text: labelText,
                 font:{fontFamily: 'HelveticaNeue-Light',fontSize:16, fontWeight:'normal'},
                 highlightedColor: '#fff',
-                left: 5,
+                left: 20,
                 top: 5,
                 bottom: 5,
-                right: 5,
+                right: 20,
             });
             //add objects
             row.add(label);

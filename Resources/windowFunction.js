@@ -36,7 +36,10 @@ var titleLabel = Titanium.UI.createLabel({
     font:{fontFamily:'Helvetica Neue',fontSize:24,fontWeight:'normal'},
     shadowColor:'#fff',shadowOffset:{x:0,y:1}
 });
+// associate label to title
+self.setTitleControl(titleLabel);
 }
+
 // landscape orientation will hide navBar and statusBar
 function changeOrientation (e) {
     if(e.orientation == '3' || e.orientation == '4'){  //landscape
@@ -51,8 +54,6 @@ Titanium.Gesture.addEventListener('orientationchange', function(e) {
     changeOrientation(Titanium.Gesture);
 });
 
-// associate label to title
-self.setTitleControl(titleLabel);
 // export windowClass and return window object
     return self;
 };
