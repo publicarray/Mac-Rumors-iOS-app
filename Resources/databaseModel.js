@@ -1,6 +1,5 @@
-var currentFavourite;
 var db = Ti.Database.open('favourites');
-deleteFavourite('favourite');
+//deleteFavourite('favourite');
 createDatabase();
 
 function createDatabase()
@@ -21,25 +20,31 @@ function createDatabase()
 // Each object contains all columns plus a title field which can be used to display in a table view
 function getFavourites()
 {
-    var x = 0;
-    var data = [];
-    var row = Ti.UI.createTableViewRow({
-        
-    });
+    var favourite = [];
     
     var result = db.execute('SELECT rowid, * FROM favourite');
+
     while (result.isValidRow())
     {
-        row.rowid = result.fieldByName('rowid');
-        row.title = result.fieldByName('title');
-        row.desc = result.fieldByName('description');
-        row.link = result.fieldByName('link');
-        row.pubDate = result.fieldByName('pubDate');
-        row.creator = result.fieldByName('creator');
-        data[x++] = row;
+        var title = result.fieldByName('title');
+        var desc = result.fieldByName('description');
+        var link = result.fieldByName('link');
+        var pubDate = result.fieldByName('pubDate');
+        var creator = result.fieldByName('creator');
+        
+        // Create a new favourite object and add to array
+        favourite.push({
+            title: title,
+            desc: desc,
+            link: link,
+            pubDate: pubDate, 
+            creator: creator,
+        });
+        
         result.next();
     }
-    return data;
+    
+    return favourite;
 }
 
 function insertFavourite(favourite)
@@ -47,9 +52,9 @@ function insertFavourite(favourite)
     db.execute("INSERT INTO favourite (title, description, link, pubDate, creator) VALUES (?, ?, ?, ?, ?)", favourite.title, favourite.description, favourite.link, favourite.pubDate, favourite.creator);
 }
 
-function deleteFavourite(table)  // incomplete
+function deleteFavourite(rowid)  // incomplete
 {
     
-      db.execute('DELETE FROM '+table); // would empty the table!
+      db.execute('DELETE FROM favourite WHERE '+rowid); // would empty the table!
     //db.execute("UPDATE favourite SET title = ?, description = ?, link = ?, pubDate = ?, creator = ? WHERE rowid = ?", favourite.title, favourite.description, favourite.link, favourite.pubDate, favourite.creator, favourite.rowid);
 }

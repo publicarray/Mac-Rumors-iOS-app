@@ -13,3 +13,7 @@ favouriteTableView.addEventListener('click', function (e) {
             animation: true
         });
 });
+favouriteTableView.addEventListener('focus', function (e) {
+  // Update the table view
+    favouriteTableView.data = getStudents();
+});

@@ -11,6 +11,11 @@ shareBtn.addEventListener('click', function(e){
                     title:"Open in Safari",
                     type:"open.safari",
                     image:"/images/safari.png"
+                },
+                {  // custom function Save as Favouits
+                    title:"Save as Favourite",
+                    type:"open.favourite",
+                    //image:"/images/fav.png"
                 }
               ]);
         }
@@ -33,6 +38,18 @@ shareBtn.addEventListener('click', function(e){
 // Safari
                     if(e.activityName == "open.safari"){
                         Titanium.Platform.openURL(link);
+                    };
+// favourite
+                    if(e.activityName == "open.favourite"){
+                        //Titanium.Platform.openURL(link);
+                        var currentFav = {
+                          title: title,
+                          description: description,
+                          link: link,
+                          pubDate: pubDate,
+                          creator: creator
+                        };
+                        insertFavourite(currentFav);
                     };
                     break;
             }
