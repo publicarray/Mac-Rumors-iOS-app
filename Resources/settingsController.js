@@ -73,3 +73,5 @@ themeBtn.addEventListener('click', function(e){
      themeText.value = '#980012';
 }
 });
+
+settingsWin.open();

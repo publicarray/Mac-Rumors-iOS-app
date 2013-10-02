@@ -12,3 +12,5 @@ refreshBtnMain.addEventListener('click', function (e) {
     getData(feedUrlMain, fileMain, mainWin);
     }
 });
+
+mainWin.open();

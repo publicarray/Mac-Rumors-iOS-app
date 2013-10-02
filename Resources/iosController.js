@@ -12,3 +12,5 @@ refreshBtnIos.addEventListener('click', function (e) {
     getData(feedUrlIos, fileIos, iOSWin);
     }
 });
+
+iOSWin.open();

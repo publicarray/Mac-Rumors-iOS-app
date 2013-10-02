@@ -6,7 +6,6 @@
  */
 
 Ti.include('appModel.js');
-Ti.include('databaseModel.js');
 //load in Window class
 var Window = require('windowFunction');
 
@@ -127,8 +126,8 @@ var tab7 = Ti.UI.createTab(
 {
     title: L('Favourites'),
     id: 7,
-    //icon: '/images/favourites.png',
-    //activeIcon: '/images/settfavouritesings_off.png',
+    icon: '/images/fav.png',
+    activeIcon: '/images/fav_off.png',
     window: favouritesWin
 });
 

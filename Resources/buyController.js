@@ -15,3 +15,5 @@ refreshBtnBuy.addEventListener('click', function (e) {
     webViewBuy.reload();
     webViewBuy.setScalesPageToFit(true);
 });
+
+buyWin.open();

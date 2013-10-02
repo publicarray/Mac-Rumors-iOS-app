@@ -15,7 +15,7 @@ shareBtn.addEventListener('click', function(e){
                 {  // custom function Save as Favouits
                     title:"Save as Favourite",
                     type:"open.favourite",
-                    //image:"/images/fav.png"
+                    image:"/images/fav.png"
                 }
               ]);
         }
@@ -41,15 +41,16 @@ shareBtn.addEventListener('click', function(e){
                     };
 // favourite
                     if(e.activityName == "open.favourite"){
-                        //Titanium.Platform.openURL(link);
                         var currentFav = {
                           title: title,
-                          description: description,
+                          description: win.desc,
                           link: link,
                           pubDate: pubDate,
                           creator: creator
                         };
                         insertFavourite(currentFav);
+                        Ti.App.fireEvent('loadFav');
+                        
                     };
                     break;
             }

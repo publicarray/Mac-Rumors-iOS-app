@@ -33,3 +33,5 @@ var shareBtn = Titanium.UI.createButton({
 win.setRightNavButton(shareBtn);
 
 Ti.include('tableDetailController.js');
+
+win.open();

@@ -15,10 +15,9 @@ var creator = win.creator;
 // use the social plug-in: https://github.com/viezel/TiSocial.Framework
 var Social = require('dk.napp.social');
 
-// database
-var db = Ti.Database.open('favourites');
-
 function insertFavourite(favourite)
 {
+    // database
+    var db = Ti.Database.open('favourites');
     db.execute("INSERT INTO favourite (title, description, link, pubDate, creator) VALUES (?, ?, ?, ?, ?)", favourite.title, favourite.description, favourite.link, favourite.pubDate, favourite.creator);
 }
