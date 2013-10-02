@@ -15,5 +15,3 @@ refreshBtnRoundup.addEventListener('click', function (e) {
     webViewRoundup.setUrl(urlRoundup);
     webViewRoundup.reload();
 });
-
-roundupWin.open();

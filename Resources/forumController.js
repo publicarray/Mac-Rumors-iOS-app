@@ -15,5 +15,3 @@ refreshBtnForum.addEventListener('click', function (e) {
     webViewForum.setUrl(urlForum);
     webViewForum.reload();
 });
-
-forumWin.open();

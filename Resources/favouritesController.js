@@ -41,4 +41,3 @@ doneBtn.addEventListener('click', function (e) {
       favouriteTableView.setEditing(false);
       favouritesWin.setRightNavButton(editBtn);
 });
-favouritesWin.open();

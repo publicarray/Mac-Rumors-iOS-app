@@ -12,5 +12,3 @@ refreshBtnMac.addEventListener('click', function (e) {
     getData(feedUrlMac, fileMac, macWin);
     }
 });
-
-macWin.open();
