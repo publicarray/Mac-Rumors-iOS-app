@@ -119,6 +119,18 @@ var tab6 = Ti.UI.createTab(
     window: settingsWin
 });
 
+// - create Settings tab
+Ti.include('favouritesView.js');
+Ti.include('favouritesController.js');
+var tab7 = Ti.UI.createTab(
+{
+    title: L('Favourites'),
+    id: 7,
+    icon: '/images/fav.png',
+    activeIcon: '/images/fav_off.png',
+    window: favouritesWin
+});
+
 // do stuff with the tab group - save the state and load it back up
 Ti.include('appController.js');
 
