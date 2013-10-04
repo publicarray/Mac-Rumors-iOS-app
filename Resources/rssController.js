@@ -201,6 +201,7 @@ function showTable() {
         // the windows are created from the WindowClass and they open the tableDetailView.js passing the data through properties
         var detailWin = new Window (e.row.children[0].text);
         detailWin.setTabBarHidden(true);
+        detailWin.fullscreen = true;
         detailWin.url = 'tableDetailView.js';
         detailWin.desc = e.rowData.desc;
         detailWin.link = e.rowData.link;
