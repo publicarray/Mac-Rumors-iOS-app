@@ -165,16 +165,18 @@ function showTable() {
             opacity: 60,
             left: 10,
             top: 10,
-            width: 50,
+            width: 30,
             height: 30,
             visible: false,
+            borderRadius: 5,
             style: Titanium.UI.iPhone.SystemButtonStyle.PLAIN,
             font:{fontSize:18,fontFamily:'HelveticaNeue-Light'},
             backgroundImage:'images/transparent30.png',
             color: '#fff',
+            image: 'images/backarow.png',
             selectedColor: Ti.App.Properties.getString('theme', '#980012'),
             title: 'Back',
-            zIndex: 10,
+            zIndex: 5,
         });
         
         // function of back button - go back

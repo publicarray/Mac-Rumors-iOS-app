@@ -44,9 +44,13 @@ self.setTitleControl(titleLabel);
 function changeOrientation (e) {
     if(e.orientation == '3' || e.orientation == '4'){  //landscape
         self.hideNavBar();
+        Titanium.UI.iPhone.hideStatusBar();
+        //self.setFullscreen(true);
     } 
     else if (e.orientation == '1' || e.orientation == '2'){ //portrait
         self.showNavBar();
+        Titanium.UI.iPhone.showStatusBar();
+        //self.setFullscreen(false);
     }
 };
 // execute 'changeOrientation' when window first opens and than on every orientation change
