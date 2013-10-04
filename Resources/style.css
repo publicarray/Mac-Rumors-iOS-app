@@ -10,9 +10,10 @@ html {
 }
 
 body{
-    color: #333;
+    color: #000;
     font-size: 1em;
-    font-family: 'HelveticaNeue-Light', Sans-serif;
+    font-family: 'HelveticaNeue', Sans-serif;
+    margin: 20px 20px 0px 20px;
 }
 
 a{
@@ -22,7 +23,7 @@ img, iframe{
     max-width: 100%;
     width:auto;
     height: auto;
-    padding: 2px;
+    padding: 0px;
     display: block;
     margin: auto;
     float: none;

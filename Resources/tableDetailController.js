@@ -49,6 +49,7 @@ shareBtn.addEventListener('click', function(e){
                           creator: creator
                         };
                         insertFavourite(currentFav);
+                        currentFav = null;
                         Ti.App.fireEvent('loadFav');
                         
                     };

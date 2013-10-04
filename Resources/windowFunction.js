@@ -40,11 +40,12 @@ var titleLabel = Titanium.UI.createLabel({
 self.setTitleControl(titleLabel);
 }
 
-// landscape orientation will hide navBar and statusBar
+// landscape orientation will hide navBar
 function changeOrientation (e) {
     if(e.orientation == '3' || e.orientation == '4'){  //landscape
         self.hideNavBar();
-    } else if (e.orientation == '1' || e.orientation == '2'){ //portrait
+    } 
+    else if (e.orientation == '1' || e.orientation == '2'){ //portrait
         self.showNavBar();
     }
 };
