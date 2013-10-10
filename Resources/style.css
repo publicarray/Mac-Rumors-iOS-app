@@ -6,14 +6,24 @@ html {
     -webkit-text-size-adjust: none;
     -webkit-font-smoothing: antialiased;
     line-height: 1.5em;
+    font-size: 100%;
     /*text-shadow: 1px 1px 1px rgba(0,0,0,0.004);*/
 }
 
 body{
     color: #000;
-    font-size: 1em;
-    font-family: 'HelveticaNeue', Sans-serif;
+    /*font-size: 1em;
+    font-family: 'HelveticaNeue', sans-serif;
+    font-family: Georgia, serif;
+    */
+    font-weight: normal;
+    font-style: normal;
+    font-variant: normal;
+    font-size: 1.125em;
+    font-family: 'HelveticaNeue', sans-serif;
     margin: 20px 20px 0px 20px;
+    color: rgb(17, 17, 17);
+    background-color: rgb(253, 253, 253);
 }
 
 a{

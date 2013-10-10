@@ -193,15 +193,17 @@ function showTable() {
         function showHideBtnOrientation (e) {
         if(e.orientation == '3' || e.orientation == '4'){  //landscape
             backBtn.setVisible(true);
+            //Ti.UI.iPhone.hideStatusBar();
         } 
         else if (e.orientation == '1' || e.orientation == '2'){ //portrait
             backBtn.setVisible(false);
+            //Ti.UI.iPhone.showStatusBar();
         }
 };
         // the windows are created from the WindowClass and they open the tableDetailView.js passing the data through properties
         var detailWin = new Window (e.row.children[0].text);
         detailWin.setTabBarHidden(true);
-        detailWin.fullscreen = true;
+        //detailWin.fullscreen = true;
         detailWin.url = 'tableDetailView.js';
         detailWin.desc = e.rowData.desc;
         detailWin.link = e.rowData.link;
