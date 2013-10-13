@@ -51,6 +51,7 @@ shareBtn.addEventListener('click', function(e){
                         insertFavourite(currentFav);
                         currentFav = null;
                         Ti.App.fireEvent('loadFav');
+                        e.activity = null;
                         
                     };
                     break;

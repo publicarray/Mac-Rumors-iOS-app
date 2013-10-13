@@ -1,6 +1,6 @@
 
 // to refresh the table view when a favorite is added
-Ti.App.addEventListener('loadFav', function(eve) {
+Ti.App.addEventListener('loadFav', function(e) {
     favouriteTableView.setData(getFavourites());
 });
 /*
@@ -54,7 +54,7 @@ favouriteTableView.addEventListener('click', function (e) {
         // the windows are created from the WindowClass and they open the tableDetailView.js passing the data through properties
         var detailWin = new Window (e.row.title);
         detailWin.setTabBarHidden(true);
-        detailWin.fullscreen = true;
+        //detailWin.fullscreen = true;
         detailWin.url = 'tableDetailView.js';
         detailWin.desc = e.rowData.desc;
         detailWin.link = e.rowData.link;
