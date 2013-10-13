@@ -11,9 +11,20 @@ var version = Ti.UI.createLabel({
     height: 'auto',
     color: '#333',
     textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
-    text: 'Version 1.2.1',
+    text: Ti.App.getVersion(),
     minimumFontSize:12,
     font:{fontSize:16,fontFamily:'HelveticaNeue-Light'},
+});
+
+var copyright = Ti.UI.createLabel({
+    top: 330,
+    width: '100%',
+    height: 'auto',
+    color: '#333',
+    textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+    text: Ti.App.getCopyright(),
+    minimumFontSize:10,
+    font:{fontSize:12,fontFamily:'HelveticaNeue-Light'},
 });
 
 var about = Ti.UI.createLabel({
@@ -28,6 +39,7 @@ var about = Ti.UI.createLabel({
 });
 
 view.add(version);
+view.add(copyright);
 view.add(about);
 
 var scrollView = Ti.UI.createScrollView({
