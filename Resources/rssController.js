@@ -20,8 +20,8 @@ var activityIndicator = Ti.UI.createActivityIndicator({
     color: '#404347',
     backgroundColor: '#d8d8d8',
     font: {
-        fontFamily: 'Helvetica Neue',
-        fontSize: 14,
+        font:{fontSize:14,fontFamily:'Helvetica Neue'},
+        minimumFontSize:12,
         fontWeight: 'normal'
     },
     message: 'Loading...',
