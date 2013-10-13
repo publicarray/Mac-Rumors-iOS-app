@@ -12,7 +12,7 @@ var version = Ti.UI.createLabel({
     color: '#333',
     textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
     text: Ti.App.getVersion(),
-    minimumFontSize:12,
+    minimumFontSize:16,
     font:{fontSize:16,fontFamily:'HelveticaNeue-Light'},
 });
 
@@ -23,7 +23,7 @@ var copyright = Ti.UI.createLabel({
     color: '#333',
     textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
     text: Ti.App.getCopyright(),
-    minimumFontSize:10,
+    minimumFontSize:12,
     font:{fontSize:12,fontFamily:'HelveticaNeue-Light'},
 });
 
@@ -34,7 +34,7 @@ var about = Ti.UI.createLabel({
     color: '#000',
     textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
     text: 'This app is Mantained and Created by \nSebastian Schmidt and Paris Moletti \n \n If you have any Feedback or you like to report a bug please email us at: \nsebstian.schmidt2@griffithuni.edu.au \n \n Fork it on guithub.com: \nhttp://github.com/publicarray/Mac-Rumors-iOS-app',
-    ont:{fontSize:18,fontFamily:'HelveticaNeue-Light'},
+    font:{fontSize:18,fontFamily:'HelveticaNeue-Light'},
     autoLink: Ti.UI.AUTOLINK_ALL,
 });
 

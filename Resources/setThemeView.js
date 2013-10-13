@@ -9,7 +9,7 @@ var cacheLabel = Ti.UI.createLabel({
     left: '10%',
     width:'auto',
     top: '10%',
-    minimumFontSize:16,
+    minimumFontSize:18,
 });
 
 var onCacheButton = Ti.UI.createSwitch({
@@ -26,7 +26,7 @@ var themeLabel = Ti.UI.createLabel({
     font:{fontSize:18,fontFamily:'HelveticaNeue-Light'},
     top: '40%',
     left: '10%',
-    minimumFontSize:16,
+    minimumFontSize:18,
 });
 var themeText = Ti.UI.createTextField({
     borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
@@ -46,7 +46,7 @@ if (Ti.Platform.version >= 7 && (Ti.Platform.name === 'iPhone OS' || Ti.Platform
     title:'Load Dafault Theme',
     width: 200,
     height: 40,
-    minimumFontSize:16,
+    minimumFontSize:18,
     font:{fontSize:18,fontFamily:'HelveticaNeue-Light'},
     top: '55%',
     });
@@ -55,7 +55,7 @@ if (Ti.Platform.version >= 7 && (Ti.Platform.name === 'iPhone OS' || Ti.Platform
 var themeNoticeLabel = Ti.UI.createLabel({
     text:'Please Note: Some changes are only visible after app restart.',
     color:'#777',
-    minimumFontSize:9,
+    minimumFontSize:11,
     font:{fontSize:11,fontFamily:'HelveticaNeue-Light'},
     width:'90%',
     top: '80%',
@@ -67,7 +67,7 @@ var themeBtn = Ti.UI.createButton({
     title:'Load Dafault Theme',
     width: 200,
     height: 40,
-    minimumFontSize:16,
+    minimumFontSize:18,
     font:{fontSize:18,fontFamily:'HelveticaNeue-Light'},
     top: '55%',
     // button gradient
@@ -81,7 +81,7 @@ var themeBtn = Ti.UI.createButton({
 var themeNoticeLabel = Ti.UI.createLabel({
     text:'Please Note: Some changes are only visible after app restart.\nPlease use colour names, hex values are currently not supported',
     color:'#777',
-    minimumFontSize:9,
+    minimumFontSize:11,
     font:{fontSize:11,fontFamily:'HelveticaNeue-Light'},
     width:'98%',
     top: '80%',

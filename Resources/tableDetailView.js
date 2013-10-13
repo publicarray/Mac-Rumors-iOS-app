@@ -18,7 +18,6 @@ var titleLabel = Titanium.UI.createLabel({
     text:title,
     textAlign:'center',
     font:{fontFamily:'Helvetica Neue',fontSize:14,fontWeight:'normal'},
-    minimumFontSize:12,
     shadowColor:'#fff',shadowOffset:{x:0,y:1}
 });
 
