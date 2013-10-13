@@ -71,6 +71,8 @@ favouriteTableView.addEventListener('click', function (e) {
 
 favouriteTableView.addEventListener('delete', function (e) {
     deleteFavourite(e.rowData.rowid);
+    deleteSound.stop();
+    deleteSound.play();
     // Update the table view
     favouriteTableView.setData(getFavourites());
 });

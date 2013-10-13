@@ -61,7 +61,7 @@ if(Titanium.Network.online) {
         getXMLdata(f);
         showTable();
         activityIndicator.hide();
-        alert('Off-line Mode');
+//////////alert('Off-line Mode!');
        } 
        // if the file doesn't exist and an error occurred just display a message letting the user know about it
         else if(!f.exists()) {
@@ -92,7 +92,7 @@ else if(f.exists()) {
 */
 else if(!f.exists()) {
         activityIndicator.hide();
-        alert('Your device is not connected to the internet.');
+////////alert('Your device is not connected to the internet.');
 }
 
 
@@ -174,7 +174,7 @@ function showTable() {
             backgroundImage:'images/transparent30.png',
             color: '#fff',
             image: 'images/backarow.png',
-            selectedColor: Ti.App.Properties.getString('theme', '#980012'),
+            //selectedColor: Ti.App.Properties.getString('theme', '#980012'),
             title: 'Back',
             zIndex: 5,
         });

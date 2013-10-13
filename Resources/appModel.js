@@ -20,6 +20,20 @@ var fileIos = Titanium.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory
 var fileMac = Titanium.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, 'Mac.txt');
 var fileMain = Titanium.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, 'Front.txt');
 
+// sound files
+var bassSound = Ti.Media.createSound({
+    url: "sound/bass.wav",
+    volume: Ti.App.Properties.getDouble('volume', 1),
+    });
+var deleteSound = Ti.Media.createSound({
+    url: "sound/zap.wav",
+    volume: Ti.App.Properties.getDouble('volume', 1),
+    });
+var startSound = Ti.Media.createSound({
+    url: "sound/windows95.wav",
+    volume: Ti.App.Properties.getDouble('volume', 1),
+    });
+
 // Favourites Database
 var db = Ti.Database.open('favourites');
 createDatabase();

@@ -6,6 +6,9 @@
  */
 
 Ti.include('appModel.js');
+// play start up sound :)
+startSound.play();
+
 //load in Window class
 var Window = require('windowFunction');
 
@@ -29,8 +32,7 @@ else
         tabsBackgroundImage: '/images/tapbar.png',// background for tab bar
         backgroundColor: '#d8d8d8',// of View
         activeTabIconTint: '#fff',// active icon tint
-        activeTabBackgroundImage: '/images/' + Ti.App.Properties.getString("theme", "#980012") +'.png',//active icon background image
-        //activeTabBackgroundImage: '/images/#980012.png'
+        //activeTabBackgroundImage: '/images/' + Ti.App.Properties.getString("theme", "#980012") +'.png',//active icon background image
     });
 };
 
@@ -109,7 +111,7 @@ var tab5 = Ti.UI.createTab(
 
 // - create Settings tab
 Ti.include('settingsView.js');
-Ti.include('settingsController.js');
+//Ti.include('settingsController.js');
 var tab6 = Ti.UI.createTab(
 {
     title: L('Settings'),
@@ -119,7 +121,7 @@ var tab6 = Ti.UI.createTab(
     window: settingsWin
 });
 
-// - create Settings tab
+// - create Favourites tab
 Ti.include('favouritesView.js');
 Ti.include('favouritesController.js');
 var tab7 = Ti.UI.createTab(
