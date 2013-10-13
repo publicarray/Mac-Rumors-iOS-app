@@ -18,7 +18,7 @@ var activityIndicator = Ti.UI.createActivityIndicator({
     height: '100%',
     width: '100%',
     color: '#404347',
-    backgroundColor: '#d8d8d8',
+    backgroundColor: '#fff',
     font: {
         font:{fontSize:14,fontFamily:'Helvetica Neue'},
         minimumFontSize:12,
