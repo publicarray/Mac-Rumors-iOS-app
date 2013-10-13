@@ -32,7 +32,7 @@ themeText.addEventListener('return', function (e){
 });
 
 // gradient on the custom button only looks good in iOS 6
-if (version < 7 && (device === 'iPhone OS' || device === 'iPad OS' || device === 'iPod Touch OS')){
+if (Ti.Platform.version < 7 && (Ti.Platform.name === 'iPhone OS' || Ti.Platform.name === 'iPad OS' || Ti.Platform.name === 'iPod Touch OS')){
 // change gradient of button on press
 themeBtn.addEventListener('touchstart', function (e) {
   themeBtn.backgroundGradient={colors:['#500000','#c80050']};

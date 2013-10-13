@@ -54,6 +54,10 @@ settingsList.addEventListener('itemclick', function (e) {
     var detailWindow = new Window ('Volume');
     detailWindow.setUrl('setVolumeView.js');
     }
+    if (e.itemId===3){
+    var detailWindow = new Window ('About');
+    detailWindow.setUrl('aboutView.js');
+    }
     
     // ceck if selected window exists -- FOR DEBUG
         if (detailWindow!==undefined){

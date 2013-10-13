@@ -5,7 +5,8 @@ var volumeLabel = Ti.UI.createLabel({
     width: '100%',
     height: 'auto',
     top: 50,
-    left: 0,
+    minimumFontSize:12,
+    font:{fontSize:16,fontFamily:'HelveticaNeue-Light'},
     textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER
     });
     
@@ -22,7 +23,8 @@ var volumeLabelValue = Ti.UI.createLabel({
     width: '100%',
     height: 'auto',
     top: 200,
-    left: 0,
+    minimumFontSize:12,
+    font:{fontSize:16,fontFamily:'HelveticaNeue-Light'},
     textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER
     });
 

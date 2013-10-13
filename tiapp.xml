@@ -2,7 +2,7 @@
 <ti:app xmlns:ti="http://ti.appcelerator.org">
     <id>mx.x10.spage.macrumours</id>
     <name>Mac Rumors</name>
-    <version>1.2</version>
+    <version>1.2.1</version>
     <publisher>Sebastian Schmidt</publisher>
     <url>http://spage.x10.mx</url>
     <description>MacRumors.com</description>
