@@ -18,7 +18,7 @@ if (version >= 7 && (device === 'iPhone OS' || device === 'iPad OS' || device ==
     //create io7 tab bar
     var tabGroup = Ti.UI.createTabGroup(
     {
-        //backgroundColor: '#d8d8d8',// of View
+        backgroundColor: '#fff',// of View
         tintColor: Ti.App.Properties.getString('theme', '#980012'),//ios7 only
     });
 }
@@ -30,7 +30,7 @@ else
         barColor: Ti.App.Properties.getString('theme', '#980012'),//#650000, // for more tab
         tabsBackgroundColor: '#000',// inactive icon tint
         tabsBackgroundImage: '/images/tapbar.png',// background for tab bar
-        //backgroundColor: '#d8d8d8',// of View
+        backgroundColor: '#fff',// of View
         activeTabIconTint: '#fff',// active icon tint
         //activeTabBackgroundImage: '/images/' + Ti.App.Properties.getString("theme", "#980012") +'.png',//active icon background image
     });
