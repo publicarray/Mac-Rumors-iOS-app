@@ -9,12 +9,12 @@ var webView = Ti.UI.createWebView({
 
 win.add(webView);
 
-// devices with lower ios than 7 display text as white
+// devices with lower ios than 7 display custom text style
 if (version < 7 && (device === 'iPhone OS' || device === 'iPad OS' || device === 'iPod Touch OS')){
 var titleLabel = Titanium.UI.createLabel({
     color:'#000',
     height:42,
-    width:'100%',
+    width:'70%',
     text:title,
     textAlign:'center',
     font:{fontFamily:'Helvetica Neue',fontSize:14,fontWeight:'normal'},

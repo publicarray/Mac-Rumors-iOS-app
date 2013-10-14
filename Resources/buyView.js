@@ -19,7 +19,7 @@ var buyActivityIndicator = Ti.UI.createActivityIndicator({
     height: '100%',
     width: '100%',
     color: '#404347',
-    backgroundColor: '#d8d8d8',
+    //backgroundColor: '#d8d8d8',
     font: {
         fontFamily: 'Helvetica Neue',
         fontSize: 14,
