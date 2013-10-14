@@ -11,7 +11,7 @@ function windowClass(title) {
     // ios 7  create windows withought barImage and barColor
 if (version >= 7 && (device === 'iPhone OS' || device === 'iPad OS' || device === 'iPod Touch OS')){
         var self = Ti.UI.createWindow({
-        backgroundColor:'#fff',
+        //backgroundColor:'#fff',
         title:title,
     });
     }
@@ -23,14 +23,14 @@ else{
         barColor: Ti.App.Properties.getString('theme', '#980012'),  // sets user selected colour,
         barImage: 'images/navbar.png',
         backButtonTitle:'Back',
-        backgroundColor:'#fff',
+        //backgroundColor:'#fff',
     });
     
 // create a title label for ios 6 and lower
 var titleLabel = Titanium.UI.createLabel({
     color:'#000',  // set the text colour to black
     height:42,
-    width:'100%',
+    width:'70%',
     text:title,
     textAlign:'center',
     font:{fontFamily:'Helvetica Neue',fontSize:24,fontWeight:'normal'},
