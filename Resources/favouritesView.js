@@ -7,6 +7,7 @@ var favouriteTableView = Ti.UI.createTableView({
 favouritesWin.add(favouriteTableView);
 // Get the student data from the model
 favouriteTableView.setData(getFavourites());
+//favouriteTableView.add(getFavourites());
 
 //edit button
 var editBtn = Titanium.UI.createButton({
