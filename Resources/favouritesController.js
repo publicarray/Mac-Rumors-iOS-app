@@ -70,15 +70,19 @@ favouriteTableView.addEventListener('click', function (e) {
     });
         // function of back button - go back
         backBtn.addEventListener('click', function (e) {
-            // garbige/ memory collection
+            closeDetailWindow ();
+        });
+        
+        function closeDetailWindow () {
+          // garbige/ memory collection
             detailWindow.remove(webView);
             webView = null;
-            detailWindow.remove(shareBtn);
+            //detailWindow.remove(shareBtn); // apparently it is already removed - conditions: potrait mode and title bar is hidden.
             shareBtn = null;
             detailWindow.remove(backBtn);
-            backBtn = null;
+            //backBtn = null; // not shure but it caurses some errors
             detailWindow.close();
-        });
+        }
         
         // show and hide the button on orientation change
         showHideBtnOrientation(Titanium.Gesture);
