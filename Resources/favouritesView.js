@@ -17,3 +17,10 @@ var doneBtn = Titanium.UI.createButton({
      systemButton: Ti.UI.iPhone.SystemButton.DONE    
 });
 favouritesWin.setRightNavButton(editBtn);
+
+//_____________________________________________________ planned to be removed______________________________
+
+// to refresh the table view when a favorite is added
+Ti.App.addEventListener('loadFav', function(e) {
+    favouriteTableView.setData(getFavourites());
+});
