@@ -60,6 +60,8 @@ function getFavourites()
     
     var result = db.execute('SELECT rowid, * FROM favourite');
 
+    var selectedBackgroundColor = Ti.App.Properties.getString('theme', '#980012');
+    
     while (result.isValidRow())
     {
         var title = result.fieldByName('title');
@@ -75,8 +77,9 @@ function getFavourites()
             desc: desc,
             link: link,
             rowid: rowid,
-            pubDate: pubDate, 
+            pubDate: pubDate,
             creator: creator,
+            selectedBackgroundColor: selectedBackgroundColor,
         });
         
         result.next();
@@ -95,3 +98,11 @@ function deleteFavourite(rowid)
     
       db.execute('DELETE FROM favourite WHERE rowid=?', rowid);
 }
+
+/*
+function sortdate()
+{
+    db.excecute('SELECT DISTINCT description, title, date FROM favourite');
+}
+
+*/

@@ -2,12 +2,14 @@
 var settingsWin = new Window('Settings');
 settingsWin.backgroundGradient = {colors: ["#C7D6E9", "#fff"]};
 
+var selectedBackgroundColor = Ti.App.Properties.getString('theme', '#980012');
+
 var data1 = [
         {
         properties: {
             title: 'Theme',
             itemId: 1,
-            //selectedBackgroundColor: Ti.App.Properties.getString('theme', '#980012'),
+            selectedBackgroundColor: selectedBackgroundColor,
             //subtitle: 'Subtitle',
             accessoryType: Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE,
         },
@@ -17,7 +19,7 @@ var data1 = [
         properties: {
             title: 'Sound',
             itemId: 2,
-            //selectedBackgroundColor: Ti.App.Properties.getString('theme', '#980012'),
+            selectedBackgroundColor: selectedBackgroundColor,
             accessoryType: Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE,
         },
     },
@@ -33,7 +35,7 @@ var listSection2 = Ti.UI.createListSection({
         properties: {
             title: 'About',
             itemId: 3,
-            //selectedBackgroundColor: Ti.App.Properties.getString('theme', '#980012'),
+            selectedBackgroundColor: selectedBackgroundColor,
             accessoryType: Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE,
         },
     },
