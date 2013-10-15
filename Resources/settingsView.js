@@ -4,59 +4,29 @@ settingsWin.backgroundGradient = {colors: ["#C7D6E9", "#fff"]};
 
 var selectedBackgroundColor = Ti.App.Properties.getString('theme', '#980012');
 
-var data1 = [
-        {
-        properties: {
-            title: 'Theme',
-            itemId: 1,
-            selectedBackgroundColor: selectedBackgroundColor,
-            //subtitle: 'Subtitle',
-            accessoryType: Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE,
-        },
-        //template: Ti.UI.LIST_ITEM_TEMPLATE_SETTINGS
-    },
-    {
-        properties: {
-            title: 'Sound',
-            itemId: 2,
-            selectedBackgroundColor: selectedBackgroundColor,
-            accessoryType: Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE,
-        },
-    },
+
+var listData = [
+        {title: 'Theme', selectedBackgroundColor: selectedBackgroundColor, header: ''},
+        {title: 'Sound', selectedBackgroundColor: selectedBackgroundColor, },
+        {title: 'About', selectedBackgroundColor: selectedBackgroundColor, header: ''},
 ];
 
-var listSection1 = Ti.UI.createListSection({
-    items: data1
+var settingsList = Titanium.UI.createTableView({
+    data:listData,
+    style:Titanium.UI.iPhone.TableViewStyle.GROUPED
 });
-var listSection2 = Ti.UI.createListSection({
-    items: 
-    [
-    {
-        properties: {
-            title: 'About',
-            itemId: 3,
-            selectedBackgroundColor: selectedBackgroundColor,
-            accessoryType: Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE,
-        },
-    },
-    ],
-});
-var settingsList = Titanium.UI.createListView({
-    sections: [listSection1, listSection2],
-    backgroundColor:'#efeff4',
-    style:Titanium.UI.iPhone.ListViewStyle.GROUPED,
-});
-settingsList.addEventListener('itemclick', function (e) {
-    
-    if (e.itemId===1){
+
+// CONTROLLER
+settingsList.addEventListener('click', function (e) {
+    if (e.index===0){
     var detailWindow = new Window ('Theme');
     detailWindow.setUrl('setThemeView.js');
     }
-    if (e.itemId===2){
+    if (e.index===1){
     var detailWindow = new Window ('Volume');
     detailWindow.setUrl('setVolumeView.js');
     }
-    if (e.itemId===3){
+    if (e.index===2){
     var detailWindow = new Window ('About');
     detailWindow.setUrl('aboutView.js');
     }
