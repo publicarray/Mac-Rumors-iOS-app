@@ -6,14 +6,19 @@ html {
     -webkit-text-size-adjust: none;
     -webkit-font-smoothing: antialiased;
     line-height: 1.5em;
-    /*text-shadow: 1px 1px 1px rgba(0,0,0,0.004);*/
+    font-size: 100%;
 }
 
 body{
-    color: #333;
-    font-size: 1em;
-    font-family: 'Helvetica Neue', Sans-serif;
-    font-weight: 300;
+    color: #000;
+    font-weight: normal;
+    font-style: normal;
+    font-variant: normal;
+    font-size: 1.125em;
+    font-family: 'HelveticaNeue', sans-serif;
+    margin: 20px 20px 0px 20px;
+    color: rgb(17, 17, 17);
+    background-color: rgb(253, 253, 253);
 }
 
 a{
@@ -23,7 +28,7 @@ img, iframe{
     max-width: 100%;
     width:auto;
     height: auto;
-    padding: 2px;
+    padding: 0px;
     display: block;
     margin: auto;
     float: none;
