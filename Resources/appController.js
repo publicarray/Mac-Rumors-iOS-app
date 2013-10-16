@@ -1,10 +1,11 @@
 // apply changes in properties
 Ti.App.Properties.addEventListener('change', function(e)
     {
+       themeColor = Ti.App.Properties.getString('theme', '#980012');
        bassSound.setVolume(Ti.App.Properties.getDouble('volume', 1));
        deleteSound.setVolume(Ti.App.Properties.getDouble('volume', 1));
        startSound.setVolume(Ti.App.Properties.getDouble('volume', 1));
-       tabGroup.setTintColor(Ti.App.Properties.getString('theme', '#980012'));
+       tabGroup.setTintColor(themeColor);
        //searchBar.setTintColor(Ti.App.Properties.getString('theme', '#980012'));
        //tableView.setSelectedColor(Ti.App.Properties.getString('theme', '#980012'));
        if (version < 7 && (device === 'iPhone OS' || device === 'iPad OS' || device === 'iPod Touch OS'))

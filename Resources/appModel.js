@@ -51,7 +51,7 @@ function createDatabase()
     if (result.rowCount == 0)
     {
         // Insert initial data
-        db.execute('INSERT INTO favourite (title, description, link, pubDate, creator) values ("Create a list of your Favorites", "<h2>I am your first Favourite!</h2>", "www.google.com", "1/1/2000", "Sebastian Schmidt")');
+        db.execute('INSERT INTO favourite (title, description, link, pubDate, creator) values ("Create a list of your Favorites", "<h2>I am your first Favourite!</h2>", "www.google.com", "0", "Sebastian Schmidt")');
     }
 }
 
@@ -92,10 +92,12 @@ function getFavourites(result)
     return favourite;
 }
 
-function insertFavourite(favourite)
+function insertFavourite(favourite) // dont ferget to uptate this in tableDetailModel.js
 {
-    var pubdate = favourite.pubDate;
-    db.execute("INSERT INTO favourite (title, description, link, pubDate, creator) VALUES (?, ?, ?, ?, ?)", favourite.title, favourite.description, favourite.link, pubdate, favourite.creator);
+    //var thisDate = new Date(Date.parse(favourite.pubDate));
+    //alert(thisDate);
+
+    db.execute("INSERT INTO favourite (title, description, link, pubDate, creator) VALUES (?, ?, ?, ?, ?)", favourite.title, favourite.description, favourite.link, favourite.pubDate, favourite.creator);
 }
 
 function deleteFavourite(rowid)
@@ -111,7 +113,7 @@ function sortDB (sortBy)
   }
   else if (sortBy==='pubDate')
   {
-      var result = db.execute('SELECT rowid, * FROM favourite ORDER BY date(pubDate), rowid ASC');
+      var result = db.execute('SELECT rowid, * FROM favourite ORDER BY pubDate DESC');
   }
   else if (sortBy==='title')
   {

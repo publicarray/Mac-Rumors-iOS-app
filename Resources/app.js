@@ -27,7 +27,7 @@ else
     //create tab bar for older iOS's'
     var tabGroup = Ti.UI.createTabGroup(
     {
-        barColor: Ti.App.Properties.getString('theme', '#980012'),//#650000, // for more tab
+        barColor: themeColor,//#650000, // for more tab
         tabsBackgroundColor: '#000',// inactive icon tint
         tabsBackgroundImage: '/images/tapbar.png',// background for tab bar
         backgroundColor: '#fff',// of View

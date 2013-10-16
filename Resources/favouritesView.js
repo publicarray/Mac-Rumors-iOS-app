@@ -7,7 +7,7 @@ var tableSortHeader = Ti.UI.createView({
 });
 
 var sortbar = Titanium.UI.iOS.createTabbedBar({
-    labels:['Time Added', 'Date', 'Title'],
+    labels:['Time Added', 'Published Date', 'Article Title'],
     backgroundColor: themeColor,
     top:5,
     style:Titanium.UI.iPhone.SystemButtonStyle.BAR,
