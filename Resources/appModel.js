@@ -20,6 +20,9 @@ var fileIos = Titanium.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory
 var fileMac = Titanium.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, 'Mac.txt');
 var fileMain = Titanium.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, 'Front.txt');
 
+//Theme colour
+var themeColor = Ti.App.Properties.getString('theme', '#980012');
+
 // sound files
 var bassSound = Ti.Media.createSound({
     url: "sound/bass.wav",
@@ -54,13 +57,13 @@ function createDatabase()
 
 // Returns students in an array suitable for displaying in a table view
 // Each object contains all columns plus a title field which can be used to display in a table view
-function getFavourites()
+function getFavourites(result)
 {
+    if (result===undefined)
+    {
+        var result = db.execute('SELECT rowid, * FROM favourite');
+    }
     var favourite = [];
-    
-    var result = db.execute('SELECT rowid, * FROM favourite');
-
-    var selectedBackgroundColor = Ti.App.Properties.getString('theme', '#980012');
     
     while (result.isValidRow())
     {
@@ -70,7 +73,7 @@ function getFavourites()
         var rowid = result.fieldByName('rowid');
         var pubDate = result.fieldByName('pubDate');
         var creator = result.fieldByName('creator');
-             
+             Ti.API.info(rowid+" "+link+" "+pubDate);
             // Create a new favourite object and add to array
             favourite.push({
                 title: title,
@@ -79,7 +82,7 @@ function getFavourites()
                 rowid: rowid,
                 pubDate: pubDate,
                 creator: creator,
-                selectedBackgroundColor: selectedBackgroundColor,
+                selectedBackgroundColor: themeColor,
                 font:{fontFamily: 'HelveticaNeue-Light', fontSize:18,},
                 //height: 80,
             });
@@ -91,19 +94,29 @@ function getFavourites()
 
 function insertFavourite(favourite)
 {
-    db.execute("INSERT INTO favourite (title, description, link, pubDate, creator) VALUES (?, ?, ?, ?, ?)", favourite.title, favourite.description, favourite.link, favourite.pubDate, favourite.creator);
+    var pubdate = favourite.pubDate;
+    db.execute("INSERT INTO favourite (title, description, link, pubDate, creator) VALUES (?, ?, ?, ?, ?)", favourite.title, favourite.description, favourite.link, pubdate, favourite.creator);
 }
 
 function deleteFavourite(rowid)
 {
-    
-      db.execute('DELETE FROM favourite WHERE rowid=?', rowid);
+    db.execute('DELETE FROM favourite WHERE rowid=?', rowid);
 }
 
-/*
-function sortdate()
+function sortDB (sortBy) 
 {
-    db.excecute('SELECT DISTINCT description, title, date FROM favourite');
+  if(sortBy==='rowid')
+  {
+      var result = db.execute('SELECT rowid, * FROM favourite ORDER BY rowid');
+  }
+  else if (sortBy==='pubDate')
+  {
+      var result = db.execute('SELECT rowid, * FROM favourite ORDER BY date(pubDate), rowid ASC');
+  }
+  else if (sortBy==='title')
+  {
+      var result = db.execute('SELECT rowid, * FROM favourite ORDER BY title');
+  }
+  
+  favouriteTableView.setData(getFavourites(result));
 }
-
-*/
