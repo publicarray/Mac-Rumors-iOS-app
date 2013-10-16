@@ -4,16 +4,18 @@ settingsWin.backgroundGradient = {colors: ["#C7D6E9", "#fff"]};
 
 var selectedBackgroundColor = Ti.App.Properties.getString('theme', '#980012');
 
-
 var listData = [
-        {title: 'Theme', selectedBackgroundColor: selectedBackgroundColor, header: ''},
-        {title: 'Sound', selectedBackgroundColor: selectedBackgroundColor, },
-        {title: 'About', selectedBackgroundColor: selectedBackgroundColor, header: ''},
+        {title: 'Theme', selectedBackgroundColor: selectedBackgroundColor, hasChild:true, font:{fontFamily: 'HelveticaNeue-Light', fontSize:18,}, header: ''},
+        {title: 'Sound', selectedBackgroundColor: selectedBackgroundColor, hasChild:true, font:{fontFamily: 'HelveticaNeue-Light', fontSize:18,}, },
+        {title: 'About', selectedBackgroundColor: selectedBackgroundColor, hasChild:true, font:{fontFamily: 'HelveticaNeue-Light', fontSize:18,}, header: ''},        
 ];
 
 var settingsList = Titanium.UI.createTableView({
     data:listData,
-    style:Titanium.UI.iPhone.TableViewStyle.GROUPED
+    backgroundColor: '#fff',
+    separatorColor : '#d1d0d5',
+    //separatorStyle : Titanium.UI.iPhone.TableViewStyle.GROUPED,
+    style: Titanium.UI.iPhone.TableViewStyle.GROUPED
 });
 
 // CONTROLLER
