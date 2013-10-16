@@ -11,36 +11,41 @@ function windowClass(title) {
     // ios 7  create windows withought barImage and barColor
 if (version >= 7 && (device === 'iPhone OS' || device === 'iPad OS' || device === 'iPod Touch OS')){
         var self = Ti.UI.createWindow({
-        backgroundColor:'#fff',
+        //backgroundColor:'#fff',
         title:title,
     });
     }
 // ios 6 and lower
 else{
     var self = Ti.UI.createWindow({
+        statusBarStyle:Titanium.UI.iPhone.StatusBar.OPAQUE_BLACK,  // for a black status bar
         title:title,
         barColor: Ti.App.Properties.getString('theme', '#980012'),  // sets user selected colour,
         barImage: 'images/navbar.png',
         backButtonTitle:'Back',
-        backgroundColor:'#fff',
+        //backgroundColor:'#fff',
     });
     
 // create a title label for ios 6 and lower
 var titleLabel = Titanium.UI.createLabel({
     color:'#000',  // set the text colour to black
     height:42,
-    width:'100%',
+    width:'70%',
     text:title,
     textAlign:'center',
-    font:{fontFamily:'Helvetica Neue',fontSize:16,fontWeight:'bold'},
+    font:{fontFamily:'Helvetica Neue',fontSize:24,fontWeight:'normal'},
     shadowColor:'#fff',shadowOffset:{x:0,y:1}
 });
+// associate label to title
+self.setTitleControl(titleLabel);
 }
-// landscape orientation will hide navBar and statusBar
+
+// landscape orientation will hide navBar
 function changeOrientation (e) {
     if(e.orientation == '3' || e.orientation == '4'){  //landscape
         self.hideNavBar();
-    } else if (e.orientation == '1' || e.orientation == '2'){ //portrait
+    } 
+    else if (e.orientation == '1' || e.orientation == '2'){ //portrait
         self.showNavBar();
     }
 };
@@ -50,8 +55,6 @@ Titanium.Gesture.addEventListener('orientationchange', function(e) {
     changeOrientation(Titanium.Gesture);
 });
 
-// associate label to title
-self.setTitleControl(titleLabel);
 // export windowClass and return window object
     return self;
 };

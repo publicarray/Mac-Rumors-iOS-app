@@ -18,10 +18,10 @@ var activityIndicator = Ti.UI.createActivityIndicator({
     height: '100%',
     width: '100%',
     color: '#404347',
-    backgroundColor: '#d8d8d8',
+    backgroundColor: '#fff',
     font: {
-        fontFamily: 'Helvetica Neue',
-        fontSize: 14,
+        font:{fontSize:14,fontFamily:'Helvetica Neue'},
+        minimumFontSize:12,
         fontWeight: 'normal'
     },
     message: 'Loading...',
@@ -61,7 +61,7 @@ if(Titanium.Network.online) {
         getXMLdata(f);
         showTable();
         activityIndicator.hide();
-        alert('Off-line Mode');
+//////////alert('Off-line Mode!');
        } 
        // if the file doesn't exist and an error occurred just display a message letting the user know about it
         else if(!f.exists()) {
@@ -92,7 +92,7 @@ else if(f.exists()) {
 */
 else if(!f.exists()) {
         activityIndicator.hide();
-        alert('Your device is not connected to the internet.');
+////////alert('Your device is not connected to the internet.');
 }
 
 
@@ -107,7 +107,7 @@ function getXMLdata(file) {
             var item = items.item(i);
             var title = item.getElementsByTagName('title').item(0).text;
             var description = item.getElementsByTagName('description').item(0).text;
-            //var pubDate = item.getElementsByTagName('pubDate').item(0).text;
+            var pubDate = item.getElementsByTagName('pubDate').item(0).text;
             var link = item.getElementsByTagName('link').item(0).text;
             var creator = item.getElementsByTagName('dc:creator').item(0).text;
             
@@ -121,17 +121,19 @@ function getXMLdata(file) {
             var labelText = title;
             var label = Ti.UI.createLabel({
                 text: labelText,
+                font:{fontFamily: 'HelveticaNeue-Light',fontSize:16, fontWeight:'normal'},
                 highlightedColor: '#fff',
-                left: 5,
+                left: 20,
                 top: 5,
                 bottom: 5,
-                right: 5,
+                right: 20,
             });
             //add objects
             row.add(label);
             row.desc = description;
             row.link = link;
-            row.creator=creator,
+            row.pubDate = pubDate;
+            row.creator = creator;
             data[x++] = row;
         }
     }
@@ -158,13 +160,56 @@ function showTable() {
     win.add(tableView);
     // add event handler
     tableView.addEventListener('click', function (e) {
+        // create a back button
+        var backBtn = Ti.UI.createButton({
+            opacity: 60,
+            left: 10,
+            top: 10,
+            width: 30,
+            height: 30,
+            visible: false,
+            borderRadius: 5,
+            style: Titanium.UI.iPhone.SystemButtonStyle.PLAIN,
+            font:{fontSize:18,fontFamily:'HelveticaNeue-Light'},
+            backgroundImage:'images/transparent30.png',
+            color: '#fff',
+            image: 'images/backarow.png',
+            //selectedColor: Ti.App.Properties.getString('theme', '#980012'),
+            title: 'Back',
+            zIndex: 5,
+        });
         
+        // function of back button - go back
+        backBtn.addEventListener('click', function (e) {
+            detailWin.close();
+            e.opacity = 1;
+          
+        });
+        // show and hide the button on orientation change
+        showHideBtnOrientation(Titanium.Gesture);
+        Titanium.Gesture.addEventListener('orientationchange', function(e) {
+            showHideBtnOrientation(Titanium.Gesture);
+        });
+        function showHideBtnOrientation (e) {
+        if(e.orientation == '3' || e.orientation == '4'){  //landscape
+            backBtn.setVisible(true);
+            //Ti.UI.iPhone.hideStatusBar();
+        } 
+        else if (e.orientation == '1' || e.orientation == '2'){ //portrait
+            backBtn.setVisible(false);
+            //Ti.UI.iPhone.showStatusBar();
+        }
+};
         // the windows are created from the WindowClass and they open the tableDetailView.js passing the data through properties
         var detailWin = new Window (e.row.children[0].text);
+        detailWin.setTabBarHidden(true);
+        //detailWin.fullscreen = true;
         detailWin.url = 'tableDetailView.js';
-        detailWin.desc = e.row.desc;
-        detailWin.link = e.row.link;
-        detailWin.creator = e.row.creator;
+        detailWin.desc = e.rowData.desc;
+        detailWin.link = e.rowData.link;
+        detailWin.pubDate = e.rowData.pubDate;
+        detailWin.creator = e.rowData.creator;
+        detailWin.add(backBtn);
         
         // open the tab with a default slide animation
         tabGroup.activeTab.open(detailWin, {

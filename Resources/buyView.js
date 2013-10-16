@@ -13,3 +13,20 @@ var refreshBtnBuy = Titanium.UI.createButton({
     systemButton: Ti.UI.iPhone.SystemButton.REFRESH,
 });
 buyWin.setRightNavButton(refreshBtnBuy);
+
+// add a Activity Indicator
+var buyActivityIndicator = Ti.UI.createActivityIndicator({
+    height: '100%',
+    width: '100%',
+    color: '#404347',
+    //backgroundColor: '#d8d8d8',
+    font: {
+        fontFamily: 'Helvetica Neue',
+        fontSize: 14,
+        fontWeight: 'normal'
+    },
+    message: 'Loading...',
+    style: Ti.UI.iPhone.ActivityIndicatorStyle.DARK,
+});
+buyWin.add(buyActivityIndicator);
+buyActivityIndicator.show();
