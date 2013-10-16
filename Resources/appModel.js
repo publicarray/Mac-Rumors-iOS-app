@@ -62,9 +62,6 @@ function getFavourites()
 
     var selectedBackgroundColor = Ti.App.Properties.getString('theme', '#980012');
     
-    // devices with lower ios than 7 display custom text style
-//    var needlabel = (version < 7 && (device === 'iPhone OS' || device === 'iPad OS' || device === 'iPod Touch OS'));
-
     while (result.isValidRow())
     {
         var title = result.fieldByName('title');
@@ -73,18 +70,7 @@ function getFavourites()
         var rowid = result.fieldByName('rowid');
         var pubDate = result.fieldByName('pubDate');
         var creator = result.fieldByName('creator');
-        
-        // devices with lower ios than 7 display custom text style
-/*    if (needlabel){
-        var titleLabel = Ti.UI.createLabel({
-                text: title,
-                font:{fontFamily: 'HelveticaNeue-Light',fontSize:16, fontWeight:'normal'},
-                highlightedColor: '#fff',
-                left: 20,
-                top: 5,
-                bottom: 5,
-                right: 20,
-            });
+             
             // Create a new favourite object and add to array
             favourite.push({
                 title: title,
@@ -94,21 +80,9 @@ function getFavourites()
                 pubDate: pubDate,
                 creator: creator,
                 selectedBackgroundColor: selectedBackgroundColor,
-                label: titleLabel,
+                font:{fontFamily: 'HelveticaNeue-Light', fontSize:18,},
+                //height: 80,
             });
-    } else {
- */       
-            // Create a new favourite object and add to array
-            favourite.push({
-                title: title,
-                desc: desc,
-                link: link,
-                rowid: rowid,
-                pubDate: pubDate,
-                creator: creator,
-                selectedBackgroundColor: selectedBackgroundColor,
-            });
-//        }
         result.next();
     }
     

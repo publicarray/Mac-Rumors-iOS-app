@@ -2,6 +2,7 @@ var favouritesWin = new Window('Favourites');
 
 var favouriteTableView = Ti.UI.createTableView({
     editable:true,
+    separatorColor : '#d1d0d5',
 });
 
 favouritesWin.add(favouriteTableView);
