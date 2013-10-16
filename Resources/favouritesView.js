@@ -1,7 +1,42 @@
 var favouritesWin = new Window('Favourites');
 
+
+var tableSortHeader = Ti.UI.createView({
+    backgroundColor: '#fff',
+    width: '100%', height: 30
+});
+
+var sortbar = Titanium.UI.iOS.createTabbedBar({
+    labels:['Time Added', 'Date', 'Title'],
+    backgroundColor: themeColor,
+    top:5,
+    style:Titanium.UI.iPhone.SystemButtonStyle.BAR,
+    height:25,
+    width:'98%',
+});
+
+tableSortHeader.add(sortbar);
+
+sortbar.addEventListener('click', function(e){
+    if(e.index===0)
+    {
+        sortDB('rowid');
+    }
+    if(e.index===1)
+    {
+        sortDB('pubDate');
+    }
+    if(e.index===2)
+    {
+        sortDB('title');
+    }
+});
+
+
+
 var favouriteTableView = Ti.UI.createTableView({
     editable:true,
+    headerView: tableSortHeader,
     separatorColor : '#d1d0d5',
 });
 
