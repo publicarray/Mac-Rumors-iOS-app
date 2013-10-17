@@ -20,6 +20,7 @@ var settingsList = Titanium.UI.createTableView({
 
 // CONTROLLER
 settingsList.addEventListener('click', function (e) {
+    swosh.play();
     if (e.index===0){
     var detailWindow = new Window ('Theme');
     detailWindow.setUrl('setThemeView.js');

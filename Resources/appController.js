@@ -1,26 +1,23 @@
-// apply changes in properties
+// apply changes in properties when a propertie is changes - suchas volume
 Ti.App.Properties.addEventListener('change', function(e)
     {
        themeColor = Ti.App.Properties.getString('theme', '#980012');
-       bassSound.setVolume(Ti.App.Properties.getDouble('volume', 1));
-       deleteSound.setVolume(Ti.App.Properties.getDouble('volume', 1));
-       startSound.setVolume(Ti.App.Properties.getDouble('volume', 1));
+       volume = Ti.App.Properties.getDouble('volume', 1);
+       deleteSound.setVolume(volume);
+       swosh.setVolume(volume);
        tabGroup.setTintColor(themeColor);
        //searchBar.setTintColor(Ti.App.Properties.getString('theme', '#980012'));
        //tableView.setSelectedColor(Ti.App.Properties.getString('theme', '#980012'));
        if (version < 7 && (device === 'iPhone OS' || device === 'iPad OS' || device === 'iPod Touch OS'))
        {
-            tabGroup.setBarColor(Ti.App.Properties.getString('theme', '#980012'));
-            tabGroup.setActiveTabBackgroundImage('/images/' + Ti.App.Properties.getString("theme", "#980012") +'.png');
+            tabGroup.setBarColor(themeColor);
+            tabGroup.setActiveTabBackgroundImage('/images/' + themeColor +'.png');
             checkColour();
        }
     });
 
 // Save Tab order when the user tabs on a tab.
 tabGroup.addEventListener('focus', function(e){
-    // play bass sound
-    //bassSound.stop();
-    //bassSound.play();
     
     var currentTabId = e.index; // get the current tab that is in focus. (excluding the more tab - i guess the OS doent see it as a tab)
     var k = [];
@@ -74,10 +71,34 @@ function checkColour(){
 checkColour();
 
 function internetCheck() {
-    if(!Titanium.Network.online && !fileIos.exists() && !fileMac.exists() && !fileMain.exists()){
+    if(Titanium.Network.online){
+        // play start up sound - dialup
+        var dialup = Ti.Media.createSound({
+            url: "sound/dialup.wav",
+            volume: volume,
+        });
+        dialup.play();
+        // to stop the sound
+        Ti.App.addEventListener('stopDialup', function(e) {
+            dialup.stop();
+        });
+    }
+    else if(!Titanium.Network.online && !fileIos.exists() && !fileMac.exists() && !fileMain.exists()){
+        // play start up sound :o
+        var ohno = Ti.Media.createSound({
+            url: "sound/ohno.mp3",
+            volume: volume,
+        });
+        ohno.play();
         alert('Your device is not connected to the internet.');
     }
-    if(!Titanium.Network.online && fileIos.exists() && fileMac.exists() && fileMain.exists()){
+    else if(!Titanium.Network.online && fileIos.exists() && fileMac.exists() && fileMain.exists()){
+        // play start up sound :)
+        var startSound = Ti.Media.createSound({
+            url: "sound/windows95.wav",
+            volume: volume,
+        });
+        startSound.play();
         alert('Off-line Mode!');
     }
 };

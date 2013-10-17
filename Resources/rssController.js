@@ -50,6 +50,7 @@ if(Titanium.Network.online) {
         getXMLdata(f);
         showTable();
         activityIndicator.hide();
+        Ti.App.fireEvent('stopDialup');
     };
     
     xhr.onerror = function() {
@@ -158,8 +159,15 @@ function showTable() {
         hideSearchOnSelection: true,
     });
     win.add(tableView);
+    
+    // add sound
+    var swosh = Ti.Media.createSound({
+        url: "sound/swosh.wav",
+        volume: Ti.App.Properties.getDouble('volume', 1),
+    });
     // add event handler
     tableView.addEventListener('click', function (e) {
+        swosh.play();
         // create a back button
         var backBtn = Ti.UI.createButton({
             opacity: 60,
