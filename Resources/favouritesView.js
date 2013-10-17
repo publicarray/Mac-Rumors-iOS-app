@@ -1,49 +1,40 @@
 var favouritesWin = new Window('Favourites');
 
-
-var tableSortHeader = Ti.UI.createView({
+var tableHeader = Ti.UI.createView({
     backgroundColor: '#fff',
-    width: '100%', height: 30
+    width: '100%', 
+    height: 35+43,
 });
 
+// sorting of the database
 var sortbar = Titanium.UI.iOS.createTabbedBar({
     labels:['Time Added', 'Published Date', 'Article Title'],
     backgroundColor: themeColor,
-    top:5,
+    bottom:0,
     style:Titanium.UI.iPhone.SystemButtonStyle.BAR,
-    height:25,
+    height:30,
     width:'98%',
 });
 
-tableSortHeader.add(sortbar);
+tableHeader.add(sortbar);
 
-sortbar.addEventListener('click', function(e){
-    if(e.index===0)
-    {
-        sortDB('rowid');
-    }
-    if(e.index===1)
-    {
-        sortDB('pubDate');
-    }
-    if(e.index===2)
-    {
-        sortDB('title');
-    }
+// search bar
+var favSearch = Titanium.UI.createSearchBar({
+    tintColor: themeColor,
+    hintText: 'Search',
+    height:43,
+    top:0,
 });
-
-
+tableHeader.add(favSearch);
 
 var favouriteTableView = Ti.UI.createTableView({
     editable:true,
-    headerView: tableSortHeader,
+    data: getFavourites(), // Get the student data from the model
+    headerView: tableHeader,
     separatorColor : '#d1d0d5',
 });
 
 favouritesWin.add(favouriteTableView);
-// Get the student data from the model
-favouriteTableView.setData(getFavourites());
-//favouriteTableView.add(getFavourites());
 
 //edit button
 var editBtn = Titanium.UI.createButton({

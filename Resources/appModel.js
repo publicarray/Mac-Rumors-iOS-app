@@ -73,7 +73,7 @@ function getFavourites(result)
         var rowid = result.fieldByName('rowid');
         var pubDate = result.fieldByName('pubDate');
         var creator = result.fieldByName('creator');
-             Ti.API.info(rowid+" "+link+" "+pubDate);
+
             // Create a new favourite object and add to array
             favourite.push({
                 title: title,
@@ -84,7 +84,6 @@ function getFavourites(result)
                 creator: creator,
                 selectedBackgroundColor: themeColor,
                 font:{fontFamily: 'HelveticaNeue-Light', fontSize:18,},
-                //height: 80,
             });
         result.next();
     }
@@ -94,9 +93,6 @@ function getFavourites(result)
 
 function insertFavourite(favourite) // dont ferget to uptate this in tableDetailModel.js
 {
-    //var thisDate = new Date(Date.parse(favourite.pubDate));
-    //alert(thisDate);
-
     db.execute("INSERT INTO favourite (title, description, link, pubDate, creator) VALUES (?, ?, ?, ?, ?)", favourite.title, favourite.description, favourite.link, favourite.pubDate, favourite.creator);
 }
 
@@ -105,20 +101,21 @@ function deleteFavourite(rowid)
     db.execute('DELETE FROM favourite WHERE rowid=?', rowid);
 }
 
-function sortDB (sortBy) 
+function sortDB(sortBy) 
 {
-  if(sortBy==='rowid')
+  if(sortBy==='rowid' || sortBy==='title')
   {
-      var result = db.execute('SELECT rowid, * FROM favourite ORDER BY rowid');
+      var result = db.execute('SELECT rowid, * FROM favourite ORDER BY ' + sortBy);
   }
   else if (sortBy==='pubDate')
   {
       var result = db.execute('SELECT rowid, * FROM favourite ORDER BY pubDate DESC');
   }
-  else if (sortBy==='title')
-  {
-      var result = db.execute('SELECT rowid, * FROM favourite ORDER BY title');
-  }
-  
+  // update table
   favouriteTableView.setData(getFavourites(result));
+}
+
+function search(keyword)
+{
+    return db.execute("SELECT rowid, * FROM favourite WHERE LOWER(description) LIKE '%"+keyword+"%' ");
 }
