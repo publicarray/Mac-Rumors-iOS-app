@@ -1,4 +1,12 @@
 favouriteTableView.addEventListener('click', function (e) {
+    swosh.play();
+    
+    //sound
+    var share = Ti.Media.createSound({
+        url: "sound/swosh2.wav",
+        volume: Ti.App.Properties.getDouble('volume', 1),
+    });
+    
     // variables
     var title = e.row.title;
     var desc = e.rowData.desc;
@@ -135,15 +143,18 @@ favouriteTableView.addEventListener('click', function (e) {
             if (e.platform == "activityView" || e.platform == "activityPopover") {
                 switch (e.activity) {
                     case Social.ACTIVITY_TWITTER:
+                         share.play();
                         break;
                     // custom cases - add custom share functions
                     case Social.ACTIVITY_CUSTOM:
                         // send to Safari
                         if(e.activityName == "open.safari"){
+                            share.play();
                             Titanium.Platform.openURL(link);
                         };
                         // share as favourite
                         if(e.activityName == "open.favourite"){
+                            share.play();
                             var currentFav = {
                             title: title,
                             description: desc,

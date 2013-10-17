@@ -22,19 +22,17 @@ var fileMain = Titanium.Filesystem.getFile(Ti.Filesystem.applicationDataDirector
 
 //Theme colour
 var themeColor = Ti.App.Properties.getString('theme', '#980012');
+var volume = Ti.App.Properties.getDouble('volume', 1);
 
 // sound files
-var bassSound = Ti.Media.createSound({
-    url: "sound/bass.wav",
-    volume: Ti.App.Properties.getDouble('volume', 1),
-    });
+
 var deleteSound = Ti.Media.createSound({
     url: "sound/zap.wav",
-    volume: Ti.App.Properties.getDouble('volume', 1),
+    volume: volume,
     });
-var startSound = Ti.Media.createSound({
-    url: "sound/windows95.wav",
-    volume: Ti.App.Properties.getDouble('volume', 1),
+var swosh = Ti.Media.createSound({
+    url: "sound/swosh.wav",
+    volume: volume,
     });
 
 // Favourites Database

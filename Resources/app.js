@@ -6,8 +6,6 @@
  */
 
 Ti.include('appModel.js');
-// play start up sound :)
-startSound.play();
 
 //load in Window class
 var Window = require('windowFunction');
