@@ -67,6 +67,12 @@ if(Titanium.Network.online) {
        // if the file doesn't exist and an error occurred just display a message letting the user know about it
         else if(!f.exists()) {
         activityIndicator.hide();
+        // play ohno
+        var ohno = Ti.Media.createSound({
+            url: "sound/ohno.mp3",
+            volume: Ti.App.Properties.getDouble('volume', 1),
+        });
+        ohno.play();
         alert('The service is currently unavailable. Please Try Again Later.');
         }
     }};
