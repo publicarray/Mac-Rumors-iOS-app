@@ -34,6 +34,10 @@ var swosh = Ti.Media.createSound({
     url: "sound/swosh.wav",
     volume: volume,
     });
+var ohno = Ti.Media.createSound({
+    url: "sound/ohno.mp3",
+    volume: volume,
+});
 
 // Favourites Database
 var db = Ti.Database.open('favourites');
