@@ -221,7 +221,7 @@ function showTable() {
 * http://developer.appcelerator.com/apidoc/mobile/1.8.2/Titanium.UI.SearchBar-object
 */
     //save search when user types
-    searchBar.addEventListener('change', function (e) {
+    searchBar.addEventListener('return', function (e) {
         Ti.App.Properties.setString('search', searchBar.value);
     });
     

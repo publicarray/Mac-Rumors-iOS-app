@@ -164,6 +164,7 @@ favouriteTableView.addEventListener('click', function (e) {
 
 favouriteTableView.addEventListener('delete', function (e) {
     deleteFavourite(e.rowData.rowid);
+    // play a sound and stop it if it is already playing
     deleteSound.stop();
     deleteSound.play();
     // Update the table view
@@ -179,4 +180,38 @@ editBtn.addEventListener('click', function (e) {
 doneBtn.addEventListener('click', function (e) {
       favouriteTableView.setEditing(false);
       favouritesWin.setRightNavButton(editBtn);
+});
+
+// sorting the database on button click
+sortbar.addEventListener('click', function(e){
+    if(e.index===0)
+    {
+        sortDB('rowid');
+    }
+    else if(e.index===1)
+    {
+        sortDB('pubDate');
+    }
+    else if(e.index===2)
+    {
+        sortDB('title');
+    }
+});
+
+// search bar events
+favSearch.addEventListener('return', function (e) {
+    // replace the table data with the search query in the database
+    favouriteTableView.setData(getFavourites(search(e.value)));
+    favSearch.blur();
+});
+
+favSearch.addEventListener('cancel', function (e) {
+    favouriteTableView.setData(getFavourites());
+    favSearch.blur();
+});
+favSearch.addEventListener('focus', function (e) {
+    favSearch.setShowCancel(true, { animated: true });
+});
+favSearch.addEventListener('blur', function (e) {
+    favSearch.setShowCancel(false);
 });

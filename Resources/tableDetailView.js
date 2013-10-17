@@ -28,8 +28,8 @@ win.setTitleControl(titleLabel);
 //share button
 var shareBtn = Titanium.UI.createButton({
     systemButton: Ti.UI.iPhone.SystemButton.ACTION,
-    //backgroundImage :'images/topbar.png',
 });
+
 win.setRightNavButton(shareBtn);
 
 Ti.include('tableDetailController.js');
