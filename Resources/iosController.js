@@ -6,6 +6,7 @@ getData(feedUrlIos, fileIos, iOSWin);
 refreshBtnIos.addEventListener('click', function (e) {
     if(!Titanium.Network.online) {
     //alert user about internet
+    ohno.stop();
     ohno.play();
     alert("You must be connected to the internet to retrieve the latest information");
     }
