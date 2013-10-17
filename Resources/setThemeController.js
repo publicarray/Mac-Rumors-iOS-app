@@ -7,10 +7,18 @@ onCacheButton.addEventListener('change', function (e) {
     else if(!e.value){
     Ti.App.Properties.setBool('cache', false);
     // deletes the off-line txt files in the app directory 
-//Ti.API.info('Directory list to start: ' + Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory).getDirectoryListing());
+// file paths for saving and accessing the xml file from the web. (useful for off-line access)
+var fileIos = Titanium.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, 'iPhone.txt');
+var fileMac = Titanium.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, 'Mac.txt');
+var fileMain = Titanium.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, 'Front.txt');
+
 if (fileMain.exists() && fileMain.writable) { fileMain.deleteFile(); }
 if (fileMac.exists() && fileMac.writable) { fileMac.deleteFile(); }
 if (fileIos.exists() && fileIos.writable) { fileIos.deleteFile(); }
+
+var fileIos = null;
+var fileMac = null;
+var fileMain = null;
 }
 });
 
