@@ -1,9 +1,13 @@
 var favouritesWin = new Window('Favourites');
 
 var tableHeader = Ti.UI.createView({
-    backgroundColor: '#fff',
-    width: '100%', 
-    height: 35+43,
+    height: 32,
+    top: 0,
+});
+
+var pullView = Ti.UI.createView({
+    backgroundColor: '#fff', 
+    height: 43,
 });
 
 // sorting of the database
@@ -17,22 +21,28 @@ var sortbar = Titanium.UI.iOS.createTabbedBar({
 });
 
 tableHeader.add(sortbar);
-
+favouritesWin.add(tableHeader);
 // search bar
 var favSearch = Titanium.UI.createSearchBar({
+    barColor:'#bbb',
     tintColor: themeColor,
     hintText: 'Search',
-    height:43,
-    top:0,
+    height: 43,
+    top: 0,
 });
-tableHeader.add(favSearch);
+pullView.add(favSearch);
 
 var favouriteTableView = Ti.UI.createTableView({
     editable:true,
+    top: 32,
     data: getFavourites(), // Get the student data from the model
-    headerView: tableHeader,
+    //headerView: tableHeader,
+    //headerPullView: pullView,
+    search:favSearch,
+    searchHidden: true,
     separatorColor : '#d1d0d5',
 });
+//favouriteTableView.setContentInsets( {top:43,bottom:0,right:0,left:0}, {animated:true} );
 
 favouritesWin.add(favouriteTableView);
 
