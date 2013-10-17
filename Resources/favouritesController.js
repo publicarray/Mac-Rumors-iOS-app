@@ -197,22 +197,28 @@ doneBtn.addEventListener('click', function (e) {
 sortbar.addEventListener('click', function(e){
     if(e.index===0)
     {
-        sortDB('rowid');
+        Ti.App.Properties.setString('sortby', 'rowid');
+        favouriteTableView.setData(getFavourites());
+        //sortDB('rowid');
     }
     else if(e.index===1)
     {
-        sortDB('pubDate');
+        Ti.App.Properties.setString('sortby', 'pubDate DESC');
+        favouriteTableView.setData(getFavourites());
+        //sortDB('pubDate');
     }
     else if(e.index===2)
     {
-        sortDB('title');
+        Ti.App.Properties.setString('sortby', 'title');
+        favouriteTableView.setData(getFavourites());
+        //sortDB('title');
     }
 });
 
 // search bar events
 favSearch.addEventListener('return', function (e) {
     // replace the table data with the search query in the database
-    favouriteTableView.setData(getFavourites(search(e.value)));
+    favouriteTableView.setData(getFavourites(e.value));
     favSearch.blur();
 });
 

@@ -59,11 +59,15 @@ function createDatabase()
 
 // Returns students in an array suitable for displaying in a table view
 // Each object contains all columns plus a title field which can be used to display in a table view
-function getFavourites(result)
+function getFavourites(keyword)
 {
-    if (result===undefined)
+    if (keyword)
     {
-        var result = db.execute('SELECT rowid, * FROM favourite');
+        var result = db.execute("SELECT rowid, * FROM favourite WHERE LOWER(description) LIKE '%"+keyword+"%' ORDER BY " + Ti.App.Properties.getString('sortby', 'rowid'));
+    }
+    else
+    {
+        var result = db.execute('SELECT rowid, * FROM favourite ORDER BY ' + Ti.App.Properties.getString('sortby', 'rowid'));
     }
     var favourite = [];
     
@@ -101,23 +105,4 @@ function insertFavourite(favourite) // dont ferget to uptate this in tableDetail
 function deleteFavourite(rowid)
 {
     db.execute('DELETE FROM favourite WHERE rowid=?', rowid);
-}
-
-function sortDB(sortBy) 
-{
-  if(sortBy==='rowid' || sortBy==='title')
-  {
-      var result = db.execute('SELECT rowid, * FROM favourite ORDER BY ' + sortBy);
-  }
-  else if (sortBy==='pubDate')
-  {
-      var result = db.execute('SELECT rowid, * FROM favourite ORDER BY pubDate DESC');
-  }
-  // update table
-  favouriteTableView.setData(getFavourites(result));
-}
-
-function search(keyword)
-{
-    return db.execute("SELECT rowid, * FROM favourite WHERE LOWER(description) LIKE '%"+keyword+"%' ");
 }
