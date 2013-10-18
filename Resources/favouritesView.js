@@ -3,6 +3,7 @@ var favouritesWin = new Window('Favourites');
 var tableHeader = Ti.UI.createView({
     height: 32,
     top: 0,
+    zIndex: 10,
 });
 
 var pullView = Ti.UI.createView({
@@ -34,7 +35,7 @@ pullView.add(favSearch);
 
 var favouriteTableView = Ti.UI.createTableView({
     editable:true,
-    top: 32,
+    top: 31,
     data: getFavourites(), // Get the student data from the model
     //headerView: tableHeader,
     //headerPullView: pullView,

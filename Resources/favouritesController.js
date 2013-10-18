@@ -14,6 +14,7 @@ favouriteTableView.addEventListener('click', function (e) {
     var pubDate = e.rowData.pubDate;
     var creator = e.rowData.creator;
     var rowid = e.rowData.rowid;
+    var direction = e.rowData.direction;
         
     //create window
     var detailWindow = new Window(title);
@@ -72,10 +73,28 @@ favouriteTableView.addEventListener('click', function (e) {
     detailWindow.add(backBtn);
     detailWindow.setRightNavButton(shareBtn);
     
+    if(direction==='left'){
+        //var slideClosed = Titanium.UI.createAnimation();
+        //slideClosed.left = 320;
+        //slideClosed.duration = 500;
+        //detailWindow.animate(slideClosed);
+            
+        Ti.API.info('left');
+        //tabGroup.activeTab.close(detailWindow, {animation: slideClosed});
+        tabGroup.activeTab.open(detailWindow, {animation: false});
+    }
+    if(direction==='right'){
+        Ti.API.info('right');
+        //detailWindow.close();
+        tabGroup.activeTab.open(detailWindow, {animation: true});
+    }
+    if(direction==='start'){
+        Ti.API.info('Start');
     // open the tab with a default slide animation
     tabGroup.activeTab.open(detailWindow, {
         animation: true
-    });
+        });
+    }
         // function of back button - go back
         backBtn.addEventListener('click', function (e) {
             closeDetailWindow ();
@@ -105,7 +124,18 @@ favouriteTableView.addEventListener('click', function (e) {
             backBtn.setVisible(false);
         }
       };
-      
+    detailWindow.addEventListener('swipe', function(e)
+    {
+        if(e.direction==='left'){
+            var fav = getNextFavourite(rowid);        
+            favouriteTableView.fireEvent('click', fav);
+        }
+        if(e.direction==='right'){
+            var fav = getPreviousFavourite(rowid);
+            favouriteTableView.fireEvent('click', fav);
+        }
+        
+    });
      //share button - from: https://github.com/viezel/TiSocial.Framework
     shareBtn.addEventListener('click', function(e){
             // use the social plug-in: https://github.com/viezel/TiSocial.Framework
@@ -199,19 +229,16 @@ sortbar.addEventListener('click', function(e){
     {
         Ti.App.Properties.setString('sortby', 'rowid');
         favouriteTableView.setData(getFavourites());
-        //sortDB('rowid');
     }
     else if(e.index===1)
     {
         Ti.App.Properties.setString('sortby', 'pubDate DESC');
         favouriteTableView.setData(getFavourites());
-        //sortDB('pubDate');
     }
     else if(e.index===2)
     {
         Ti.App.Properties.setString('sortby', 'title');
         favouriteTableView.setData(getFavourites());
-        //sortDB('title');
     }
 });
 
@@ -219,12 +246,12 @@ sortbar.addEventListener('click', function(e){
 favSearch.addEventListener('return', function (e) {
     // replace the table data with the search query in the database
     favouriteTableView.setData(getFavourites(e.value));
-    favSearch.blur();
+    //favSearch.blur();
 });
 
 favSearch.addEventListener('cancel', function (e) {
     favouriteTableView.setData(getFavourites());
-    favSearch.blur();
+    //favSearch.blur();
 });
 favSearch.addEventListener('focus', function (e) {
     favSearch.setShowCancel(true, { animated: true });
