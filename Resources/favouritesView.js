@@ -37,13 +37,10 @@ var favouriteTableView = Ti.UI.createTableView({
     editable:true,
     top: 31,
     data: getFavourites(), // Get the student data from the model
-    //headerView: tableHeader,
-    //headerPullView: pullView,
-    search:favSearch,
+    headerView: pullView,
     searchHidden: true,
     separatorColor : '#d1d0d5',
 });
-//favouriteTableView.setContentInsets( {top:43,bottom:0,right:0,left:0}, {animated:true} );
 
 favouritesWin.add(favouriteTableView);
 
