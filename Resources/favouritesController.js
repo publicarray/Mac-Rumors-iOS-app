@@ -20,6 +20,9 @@ favouriteTableView.addEventListener('click', function (e) {
     var detailWindow = new Window(title);
     detailWindow.setTabBarHidden(true);
     
+    var detailView = Ti.UI.createView({
+        
+    });
     // devices with lower ios than 7 display custom text style
     if (version < 7 && (device === 'iPhone OS' || device === 'iPad OS' || device === 'iPod Touch OS')){
         var titleLabel = Titanium.UI.createLabel({
@@ -67,47 +70,31 @@ favouriteTableView.addEventListener('click', function (e) {
             title: 'Back',
             zIndex: 5,
         });
-        
+       
     // add the elements to window
-    detailWindow.add(webView);
-    detailWindow.add(backBtn);
+    detailView.add(webView);
+    detailView.add(backBtn);
     detailWindow.setRightNavButton(shareBtn);
+    detailWindow.add(detailView);
     
-    if(direction==='left'){
-        //var slideClosed = Titanium.UI.createAnimation();
-        //slideClosed.left = 320;
-        //slideClosed.duration = 500;
-        //detailWindow.animate(slideClosed);
-            
-        Ti.API.info('left');
-        //tabGroup.activeTab.close(detailWindow, {animation: slideClosed});
-        tabGroup.activeTab.open(detailWindow, {animation: false});
-    }
-    if(direction==='right'){
-        Ti.API.info('right');
-        //detailWindow.close();
-        tabGroup.activeTab.open(detailWindow, {animation: true});
-    }
-    if(direction==='start'){
-        Ti.API.info('Start');
     // open the tab with a default slide animation
     tabGroup.activeTab.open(detailWindow, {
         animation: true
         });
-    }
+    
         // function of back button - go back
         backBtn.addEventListener('click', function (e) {
             closeDetailWindow ();
         });
         
         function closeDetailWindow () {
-          // garbige/ memory collection
-            detailWindow.remove(webView);
+            
+            // garbige/ memory collection
+            detailView.remove(webView);
+            detailWindow.remove(detailView);
             webView = null;
-            //detailWindow.remove(shareBtn); // apparently it is already removed - conditions: potrait mode and title bar is hidden.
             shareBtn = null;
             detailWindow.remove(backBtn);
-            //backBtn = null; // not shure but it caurses some errors
             detailWindow.close();
         }
         
@@ -124,18 +111,39 @@ favouriteTableView.addEventListener('click', function (e) {
             backBtn.setVisible(false);
         }
       };
+      
     detailWindow.addEventListener('swipe', function(e)
     {
-        if(e.direction==='left'){
-            var fav = getNextFavourite(rowid);        
-            favouriteTableView.fireEvent('click', fav);
+        if(e.direction==='left')
+        {
+            var e = getNextFavourite(rowid);
+            //var leftanimation = Ti.UI.createAnimation({
+            //    duration:1000,
+            //    right:99,
+           // });
+            //detailView.animate(leftanimation);
         }
-        if(e.direction==='right'){
-            var fav = getPreviousFavourite(rowid);
-            favouriteTableView.fireEvent('click', fav);
+        if(e.direction==='right')
+        {
+            var e = getPreviousFavourite(rowid);
         }
         
+        // update variables
+        title = e.row.title;
+        desc = e.rowData.desc;
+        link = e.rowData.link;
+        pubDate = e.rowData.pubDate;
+        creator = e.rowData.creator;
+        rowid = e.rowData.rowid;
+        direction = e.rowData.direction;
+        detailWindow.setTitle(title);
+        if (version < 7 && (device === 'iPhone OS' || device === 'iPad OS' || device === 'iPod Touch OS')){
+            titleLabel.setText(title);
+        }
+        webView.setHtml('<head><link rel="stylesheet" type="text/css" href="style.css" media="all"></head><body>'+ desc +'</body>');
+        Ti.API.info('rowid #2: '+rowid);
     });
+    
      //share button - from: https://github.com/viezel/TiSocial.Framework
     shareBtn.addEventListener('click', function(e){
             // use the social plug-in: https://github.com/viezel/TiSocial.Framework

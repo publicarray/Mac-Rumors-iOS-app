@@ -30,7 +30,7 @@ else
         tabsBackgroundImage: '/images/tapbar.png',// background for tab bar
         backgroundColor: '#fff',// of View
         activeTabIconTint: '#fff',// active icon tint
-        //activeTabBackgroundImage: '/images/' + Ti.App.Properties.getString("theme", "#980012") +'.png',//active icon background image
+        activeTabBackgroundImage: '/images/' + Ti.App.Properties.getString("theme", "#980012") +'.png',//active icon background image
     });
 };
 
@@ -109,7 +109,7 @@ var tab5 = Ti.UI.createTab(
 
 // - create Settings tab
 Ti.include('settingsView.js');
-//Ti.include('settingsController.js');
+Ti.include('settingsController.js');
 var tab6 = Ti.UI.createTab(
 {
     title: L('Settings'),

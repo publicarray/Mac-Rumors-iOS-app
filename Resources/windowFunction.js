@@ -8,10 +8,9 @@ function windowClass(title) {
     var version = Ti.Platform.version;
     var device = Ti.Platform.name;
 
-    // ios 7  create windows withought barImage and barColor
+// ios 7  create windows withought barImage and barColor
 if (version >= 7 && (device === 'iPhone OS' || device === 'iPad OS' || device === 'iPod Touch OS')){
         var self = Ti.UI.createWindow({
-        //backgroundColor:'#fff',
         title:title,
     });
     }
@@ -23,12 +22,11 @@ else{
         barColor: Ti.App.Properties.getString('theme', '#980012'),  // sets user selected colour,
         barImage: 'images/navbar.png',
         backButtonTitle:'Back',
-        //backgroundColor:'#fff',
     });
     
 // create a title label for ios 6 and lower
 var titleLabel = Titanium.UI.createLabel({
-    color:'#000',  // set the text colour to black
+    color:'#000',  // set the text colour to black to contrast the white background
     height:42,
     width:'70%',
     text:title,
@@ -40,7 +38,7 @@ var titleLabel = Titanium.UI.createLabel({
 self.setTitleControl(titleLabel);
 }
 
-// landscape orientation will hide navBar
+// landscape orientation will hide the navBar
 function changeOrientation (e) {
     if(e.orientation == '3' || e.orientation == '4'){  //landscape
         self.hideNavBar();
