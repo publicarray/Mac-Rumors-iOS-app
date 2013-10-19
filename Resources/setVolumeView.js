@@ -30,6 +30,7 @@ var volumeLabelValue = Ti.UI.createLabel({
 
 volumeSlider.addEventListener('change', function(e) {
     var volume = e.value;
+    // converts the double to a decimal with a 1 decimal point number 
     volumeLabelValue.text = String.format("%3.1f", volume);
     Ti.App.Properties.setDouble('volume', volume);
 });

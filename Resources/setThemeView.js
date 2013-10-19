@@ -3,36 +3,17 @@ var themeWin = Ti.UI.currentWindow;
 // this window is animated when the user uses the keyboard
 var settingsAnimationView = Titanium.UI.createView();
 
-var cacheLabel = Ti.UI.createLabel({
-    text:'Delete Offline Files:',
-    font:{fontSize:18,fontFamily:'HelveticaNeue-Light'},
-    left: '10%',
-    width:'auto',
-    top: '10%',
-    minimumFontSize:18,
-});
-
-var onCacheButton = Ti.UI.createSwitch({
-   value: Ti.App.Properties.getBool('cache', true),
-   right: '10%',
-   width: 'auto',
-   top: '10%',
-   height: 40,
-});
-
 var themeLabel = Ti.UI.createLabel({
-    text:'Set Theme Colour: ',
+    text:'Set A Custom Theme Colour: ',
     width:'auto',
     font:{fontSize:18,fontFamily:'HelveticaNeue-Light'},
-    top: '40%',
-    left: '10%',
+    top: '10%',
     minimumFontSize:18,
 });
 var themeText = Ti.UI.createTextField({
     borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
-    top: '40%',
-    width: '30%',
-    right: '10%',
+    top: '30%',
+    width: '50%',
     returnKeyType:Ti.UI.RETURNKEY_DONE,
     autocorrect:false,
     value: Ti.App.Properties.getString('theme', '#980012'),
@@ -48,7 +29,7 @@ if (Ti.Platform.version >= 7 && (Ti.Platform.name === 'iPhone OS' || Ti.Platform
     height: 40,
     minimumFontSize:18,
     font:{fontSize:18,fontFamily:'HelveticaNeue-Light'},
-    top: '55%',
+    top: '50%',
     });
     
  // display a notice that some changes requre a restart 
@@ -77,7 +58,7 @@ var themeBtn = Ti.UI.createButton({
  
 });
 
-// display a notice to lower than iOS 7 devices that hex values are not supported
+// display a notice that hex values are not supported
 var themeNoticeLabel = Ti.UI.createLabel({
     text:'Please Note: Some changes are only visible after app restart.\nPlease use colour names, hex values are currently not supported',
     color:'#777',
@@ -92,8 +73,6 @@ settingsAnimationView.add(themeNoticeLabel);
 settingsAnimationView.add(themeBtn);
 settingsAnimationView.add(themeLabel);
 settingsAnimationView.add(themeText);
-settingsAnimationView.add(onCacheButton);
-settingsAnimationView.add(cacheLabel);
 themeWin.add(settingsAnimationView);
 
 Ti.include('setThemeController.js');

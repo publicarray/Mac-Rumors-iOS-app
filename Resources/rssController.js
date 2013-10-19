@@ -39,7 +39,6 @@ if(Titanium.Network.online) {
 
     //open network connection
     var xhr = Ti.Network.createHTTPClient({
-        cache: Ti.App.Properties.getBool('cache', true),
         timeout:5000,
     });
     xhr.open('GET', url);
@@ -54,15 +53,14 @@ if(Titanium.Network.online) {
     };
     
     xhr.onerror = function() {
-        Ti.API.info('XHR Error: ' + xhr.status + ' - ' + xhr.statusText);
+        //Ti.API.info('XHR Error: ' + xhr.status + ' - ' + xhr.statusText); // don't delete
      //check response status and act accordingly.
      if(xhr.status != 200) {
-        // if an error occurred we can still display the stored file, but we should still inform the user that the data isn't current
+        // if an error occurred we can still display the stored file
         if(f.exists()) {
         getXMLdata(f);
         showTable();
         activityIndicator.hide();
-//////////alert('Off-line Mode!');
        } 
        // if the file doesn't exist and an error occurred just display a message letting the user know about it
         else if(!f.exists()) {
@@ -79,12 +77,12 @@ if(Titanium.Network.online) {
 
     // everything above doesn't actually do anything yet, we have to send the request first.
     // the try catch block catches any errors -- useful for debugging and it prevents the app from crashing.
-    try {
+   // try {
         xhr.send();
-    } catch(e) {
-        Ti.API.info('error with xhr.send(): '+e);
-        xhr.abort();
-    }
+   // } catch(e) {
+    //    Ti.API.info('error with xhr.send(): '+e);
+    //    xhr.abort();
+    //}
 }
 /*
  * if a file exists but there is no internet connection than use the file to display the table
@@ -99,7 +97,6 @@ else if(f.exists()) {
 */
 else if(!f.exists()) {
         activityIndicator.hide();
-////////alert('Your device is not connected to the internet.');
 }
 
 
@@ -188,7 +185,6 @@ function showTable() {
             backgroundImage:'images/transparent30.png',
             color: '#fff',
             image: 'images/backarow.png',
-            //selectedColor: Ti.App.Properties.getString('theme', '#980012'),
             title: 'Back',
             zIndex: 5,
         });
@@ -207,17 +203,14 @@ function showTable() {
         function showHideBtnOrientation (e) {
         if(e.orientation == '3' || e.orientation == '4'){  //landscape
             backBtn.setVisible(true);
-            //Ti.UI.iPhone.hideStatusBar();
         } 
         else if (e.orientation == '1' || e.orientation == '2'){ //portrait
             backBtn.setVisible(false);
-            //Ti.UI.iPhone.showStatusBar();
         }
 };
         // the windows are created from the WindowClass and they open the tableDetailView.js passing the data through properties
         var detailWin = new Window (e.row.children[0].text);
         detailWin.setTabBarHidden(true);
-        //detailWin.fullscreen = true;
         detailWin.url = 'tableDetailView.js';
         detailWin.desc = e.rowData.desc;
         detailWin.link = e.rowData.link;

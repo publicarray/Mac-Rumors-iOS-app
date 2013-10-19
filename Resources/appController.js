@@ -6,8 +6,7 @@ Ti.App.Properties.addEventListener('change', function(e)
        deleteSound.setVolume(volume);
        swosh.setVolume(volume);
        tabGroup.setTintColor(themeColor);
-       //searchBar.setTintColor(Ti.App.Properties.getString('theme', '#980012'));
-       //tableView.setSelectedColor(Ti.App.Properties.getString('theme', '#980012'));
+
        if (version < 7 && (device === 'iPhone OS' || device === 'iPad OS' || device === 'iPod Touch OS'))
        {
             tabGroup.setBarColor(themeColor);
@@ -33,7 +32,7 @@ tabGroup.addEventListener('focus', function(e){
     Ti.App.Properties.setInt('lastTB', currentTabId);
     //Save the array of tab id's as a property in 'TB'
     Ti.App.Properties.setList('TB', k);
-    //Ti.App.Properties.setList('TB', null); // reset tabs
+    //Ti.App.Properties.setList('TB', null); // reset tabs - don't delete
 });
 
 // Load saved tabs in 'TB' back in Order

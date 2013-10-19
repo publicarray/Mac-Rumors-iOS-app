@@ -25,7 +25,6 @@ var themeColor = Ti.App.Properties.getString('theme', '#980012');
 var volume = Ti.App.Properties.getDouble('volume', 1);
 
 // sound files
-
 var deleteSound = Ti.Media.createSound({
     url: "sound/zap.wav",
     volume: volume,
@@ -88,7 +87,6 @@ function getFavourites(keyword)
                 rowid: rowid,
                 pubDate: pubDate,
                 creator: creator,
-                direction: 'start',
                 selectedBackgroundColor: themeColor,
                 font:{fontFamily: 'HelveticaNeue-Light', fontSize:18,},
             });
@@ -110,59 +108,87 @@ function deleteFavourite(rowid)
 
 function getNextFavourite(rowid)
 {
+    // initialise
+        var row={
+            title:'',
+        };
+        var rowData={
+            desc:'',
+            link: '',
+            rowid: rowid,
+            pubDate: '',
+            creator: '',
+        };
+        
     var favourite;
     var result = db.execute('SELECT rowid, * FROM favourite');
     while (result.isValidRow()){
         if (result.fieldByName('rowid')===rowid){
-            // create next fav and return as an object 
+            // create next Favourite and return as an object 
             result.next();
             
-            var row={
+            row={
                 title: result.fieldByName('title')
             };
-            var rowData={
+            rowData={
                 desc: result.fieldByName('description'),
                 link: result.fieldByName('link'),
                 rowid: result.fieldByName('rowid'),
                 pubDate: result.fieldByName('pubDate'),
                 creator: result.fieldByName('creator'),
-                direction: 'right',
-            };
-            favourite={
-                row:row,
-                rowData:rowData,
             };
             
             break;
         }
         result.next();
     }
+    if(rowData.rowid===undefined)
+    {
+        Ti.API.warn('rowid = undefined');
+        rowData.desc='';
+        rowData.rowid=rowid;
+    }
+    favourite={
+            row:row,
+            rowData:rowData,
+        };
     return favourite;
 }
 
 function getPreviousFavourite(rowid)
 {
+    // initialise
+        var row={
+            title:'',
+        };
+        var rowData={
+            desc:'',
+            link: '',
+            rowid: rowid,
+            pubDate: '',
+            creator: '',
+        };
+        
     var favourite;
     var result = db.execute('SELECT rowid, * FROM favourite');
     while (result.isValidRow() && result.fieldByName('rowid')!==rowid){
-        // create fav untill the rowid matches - the fav should be the previous one before the rowid = rowid
-        var row={
+        // update Favourite untill the rowid matches - the fav should be the previous one before the rowid = rowid
+        row={
             title: result.fieldByName('title')
         };
-        var rowData={
+        rowData={
             desc: result.fieldByName('description'),
             link: result.fieldByName('link'),
             rowid: result.fieldByName('rowid'),
             pubDate: result.fieldByName('pubDate'),
             creator: result.fieldByName('creator'),
-            direction: 'left',
-        };
-        favourite={
-            row:row,
-            rowData:rowData,
         };
         result.next();
     }
+    favourite={
+            row:row,
+            rowData:rowData,
+        };
     // return object
     return favourite;
 }

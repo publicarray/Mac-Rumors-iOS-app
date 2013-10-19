@@ -42,6 +42,7 @@ view.add(version);
 view.add(copyright);
 view.add(about);
 
+//add content to a scroll view (the content grows in landscape, also good if more information is added later)
 var scrollView = Ti.UI.createScrollView({
   contentWidth: '100%',
   contentHeight: 'auto',
