@@ -246,12 +246,12 @@ sortbar.addEventListener('click', function(e){
 favSearch.addEventListener('return', function (e) {
     // replace the table data with the search query in the database
     favouriteTableView.setData(getFavourites(e.value));
-    //favSearch.blur();
+    favSearch.blur();
 });
 
 favSearch.addEventListener('cancel', function (e) {
     favouriteTableView.setData(getFavourites());
-    //favSearch.blur();
+    favSearch.blur();
 });
 favSearch.addEventListener('focus', function (e) {
     favSearch.setShowCancel(true, { animated: true });
