@@ -3,7 +3,10 @@
 #### This project is developed for a uni assignment, developed using Appcelerator Titanium Studio.
 
 
+The app uses use of the social module: https://github.com/viezel/TiSocial.Framework v1.7.0
 
+To install it on a mac place it in the ~/Library/Application Support/Titanium/modules/ folder
+where ~ is your home folder.
 
 ----------------------------------
 Stuff our legal folk make us say:
