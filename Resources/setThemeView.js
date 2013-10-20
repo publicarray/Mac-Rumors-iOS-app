@@ -36,7 +36,6 @@ if (Ti.Platform.version >= 7 && (Ti.Platform.name === 'iPhone OS' || Ti.Platform
 var themeNoticeLabel = Ti.UI.createLabel({
     text:'Please Note: Some changes are only visible after app restart.',
     color:'#777',
-    minimumFontSize:11,
     font:{fontSize:11,fontFamily:'HelveticaNeue-Light'},
     width:'90%',
     top: '80%',
@@ -58,11 +57,10 @@ var themeBtn = Ti.UI.createButton({
  
 });
 
-// display a notice that hex values are not supported
+// display a notice that hex values are not supported for devices running a lower ios version
 var themeNoticeLabel = Ti.UI.createLabel({
     text:'Please Note: Some changes are only visible after app restart.\nPlease use colour names, hex values are currently not supported',
     color:'#777',
-    minimumFontSize:11,
     font:{fontSize:11,fontFamily:'HelveticaNeue-Light'},
     width:'98%',
     top: '80%',
