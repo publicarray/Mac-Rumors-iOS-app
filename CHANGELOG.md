@@ -1,17 +1,17 @@
-1.0
+1.0 17/9/13
 + tab bar
 + table view
 + web views
 + icons/ splash screens
 
-1.0.1
+1.0.1 22/9/13
 + off-line support
 + following MCV model
 + iOS 7 support
 + save app state
 + search
 
-1.2
+1.2 27/9/13
 + social integration & Email sharing
 + settings to change colour off app
 + code descriptions
