@@ -1,5 +1,5 @@
 1.0
-initial app
+Initial app
 + tab bar
 + table view
 + web views
@@ -19,8 +19,18 @@ initial app
 + bug fixes
 
 1.3
-+ implentation of database
-+ implemented favorites
++ implemented new settings screen
++ added about screen
++ added ability to save and delete favourites to a database
++ implemented sorting and searching the database
++ updated splash screens and appicon
++ improved landscape orientation / fullscreen mode
++ improved error messages
 
-1.4
-+ integrated swipe gesture to open the next or previous artile in the favorites
+1.3.1
++ modified database
++ integrated swipe gesture to open the next or previous article in the Database
++ added sound effects
++ added settings to control volume
++ removed upside-down rotation mode
++ removed unnecessary files and debug messages
