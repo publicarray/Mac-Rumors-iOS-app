@@ -1,7 +1,7 @@
 //share button - from: https://github.com/viezel/TiSocial.Framework
 shareBtn.addEventListener('click', function(e){
     var share = Ti.Media.createSound({
-        url: "sound/swosh2.wav",
+        url: "sound/swosh2.mp3",
         volume: Ti.App.Properties.getDouble('volume', 1),
     });
                         

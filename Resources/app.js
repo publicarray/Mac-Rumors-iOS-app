@@ -54,7 +54,7 @@ var tab1 = Ti.UI.createTab(
 {
     title: L('Mac'),
     id: 1,
-    icon: '/images/mac2.png',
+    icon: '/images/mac.png',
     activeIcon: '/images/mac_off.png',
     window: macWin
 });
