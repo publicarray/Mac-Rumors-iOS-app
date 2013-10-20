@@ -20,6 +20,8 @@
 1.3
 + implemented new settings screen
 + added about screen
++ added sound effects
++ added settings to control volume
 + added ability to save and delete favourites to a database
 + implemented sorting and searching the database
 + updated splash screens and appicon
@@ -29,7 +31,5 @@
 1.3.1
 + modified database
 + integrated swipe gesture to open the next or previous article in the Database
-+ added sound effects
-+ added settings to control volume
 + removed upside-down rotation mode
 + removed unnecessary files and debug messages
