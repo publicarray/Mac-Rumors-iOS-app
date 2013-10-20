@@ -2,7 +2,7 @@
 <ti:app xmlns:ti="http://ti.appcelerator.org">
     <id>mx.x10.spage.macrumours</id>
     <name>Mac Rumors</name>
-    <version>1.3.0</version>
+    <version>1.3.1</version>
     <publisher>Sebastian Schmidt</publisher>
     <url>http://spage.x10.mx</url>
     <description>The app fetches the RSS feed of http://www.macrumors.com and displays them in a Table view.
@@ -15,15 +15,27 @@ Features included:
 * landscape orientation mode</description>
     <copyright>Created by Sebastian Schmidt and Paris Moletti</copyright>
     <icon>appicon.png</icon>
-    <persistent-wifi>false</persistent-wifi>
     <prerendered-icon>true</prerendered-icon>
-    <statusbar-style>default</statusbar-style>
-    <statusbar-hidden>false</statusbar-hidden>
     <fullscreen>false</fullscreen>
     <navbar-hidden>false</navbar-hidden>
     <analytics>true</analytics>
     <guid>cbe0f7ba-f614-4851-b681-246be29ff2a5</guid>
     <property name="ti.ui.defaultunit" type="string">system</property>
+    <ios>
+        <min-ios-ver>4.3</min-ios-ver>
+        <key>UIPrerenderedIcon</key>
+        <true/>
+        <key>UIStatusBarStyle</key>
+        <string>UIStatusBarStyleBlackTranslucent</string>
+        <plist>
+            <dict>
+                <key>UIRequiredDeviceCapabilities</key>
+                <array>
+                    <string>wifi</string>
+                </array>
+            </dict>
+        </plist>
+    </ios>
     <iphone>
         <orientations device="iphone">
             <orientation>Ti.UI.PORTRAIT</orientation>
