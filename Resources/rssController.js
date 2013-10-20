@@ -39,7 +39,6 @@ if(Titanium.Network.online) {
 
     //open network connection
     var xhr = Ti.Network.createHTTPClient({
-        cache: Ti.App.Properties.getBool('cache', true),
         timeout:5000,
     });
     xhr.open('GET', url);
@@ -50,34 +49,34 @@ if(Titanium.Network.online) {
         getXMLdata(f);
         showTable();
         activityIndicator.hide();
+        Ti.App.fireEvent('stopDialup');
     };
     
     xhr.onerror = function() {
-        Ti.API.info('XHR Error: ' + xhr.status + ' - ' + xhr.statusText);
+        //Ti.API.info('XHR Error: ' + xhr.status + ' - ' + xhr.statusText); // don't delete
      //check response status and act accordingly.
      if(xhr.status != 200) {
-        // if an error occurred we can still display the stored file, but we should still inform the user that the data isn't current
+        // if an error occurred we can still display the stored file
         if(f.exists()) {
         getXMLdata(f);
         showTable();
         activityIndicator.hide();
-//////////alert('Off-line Mode!');
        } 
        // if the file doesn't exist and an error occurred just display a message letting the user know about it
         else if(!f.exists()) {
         activityIndicator.hide();
+        // play ohno
+        var ohno = Ti.Media.createSound({
+            url: "sound/ohno.mp3",
+            volume: Ti.App.Properties.getDouble('volume', 1),
+        });
+        ohno.play();
         alert('The service is currently unavailable. Please Try Again Later.');
         }
     }};
 
     // everything above doesn't actually do anything yet, we have to send the request first.
-    // the try catch block catches any errors -- useful for debugging and it prevents the app from crashing.
-    try {
         xhr.send();
-    } catch(e) {
-        Ti.API.info('error with xhr.send(): '+e);
-        xhr.abort();
-    }
 }
 /*
  * if a file exists but there is no internet connection than use the file to display the table
@@ -92,7 +91,6 @@ else if(f.exists()) {
 */
 else if(!f.exists()) {
         activityIndicator.hide();
-////////alert('Your device is not connected to the internet.');
 }
 
 
@@ -148,6 +146,7 @@ function showTable() {
     tintColor :Ti.App.Properties.getString('theme', '#980012'),
     height:43,
     top:0,
+    value: null,
     });
     // create table
     var tableView = Ti.UI.createTableView({
@@ -158,8 +157,15 @@ function showTable() {
         hideSearchOnSelection: true,
     });
     win.add(tableView);
+    
+    // add sound
+    var swosh = Ti.Media.createSound({
+        url: "sound/swosh.mp3",
+        volume: Ti.App.Properties.getDouble('volume', 1),
+    });
     // add event handler
     tableView.addEventListener('click', function (e) {
+        swosh.play();
         // create a back button
         var backBtn = Ti.UI.createButton({
             opacity: 60,
@@ -174,7 +180,6 @@ function showTable() {
             backgroundImage:'images/transparent30.png',
             color: '#fff',
             image: 'images/backarow.png',
-            //selectedColor: Ti.App.Properties.getString('theme', '#980012'),
             title: 'Back',
             zIndex: 5,
         });
@@ -193,17 +198,14 @@ function showTable() {
         function showHideBtnOrientation (e) {
         if(e.orientation == '3' || e.orientation == '4'){  //landscape
             backBtn.setVisible(true);
-            //Ti.UI.iPhone.hideStatusBar();
         } 
         else if (e.orientation == '1' || e.orientation == '2'){ //portrait
             backBtn.setVisible(false);
-            //Ti.UI.iPhone.showStatusBar();
         }
 };
         // the windows are created from the WindowClass and they open the tableDetailView.js passing the data through properties
         var detailWin = new Window (e.row.children[0].text);
         detailWin.setTabBarHidden(true);
-        //detailWin.fullscreen = true;
         detailWin.url = 'tableDetailView.js';
         detailWin.desc = e.rowData.desc;
         detailWin.link = e.rowData.link;
@@ -217,21 +219,18 @@ function showTable() {
         });
     });
 /*
-* my attempt to save the search value, redisplay it and update the table
-* http://developer.appcelerator.com/apidoc/mobile/1.8.2/Titanium.UI.SearchBar-object
+* my attempt to save the search value, redisplay it and update the table - works in ios 6.1 , but it does not seem to work in the iOS 7 simulator
+* https://developer.appcelerator.com/question/123321/search-bar-value-gets-cleared-on-blur
 */
     //save search when user types
-    searchBar.addEventListener('change', function (e) {
-        Ti.App.Properties.setString('search', searchBar.value);
+    searchBar.addEventListener('return', function (e) {
+        Ti.App.Properties.setString('search', e.value);
     });
     
-// attempt to reload the entered search value & update the table
-// - this is tested and works for iOS 6.1, but it does not seem to work in the iOS 7 simulator
     win.addEventListener('focus', function(e) {
         if(searchBar.value){
-        searchBar.value=Ti.App.Properties.getString('search','');
-        searchBar.blur();
-        tableView.searchHidden=false; 
+            searchBar.value = Ti.App.Properties.getString('search','');
+            tableView.searchHidden=false; 
         }
     });
 
@@ -240,5 +239,4 @@ function showTable() {
         Ti.App.Properties.setString('search', null);
     });
 };
-
 }

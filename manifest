@@ -6,4 +6,4 @@
 #publisher:Sebastian Schmidt
 #url:http://spage.x10.mx
 #image:appicon.png
-#desc:MacRumors.com
+#desc:The app fetches the RSS feed of http://www.macrumors.com and displays them in a Table view.\n\nFeatures included:\n* saving of favourite articles\n* sharing articles to twitter, Facebook and email by using https://github.com/viezel/TiSocial.Framework Module\n* saves the feed for offline browsing.\n* customisation - changing of the colour scheme.\n* landscape orientation mode
