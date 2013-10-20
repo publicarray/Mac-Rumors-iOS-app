@@ -20,19 +20,23 @@ var fileIos = Titanium.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory
 var fileMac = Titanium.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, 'Mac.txt');
 var fileMain = Titanium.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, 'Front.txt');
 
+//Theme colour
+var themeColor = Ti.App.Properties.getString('theme', '#980012');
+var volume = Ti.App.Properties.getDouble('volume', 1);
+
 // sound files
-var bassSound = Ti.Media.createSound({
-    url: "sound/bass.wav",
-    volume: Ti.App.Properties.getDouble('volume', 1),
-    });
 var deleteSound = Ti.Media.createSound({
-    url: "sound/zap.wav",
-    volume: Ti.App.Properties.getDouble('volume', 1),
+    url: "sound/zap.mp3",
+    volume: volume,
     });
-var startSound = Ti.Media.createSound({
-    url: "sound/windows95.wav",
-    volume: Ti.App.Properties.getDouble('volume', 1),
+var swosh = Ti.Media.createSound({
+    url: "sound/swosh.mp3",
+    volume: volume,
     });
+var ohno = Ti.Media.createSound({
+    url: "sound/ohno.mp3",
+    volume: volume,
+});
 
 // Favourites Database
 var db = Ti.Database.open('favourites');
@@ -41,26 +45,21 @@ createDatabase();
 function createDatabase()
 {
     db.execute('CREATE TABLE IF NOT EXISTS favourite(title TEXT, description TEXT, link TEXT, pubDate DATE, creator TEXT)');
-    
-    // If table is empty insert initial data
-    var result = db.execute('SELECT * FROM favourite');
-    
-    if (result.rowCount == 0)
-    {
-        // Insert initial data
-        db.execute('INSERT INTO favourite (title, description, link, pubDate, creator) values ("Create a list of your Favorites", "<h2>I am your first Favourite!</h2>", "www.google.com", "1/1/2000", "Sebastian Schmidt")');
-    }
 }
 
 // Returns students in an array suitable for displaying in a table view
 // Each object contains all columns plus a title field which can be used to display in a table view
-function getFavourites()
+function getFavourites(keyword)
 {
+    if (keyword)
+    {
+        var result = db.execute("SELECT rowid, * FROM favourite WHERE LOWER(description) LIKE '%"+keyword+"%' ORDER BY " + Ti.App.Properties.getString('sortby', 'rowid'));
+    }
+    else
+    {
+        var result = db.execute('SELECT rowid, * FROM favourite ORDER BY ' + Ti.App.Properties.getString('sortby', 'rowid'));
+    }
     var favourite = [];
-    
-    var result = db.execute('SELECT rowid, * FROM favourite');
-
-    var selectedBackgroundColor = Ti.App.Properties.getString('theme', '#980012');
     
     while (result.isValidRow())
     {
@@ -70,7 +69,7 @@ function getFavourites()
         var rowid = result.fieldByName('rowid');
         var pubDate = result.fieldByName('pubDate');
         var creator = result.fieldByName('creator');
-             
+
             // Create a new favourite object and add to array
             favourite.push({
                 title: title,
@@ -79,9 +78,8 @@ function getFavourites()
                 rowid: rowid,
                 pubDate: pubDate,
                 creator: creator,
-                selectedBackgroundColor: selectedBackgroundColor,
+                selectedBackgroundColor: themeColor,
                 font:{fontFamily: 'HelveticaNeue-Light', fontSize:18,},
-                //height: 80,
             });
         result.next();
     }
@@ -89,21 +87,99 @@ function getFavourites()
     return favourite;
 }
 
-function insertFavourite(favourite)
+function insertFavourite(favourite) // dont ferget to uptate this in tableDetailModel.js
 {
     db.execute("INSERT INTO favourite (title, description, link, pubDate, creator) VALUES (?, ?, ?, ?, ?)", favourite.title, favourite.description, favourite.link, favourite.pubDate, favourite.creator);
 }
 
 function deleteFavourite(rowid)
 {
-    
-      db.execute('DELETE FROM favourite WHERE rowid=?', rowid);
+    db.execute('DELETE FROM favourite WHERE rowid=?', rowid);
 }
 
-/*
-function sortdate()
+function getNextFavourite(rowid)
 {
-    db.excecute('SELECT DISTINCT description, title, date FROM favourite');
+    // initialise
+        var row={
+            title:'',
+        };
+        var rowData={
+            desc:'',
+            link: '',
+            rowid: rowid,
+            pubDate: '',
+            creator: '',
+        };
+        
+    var favourite;
+    var result = db.execute('SELECT rowid, * FROM favourite');
+    while (result.isValidRow()){
+        if (result.fieldByName('rowid')===rowid){
+            // create next Favourite and return as an object 
+            result.next();
+            
+            row={
+                title: result.fieldByName('title')
+            };
+            rowData={
+                desc: result.fieldByName('description'),
+                link: result.fieldByName('link'),
+                rowid: result.fieldByName('rowid'),
+                pubDate: result.fieldByName('pubDate'),
+                creator: result.fieldByName('creator'),
+            };
+            
+            break;
+        }
+        result.next();
+    }
+    if(rowData.rowid===undefined)
+    {
+        Ti.API.warn('rowid = undefined');
+        rowData.desc='';
+        rowData.rowid=rowid;
+    }
+    favourite={
+            row:row,
+            rowData:rowData,
+        };
+    return favourite;
 }
 
-*/
+function getPreviousFavourite(rowid)
+{
+    // initialise
+        var row={
+            title:'',
+        };
+        var rowData={
+            desc:'',
+            link: '',
+            rowid: rowid,
+            pubDate: '',
+            creator: '',
+        };
+        
+    var favourite;
+    var result = db.execute('SELECT rowid, * FROM favourite');
+    while (result.isValidRow() && result.fieldByName('rowid')!==rowid){
+        // update Favourite untill the rowid matches - the fav should be the previous one before the rowid = rowid
+        row={
+            title: result.fieldByName('title')
+        };
+        rowData={
+            desc: result.fieldByName('description'),
+            link: result.fieldByName('link'),
+            rowid: result.fieldByName('rowid'),
+            pubDate: result.fieldByName('pubDate'),
+            creator: result.fieldByName('creator'),
+        };
+        result.next();
+    }
+    favourite={
+            row:row,
+            rowData:rowData,
+        };
+    // return object
+    return favourite;
+}

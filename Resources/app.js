@@ -6,8 +6,6 @@
  */
 
 Ti.include('appModel.js');
-// play start up sound :)
-startSound.play();
 
 //load in Window class
 var Window = require('windowFunction');
@@ -27,12 +25,12 @@ else
     //create tab bar for older iOS's'
     var tabGroup = Ti.UI.createTabGroup(
     {
-        barColor: Ti.App.Properties.getString('theme', '#980012'),//#650000, // for more tab
+        barColor: themeColor,//#650000, // for more tab
         tabsBackgroundColor: '#000',// inactive icon tint
         tabsBackgroundImage: '/images/tapbar.png',// background for tab bar
         backgroundColor: '#fff',// of View
         activeTabIconTint: '#fff',// active icon tint
-        //activeTabBackgroundImage: '/images/' + Ti.App.Properties.getString("theme", "#980012") +'.png',//active icon background image
+        activeTabBackgroundImage: '/images/' + Ti.App.Properties.getString("theme", "#980012") +'.png',//active icon background image
     });
 };
 
@@ -56,7 +54,7 @@ var tab1 = Ti.UI.createTab(
 {
     title: L('Mac'),
     id: 1,
-    icon: '/images/mac2.png',
+    icon: '/images/mac.png',
     activeIcon: '/images/mac_off.png',
     window: macWin
 });
@@ -111,7 +109,7 @@ var tab5 = Ti.UI.createTab(
 
 // - create Settings tab
 Ti.include('settingsView.js');
-//Ti.include('settingsController.js');
+Ti.include('settingsController.js');
 var tab6 = Ti.UI.createTab(
 {
     title: L('Settings'),

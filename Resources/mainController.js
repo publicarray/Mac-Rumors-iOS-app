@@ -6,6 +6,8 @@ getData(feedUrlMain, fileMain, mainWin);
 refreshBtnMain.addEventListener('click', function (e) {
     if(!Titanium.Network.online) {
     //alert user about internet
+    ohno.stop();
+    ohno.play();
     alert("You must be connected to the internet to retrieve the latest information");
     }
     else if(Titanium.Network.online){

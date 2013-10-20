@@ -1,19 +1,4 @@
 
-// sets the cache for the xhr Ti.Network.HTTPClient
-onCacheButton.addEventListener('change', function (e) {
-    if(e.value){
-    Ti.App.Properties.setBool('cache', true);
-}
-    else if(!e.value){
-    Ti.App.Properties.setBool('cache', false);
-    // deletes the off-line txt files in the app directory 
-//Ti.API.info('Directory list to start: ' + Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory).getDirectoryListing());
-if (fileMain.exists() && fileMain.writable) { fileMain.deleteFile(); }
-if (fileMac.exists() && fileMac.writable) { fileMac.deleteFile(); }
-if (fileIos.exists() && fileIos.writable) { fileIos.deleteFile(); }
-}
-});
-
 // the view is animated to go up when the text field is selected
 themeText.addEventListener('focus', function (e){
     var animation = Titanium.UI.createAnimation();

@@ -19,5 +19,7 @@ function insertFavourite(favourite)
 {
     // database
     var db = Ti.Database.open('favourites');
-    db.execute("INSERT INTO favourite (title, description, link, pubDate, creator) VALUES (?, ?, ?, ?, ?)", favourite.title, favourite.description, favourite.link, favourite.pubDate, favourite.creator);
+    // returns the number of milliseconds between the favourite.pubDate string and midnight of January 1, 1970. usefull for sorting
+    var thisDate = new Date(Date.parse(favourite.pubDate));
+    db.execute("INSERT INTO favourite (title, description, link, pubDate, creator) VALUES (?, ?, ?, ?, ?)", favourite.title, favourite.description, favourite.link, thisDate, favourite.creator);
 }
