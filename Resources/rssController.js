@@ -76,13 +76,7 @@ if(Titanium.Network.online) {
     }};
 
     // everything above doesn't actually do anything yet, we have to send the request first.
-    // the try catch block catches any errors -- useful for debugging and it prevents the app from crashing.
-   // try {
         xhr.send();
-   // } catch(e) {
-    //    Ti.API.info('error with xhr.send(): '+e);
-    //    xhr.abort();
-    //}
 }
 /*
  * if a file exists but there is no internet connection than use the file to display the table
@@ -225,21 +219,17 @@ function showTable() {
         });
     });
 /*
-* my attempt to save the search value, redisplay it and update the table
-* http://developer.appcelerator.com/apidoc/mobile/1.8.2/Titanium.UI.SearchBar-object
+* my attempt to save the search value, redisplay it and update the table - works in ios 6.1 , but it does not seem to work in the iOS 7 simulator
+* https://developer.appcelerator.com/question/123321/search-bar-value-gets-cleared-on-blur
 */
     //save search when user types
     searchBar.addEventListener('return', function (e) {
         Ti.App.Properties.setString('search', e.value);
     });
     
-// attempt to reload the entered search value & update the table
-// - this is tested and works for iOS 6.1, but it does not seem to work in the iOS 7 simulator
     win.addEventListener('focus', function(e) {
         if(searchBar.value){
-            //searchBar.focus();
             searchBar.value = Ti.App.Properties.getString('search','');
-            //searchBar.blur();
             tableView.searchHidden=false; 
         }
     });
@@ -249,5 +239,4 @@ function showTable() {
         Ti.App.Properties.setString('search', null);
     });
 };
-
 }
