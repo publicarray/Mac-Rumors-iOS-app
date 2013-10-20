@@ -1,5 +1,4 @@
 1.0
-Initial app
 + tab bar
 + table view
 + web views
