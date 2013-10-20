@@ -5,8 +5,15 @@
     <version>1.3.0</version>
     <publisher>Sebastian Schmidt</publisher>
     <url>http://spage.x10.mx</url>
-    <description>MacRumors.com</description>
-    <copyright>© 2013 by Sebastian Schmidt and Paris Moletti</copyright>
+    <description>The app fetches the RSS feed of http://www.macrumors.com and displays them in a Table view.
+
+Features included:
+* saving of favourite articles
+* sharing articles to twitter, Facebook and email by using https://github.com/viezel/TiSocial.Framework Module
+* saves the feed for offline browsing.
+* customisation - changing of the colour scheme.
+* landscape orientation mode</description>
+    <copyright>Created by Sebastian Schmidt and Paris Moletti</copyright>
     <icon>appicon.png</icon>
     <persistent-wifi>false</persistent-wifi>
     <prerendered-icon>true</prerendered-icon>

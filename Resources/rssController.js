@@ -152,6 +152,7 @@ function showTable() {
     tintColor :Ti.App.Properties.getString('theme', '#980012'),
     height:43,
     top:0,
+    value: null,
     });
     // create table
     var tableView = Ti.UI.createTableView({
@@ -229,16 +230,17 @@ function showTable() {
 */
     //save search when user types
     searchBar.addEventListener('return', function (e) {
-        Ti.App.Properties.setString('search', searchBar.value);
+        Ti.App.Properties.setString('search', e.value);
     });
     
 // attempt to reload the entered search value & update the table
 // - this is tested and works for iOS 6.1, but it does not seem to work in the iOS 7 simulator
     win.addEventListener('focus', function(e) {
         if(searchBar.value){
-        searchBar.value=Ti.App.Properties.getString('search','');
-        searchBar.blur();
-        tableView.searchHidden=false; 
+            //searchBar.focus();
+            searchBar.value = Ti.App.Properties.getString('search','');
+            //searchBar.blur();
+            tableView.searchHidden=false; 
         }
     });
 
