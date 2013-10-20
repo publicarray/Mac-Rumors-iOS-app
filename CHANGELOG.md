@@ -1,23 +1,27 @@
-1.0 - 17/9/13
+17/9/13
+1.0
 + tab bar
 + table view
 + web views
 + icons/ splash screens
 
-1.0.1 - 22/9/13
+22/9/13
+1.0.1 
 + off-line support
 + following MCV model
 + iOS 7 support
 + save app state
 + search
 
-1.2 - 27/9/13
+27/9/13
+1.2
 + social integration & Email sharing
 + settings to change colour off app
 + code descriptions
 + bug fixes
 
-1.3 -
+16/10/13
+1.3
 + implemented new settings screen
 + added about screen
 + added sound effects
@@ -28,7 +32,8 @@
 + improved landscape orientation / fullscreen mode
 + improved error messages
 
-1.3.1 -
+20/10/13
+1.3.1
 + modified database
 + integrated swipe gesture to open the next or previous article in the Database
 + removed upside-down rotation mode
