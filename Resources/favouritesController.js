@@ -3,7 +3,7 @@ favouriteTableView.addEventListener('click', function (e) {
     
     //sound
     var share = Ti.Media.createSound({
-        url: "sound/swosh2.wav",
+        url: "sound/swosh2.mp3",
         volume: Ti.App.Properties.getDouble('volume', 1),
     });
     
@@ -14,15 +14,12 @@ favouriteTableView.addEventListener('click', function (e) {
     var pubDate = e.rowData.pubDate;
     var creator = e.rowData.creator;
     var rowid = e.rowData.rowid;
-    var direction = e.rowData.direction;
         
     //create window
     var detailWindow = new Window(title);
     detailWindow.setTabBarHidden(true);
     
-    var detailView = Ti.UI.createView({
-        
-    });
+    var detailView = Ti.UI.createView();
     // devices with lower ios than 7 display custom text style
     if (version < 7 && (device === 'iPhone OS' || device === 'iPad OS' || device === 'iPod Touch OS')){
         var titleLabel = Titanium.UI.createLabel({
@@ -114,20 +111,24 @@ favouriteTableView.addEventListener('click', function (e) {
       
     detailWindow.addEventListener('swipe', function(e)
     {
+      if(e.direction==='left' || e.direction==='right'){
+        var matrix = Ti.UI.create2DMatrix();
+        matrix = matrix.scale(2, 2);
+        var a = Ti.UI.createAnimation({
+            transform : matrix,
+            opacity: 0,
+            duration: 200,
+        });
+        detailView.animate(a);
+  
         if(e.direction==='left')
         {
             var e = getNextFavourite(rowid);
-            //var leftanimation = Ti.UI.createAnimation({
-            //    duration:1000,
-            //    right:99,
-           // });
-            //detailView.animate(leftanimation);
         }
         if(e.direction==='right')
         {
             var e = getPreviousFavourite(rowid);
         }
-        
         // update variables
         title = e.row.title;
         desc = e.rowData.desc;
@@ -135,18 +136,35 @@ favouriteTableView.addEventListener('click', function (e) {
         pubDate = e.rowData.pubDate;
         creator = e.rowData.creator;
         rowid = e.rowData.rowid;
-        direction = e.rowData.direction;
-        detailWindow.setTitle(title);
-        if (version < 7 && (device === 'iPhone OS' || device === 'iPad OS' || device === 'iPod Touch OS')){
-            titleLabel.setText(title);
-        }
         webView.setHtml('<head><link rel="stylesheet" type="text/css" href="style.css" media="all"></head><body>'+ desc +'</body>');
-        Ti.API.info('rowid #2: '+rowid);
+        
+        a.addEventListener('complete', function () {
+           
+           //set Variables
+            detailWindow.setTitle(title);
+            if (version < 7 && (device === 'iPhone OS' || device === 'iPad OS' || device === 'iPod Touch OS')){
+                titleLabel.setText(title);
+            }
+
+            Ti.API.info('rowid #2: '+rowid);
+            
+            matrix = matrix.scale(0.5, 0.5);         
+            var b = Ti.UI.createAnimation({
+              opacity: 1,
+              duration: 500,
+              transform: matrix,
+            });
+            //webView.addEventListener('load', function () {
+              detailView.animate(b);
+            //});
+            
+        });
+      }
     });
     
      //share button - from: https://github.com/viezel/TiSocial.Framework
     shareBtn.addEventListener('click', function(e){
-            // use the social plug-in: https://github.com/viezel/TiSocial.Framework
+            // use of the social module: https://github.com/viezel/TiSocial.Framework -v1.7.0- place it in the ~/Library/Application Support/Titanium/modules/iphone/dk.napp.social
             var Social = require('dk.napp.social');
             
             if(Social.isActivityViewSupported()){ //min iOS6 required

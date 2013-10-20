@@ -165,7 +165,7 @@ function showTable() {
     
     // add sound
     var swosh = Ti.Media.createSound({
-        url: "sound/swosh.wav",
+        url: "sound/swosh.mp3",
         volume: Ti.App.Properties.getDouble('volume', 1),
     });
     // add event handler

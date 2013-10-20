@@ -73,7 +73,7 @@ function internetCheck() {
     if(Titanium.Network.online){
         // play start up sound - dialup
         var dialup = Ti.Media.createSound({
-            url: "sound/dialup.wav",
+            url: "sound/dialup.mp3",
             volume: volume,
         });
         dialup.play();
@@ -94,7 +94,7 @@ function internetCheck() {
     else if(!Titanium.Network.online && fileIos.exists() && fileMac.exists() && fileMain.exists()){
         // play start up sound :)
         var startSound = Ti.Media.createSound({
-            url: "sound/windows95.wav",
+            url: "sound/windows95.mp3",
             volume: volume,
         });
         startSound.play();

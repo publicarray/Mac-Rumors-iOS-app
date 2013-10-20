@@ -26,11 +26,11 @@ var volume = Ti.App.Properties.getDouble('volume', 1);
 
 // sound files
 var deleteSound = Ti.Media.createSound({
-    url: "sound/zap.wav",
+    url: "sound/zap.mp3",
     volume: volume,
     });
 var swosh = Ti.Media.createSound({
-    url: "sound/swosh.wav",
+    url: "sound/swosh.mp3",
     volume: volume,
     });
 var ohno = Ti.Media.createSound({
