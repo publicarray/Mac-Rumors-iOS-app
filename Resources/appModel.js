@@ -45,15 +45,6 @@ createDatabase();
 function createDatabase()
 {
     db.execute('CREATE TABLE IF NOT EXISTS favourite(title TEXT, description TEXT, link TEXT, pubDate DATE, creator TEXT)');
-    
-    // If table is empty insert initial data
-    var result = db.execute('SELECT * FROM favourite');
-    
-    if (result.rowCount == 0)
-    {
-        // Insert initial data
-        db.execute('INSERT INTO favourite (title, description, link, pubDate, creator) values ("Create a list of your Favorites", "<h2>I am your first Favourite!</h2>", "www.google.com", "0", "Sebastian Schmidt")');
-    }
 }
 
 // Returns students in an array suitable for displaying in a table view
