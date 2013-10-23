@@ -11,7 +11,7 @@ The app fetches the RSS feed of http://www.macrumors.com and displays them in a 
 
 ### Dependency
 
-The app uses use of the social module: https://github.com/viezel/TiSocial.Framework/tree/1.7.0 v1.7
+The app uses the TiSocial.Framework module: https://github.com/viezel/TiSocial.Framework/tree/1.7.0 v1.7
 
 To install it on Mac OS X place the extracted folder in the `~/Library/Application Support/Titanium/modules/` folder. Where `~` is your home folder
 
