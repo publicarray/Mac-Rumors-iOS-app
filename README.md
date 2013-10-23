@@ -11,13 +11,16 @@ The app fetches the RSS feed of http://www.macrumors.com and displays them in a 
 
 ### Dependency
 
-The app uses the TiSocial.Framework module: https://github.com/viezel/TiSocial.Framework/tree/1.7.0 v1.7
+The app uses the TiSocial.Framework module: https://github.com/viezel/TiSocial.Framework/tree/1.7.0
 
 To install it on Mac OS X place the extracted folder in the `~/Library/Application Support/Titanium/modules/` folder. Where `~` is your home folder
 
 For Windows 7 extract the folder into: `C:\Users\username\AppData\Roaming (or C:\ProgramData\Titanium on Titanium Studio 1.0.1 and earlier)` 
 
 Or in Titanium Studio you can go to `Help > Install Mobile Module`.
+
+### Changelog
+The change log can be found in the [CHANGELOG.md](https://github.com/publicarray/Mac-Rumors-iOS-app/blob/master/CHANGELOG.md) file.
 
 
 ### Appcelerator License:
