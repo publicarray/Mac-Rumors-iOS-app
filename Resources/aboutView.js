@@ -33,7 +33,7 @@ var about = Ti.UI.createLabel({
     height: 'auto',
     color: '#000',
     textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
-    text: 'This app is Mantained and Created by \nSebastian Schmidt and Paris Moletti \n \n If you have any Feedback or you like to report a bug please email us at: \n***REMOVED*** \n \n Fork it on guithub.com: \nhttp://github.com/publicarray/Mac-Rumors-iOS-app',
+    text: 'This app is Mantained and Created by \nSebastian Schmidt and Paris Moletti \n \n If you have any Feedback or you like to report a bug please email us at: \ns_page@me.com \n \n Fork it on guithub.com: \nhttp://github.com/publicarray/Mac-Rumors-iOS-app',
     font:{fontSize:18,fontFamily:'HelveticaNeue-Light'},
     autoLink: Ti.UI.AUTOLINK_ALL,
 });
