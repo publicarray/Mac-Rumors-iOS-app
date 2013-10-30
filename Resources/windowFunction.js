@@ -5,7 +5,7 @@
  * It also checks if the device is running ios7 and will display the windows sightly differently.
  */
 function windowClass(title) {
-    var version = Ti.Platform.version;
+    var version = parseInt(Ti.Platform.version[0], 10);
     var device = Ti.Platform.name;
 
 // ios 7  create windows withought barImage and barColor

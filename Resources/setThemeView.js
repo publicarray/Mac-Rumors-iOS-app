@@ -22,7 +22,7 @@ var themeText = Ti.UI.createTextField({
 
 // if the device is running iOS 7 or grater don't use the button gradient - it doesn't match visually with the rest of the GUI
 // also the button has a different functionality - in iOS 7 the button sets the given colour Theme while in iOS 7 it resets the colour theme to default
-if (Ti.Platform.version >= 7 && (Ti.Platform.name === 'iPhone OS' || Ti.Platform.name === 'iPad OS' || Ti.Platform.name === 'iPod Touch OS')){
+if (parseInt(Ti.Platform.version[0], 10) >= 7 && (Ti.Platform.name === 'iPhone OS' || Ti.Platform.name === 'iPad OS' || Ti.Platform.name === 'iPod Touch OS')){
     var themeBtn = Ti.UI.createButton({
     title:'Load Dafault Theme',
     width: 200,

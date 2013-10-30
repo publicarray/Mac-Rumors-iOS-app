@@ -2,7 +2,7 @@
 var win = Ti.UI.currentWindow;
 
 // get device OS and version
-var version = Ti.Platform.version;
+var version = parseInt(Ti.Platform.version[0], 10);
 var device = Ti.Platform.name;
 
 //get data from rssController, title, html for web view, the URL and author
