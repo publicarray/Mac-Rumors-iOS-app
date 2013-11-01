@@ -22,6 +22,7 @@ Or in Titanium Studio you can go to `Help > Install Mobile Module`.
 ### Changelog
 The change log can be found in the [CHANGELOG.md](../master/CHANGELOG.md) file.
 
+#Boring legal stuff
 
 ### Appcelerator License:
 ----------------------------------
