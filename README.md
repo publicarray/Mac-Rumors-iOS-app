@@ -20,7 +20,7 @@ For Windows 7 extract the folder into: `C:\Users\username\AppData\Roaming (or C:
 Or in Titanium Studio you can go to `Help > Install Mobile Module`.
 
 ### Changelog
-The change log can be found in the [CHANGELOG.md](../blob/master/CHANGELOG.md) file.
+The change log can be found in the [CHANGELOG.md](../master/CHANGELOG.md) file.
 
 
 ### Appcelerator License:
