@@ -3,49 +3,49 @@
  */
 
 html {
-    -webkit-text-size-adjust: none;
-    -webkit-font-smoothing: antialiased;
-    line-height: 1.5em;
-    font-size: 100%;
+	-webkit-text-size-adjust: none;
+	-webkit-font-smoothing: antialiased;
+	line-height: 1.5em;
+	font-size: 100%;
 }
 
-body{
-    color: #000;
-    font-weight: normal;
-    font-style: normal;
-    font-variant: normal;
-    font-size: 1.125em;
-    font-family: 'HelveticaNeue', sans-serif;
-    margin: 20px 20px 0px 20px;
-    color: rgb(17, 17, 17);
-    background-color: rgb(253, 253, 253);
+body {
+	color: #000;
+	font-weight: normal;
+	font-style: normal;
+	font-variant: normal;
+	font-size: 1.125em;
+	font-family: 'HelveticaNeue', sans-serif;
+	margin: 20px 20px 0px 20px;
+	color: rgb(17, 17, 17);
+	background-color: rgb(253, 253, 253);
 }
 
-a{
-    color: #650600;
+a {
+	color: #650600;
 }
-img, iframe{
-    max-width: 100%;
-    width:auto;
-    height: auto;
-    padding: 0px;
-    display: block;
-    margin: auto;
-    float: none;
-    clear: both;
+img, iframe {
+	max-width: 100%;
+	width: auto;
+	height: auto;
+	padding: 0px;
+	display: block;
+	margin: auto;
+	float: none;
+	clear: both;
 }
-blockquote{
-    color: #3e6184;
-    font-style: italic;
-    margin: 20px auto;
-    margin-left: 10%;
+blockquote {
+	color: #3e6184;
+	font-style: italic;
+	margin: 20px auto;
+	margin-left: 10%;
 }
 
-/* 
- * hides -hopeffuly- unessesary items 
+/*
+ * hides -hopeffuly- unessesary items
  * and unclutters the webview
  */
 
-div ,table{
-    display: none; 
+div, table {
+	display: none;
 }
