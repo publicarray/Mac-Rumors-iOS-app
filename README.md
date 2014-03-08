@@ -6,16 +6,16 @@ The app fetches the RSS feed of http://www.macrumors.com and displays them in a 
 
 * Support for iOS 7 and iOS 6 (iOS 5 should work but it is *not* tested)
 * A Tablet version is included
-* Saving of favourite articles
-* Sorting favourite articles based on title, date published and the order they were added in.
-* Sharing articles to twitter, facebook and email by using the [TiSocial.Framework](https://github.com/viezel/TiSocial.Framework/tree/1.7.0)
-* Saves the feed for offline viewing.
+* Saving of favorite articles
+* Sorting favorite articles based on title, date published and the order they were added in.
+* Sharing articles to twitter, facebook and email by using the [TiSocial.Framework](https://github.com/viezel/TiSocial.Framework/tree/1.7.3)
+* Saves the feed for off-line viewing.
 * Customisation option to change the colour scheme of the app.
 * Sound FX - volume can be adjusted in the settings
 
 ### Dependency
 
-The app uses the excellent [TiSocial.Framework v1.7.0](https://github.com/viezel/TiSocial.Framework/tree/1.7.0) module:
+The app uses the excellent [TiSocial.Framework v1.7.3](https://github.com/viezel/TiSocial.Framework/tree/1.7.3) module:
 
 To install it on Mac OS X place the extracted folder in the `~/Library/Application Support/Titanium/modules/` folder. Where `~` is your home folder
 
@@ -25,9 +25,9 @@ Or in Titanium Studio you can go to `Help > Install Mobile Module`.
 
 ### Install
 
-The app can be complied by using titanium or using the xcode build. An Apple iOS Developer account with a registered UDID device is needed to install the app.
+The app can be complied by using titanium or using the [Xcode build (see releases)](https://github.com/publicarray/Mac-Rumors-iOS-app/releases)). An Apple iOS Developer account with a registered UDID device is needed to install the app.
 
-### Changelog
+### Change log
 The change log can be found in the [CHANGELOG.md](../master/CHANGELOG.md) file.
 
 #Boring legal stuff

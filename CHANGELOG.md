@@ -33,3 +33,8 @@
 + integrated swipe gesture to open the next or previous article in the Database
 + removed upside-down rotation mode
 + removed unnecessary files and debug messages
+
+8/3/14 - 1.3.2
++ use of Titanium SDK 3.2.0 GA
++ update on TiSocial.Framework module to 1.7.3
+

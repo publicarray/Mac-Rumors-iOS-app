@@ -3,3 +3,4 @@ tmp
 ._*
 .DS_Store
 *build
+.settings/com.appcelerator.titanium.ios.core.prefs
