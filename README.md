@@ -25,7 +25,7 @@ Or in Titanium Studio you can go to `Help > Install Mobile Module`.
 
 ### Install
 
-The app can be complied by using titanium or using the [Xcode build (see releases)](https://github.com/publicarray/Mac-Rumors-iOS-app/releases)). An Apple iOS Developer account with a registered UDID device is needed to install the app.
+The app can be complied by using titanium or using the [Xcode build (see releases)](https://github.com/publicarray/Mac-Rumors-iOS-app/releases). An Apple iOS Developer account with a registered UDID device is needed to install the app.
 
 ### Change log
 The change log can be found in the [CHANGELOG.md](../master/CHANGELOG.md) file.
