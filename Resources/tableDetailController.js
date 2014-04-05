@@ -53,7 +53,13 @@ shareBtn.addEventListener('click', function(e) {
 						if (sound) {
 							share.play();
 						}
-						Titanium.Platform.openURL(link);
+						var currLink = webView.getUrl();  
+						if(currLink.indexOf("http") == 0 || currLink.indexOf("https") == 0){
+							Titanium.Platform.openURL(currLink);
+						}
+						else{
+							Titanium.Platform.openURL(link);
+						}
 					};
 					// favourite
 					if (e.activityName == "open.favourite") {
