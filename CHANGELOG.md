@@ -1,6 +1,6 @@
 #Changelog
 
-#### 8/3/14 - v1.3.3
+#### 5/4/14 - v1.3.3
 + sharing via safari now uses current URL
 + use of Titanium SDK 3.2.2 GA
 
