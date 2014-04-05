@@ -1,5 +1,9 @@
 #Changelog
 
+#### 8/3/14 - v1.3.3
++ sharing via safari now uses current URL
++ use of Titanium SDK 3.2.2 GA
+
 #### 8/3/14 - v1.3.2
 + use of Titanium SDK 3.2.0 GA
 + update on TiSocial.Framework module to 1.7.3
