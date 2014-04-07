@@ -13,6 +13,12 @@ The app fetches the RSS feed of http://www.macrumors.com and displays them in a 
 * Customisation option to change the colour scheme of the app.
 * Sound FX - volume can be adjusted in the settings
 
+### Screenshots
+
+![Main View](http://github.com/publicarray/Mac-Rumors-iOS-app/blob/gh-pages/images/screenshots/main.png)
+![Main View](http://github.com/publicarray/Mac-Rumors-iOS-app/blob/gh-pages/images/screenshots/Share.png)
+![Main View](http://github.com/publicarray/Mac-Rumors-iOS-app/blob/gh-pages/images/screenshots/offline-list.png)
+
 ### Dependency
 
 The app uses the excellent [TiSocial.Framework v1.7.3](https://github.com/viezel/TiSocial.Framework/tree/1.7.3) module:
