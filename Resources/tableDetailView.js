@@ -2,13 +2,7 @@ Ti.include('tableDetailModel.js');
 //display description of the rss feed via a web view
 var webView = Ti.UI.createWebView({
 	html: description,
-	scalePageToFit: true,
-	top: 0,
-	left: 0,
-	bottom: 0,
-	right: 0,
-	width: '100%',
-	height: '100%',
+	scalesPageToFit : true,
 });
 
 win.add(webView);

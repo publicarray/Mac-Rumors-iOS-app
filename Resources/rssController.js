@@ -58,8 +58,7 @@ function getData(url, f, win) {
 		};
 
 		xhr.onerror = function() {
-			//Ti.API.info('XHR Error: ' + xhr.status + ' - ' + xhr.statusText); // don't
-			// delete
+			//Ti.API.info('XHR Error: ' + xhr.status + ' - ' + xhr.statusText); // don't delete
 			//check response status and act accordingly.
 			if (xhr.status != 200) {
 				// if an error occurred we can still display the stored file
@@ -119,7 +118,7 @@ function getData(url, f, win) {
 			for (var i = 0; i < items.length; i++) {
 				var item = items.item(i);
 				var title = item.getElementsByTagName('title').item(0).text;
-				var description = item.getElementsByTagName('description').item(0).text;
+				var description = '<head><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" type="text/css" href="style.css" media="all"></head><body>' + item.getElementsByTagName('description').item(0).text + '</body>';
 				var pubDate = item.getElementsByTagName('pubDate').item(0).text;
 				var link = item.getElementsByTagName('link').item(0).text;
 				var creator = item.getElementsByTagName('dc:creator').item(0).text;

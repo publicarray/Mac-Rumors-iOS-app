@@ -50,8 +50,8 @@ favouriteTableView.addEventListener('click', function(e) {
 
 	//display description of the rss feed via a web view
 	var webView = Ti.UI.createWebView({
-		html: '<head><link rel="stylesheet" type="text/css" href="style.css" media="all"></head><body>' + desc + '</body>',
-		scalePageToFit: true,
+		html: desc,
+		scalesPageToFit : true,
 		top: 0,
 		left: 0,
 		bottom: 0,

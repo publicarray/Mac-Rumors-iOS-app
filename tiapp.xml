@@ -2,7 +2,7 @@
 <ti:app xmlns:ti="http://ti.appcelerator.org">
     <id>mx.x10.spage.macrumours</id>
     <name>Mac Rumors</name>
-    <version>1.3.3</version>
+    <version>1.3.3b</version>
     <publisher>Sebastian Schmidt</publisher>
     <url>http://spage.x10.mx</url>
     <description>The app fetches the RSS feed of http://www.macrumors.com and displays them in a Table view.
@@ -22,7 +22,7 @@ Features included:
     <guid>cbe0f7ba-f614-4851-b681-246be29ff2a5</guid>
     <property name="ti.ui.defaultunit" type="string">system</property>
     <ios>
-        <min-ios-ver>4.3</min-ios-ver>
+        <min-ios-ver>5.0</min-ios-ver>
         <key>UIPrerenderedIcon</key>
         <true/>
         <key>UIStatusBarStyle</key>

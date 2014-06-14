@@ -46,6 +46,6 @@ blockquote {
  * and unclutters the webview
  */
 
-div, table {
+div {
 	display: none;
 }

@@ -45,17 +45,19 @@ if (sound) {
 }
 
 // Favourites Database
-var db = Ti.Database.open('favourites');
 createDatabase();
 
 function createDatabase() {
+	var db = Ti.Database.open('database');
 	db.execute('CREATE TABLE IF NOT EXISTS favourite(title TEXT, description TEXT, link TEXT, pubDate DATE, creator TEXT)');
+	db.close();
 }
 
-// Returns students in an array suitable for displaying in a table view
+// Returns favourites in an array suitable for displaying in a table view
 // Each object contains all columns plus a title field which can be used to
 // display in a table view
 function getFavourites(keyword) {
+	var db = Ti.Database.open('database');
 	if (keyword) {
 		var result = db.execute("SELECT rowid, * FROM favourite WHERE LOWER(description) LIKE '%" + keyword + "%' ORDER BY " + Ti.App.Properties.getString('sortby', 'rowid'));
 	}
@@ -88,6 +90,7 @@ function getFavourites(keyword) {
 		});
 		result.next();
 	}
+	db.close();
 
 	return favourite;
 }
@@ -95,11 +98,15 @@ function getFavourites(keyword) {
 function insertFavourite(favourite)// dont ferget to uptate this in
 // tableDetailModel.js
 {
+	var db = Ti.Database.open('database');
 	db.execute("INSERT INTO favourite (title, description, link, pubDate, creator) VALUES (?, ?, ?, ?, ?)", favourite.title, favourite.description, favourite.link, favourite.pubDate, favourite.creator);
+	db.close();
 }
 
 function deleteFavourite(rowid) {
+	var db = Ti.Database.open('database');
 	db.execute('DELETE FROM favourite WHERE rowid=?', rowid);
+	db.close();
 }
 
 function getNextFavourite(rowid) {
@@ -116,6 +123,7 @@ function getNextFavourite(rowid) {
 	};
 
 	var favourite;
+	var db = Ti.Database.open('database');
 	var result = db.execute('SELECT rowid, * FROM favourite');
 	while (result.isValidRow()) {
 		if (result.fieldByName('rowid') === rowid) {
@@ -137,6 +145,7 @@ function getNextFavourite(rowid) {
 		}
 		result.next();
 	}
+	db.close();
 	if (rowData.rowid === undefined) {
 		Ti.API.warn('rowid = undefined');
 		rowData.desc = '';
@@ -163,6 +172,7 @@ function getPreviousFavourite(rowid) {
 	};
 
 	var favourite;
+	var db = Ti.Database.open('database');
 	var result = db.execute('SELECT rowid, * FROM favourite');
 	while (result.isValidRow() && result.fieldByName('rowid') !== rowid) {
 		// update Favourite untill the rowid matches - the fav should be the previous one
@@ -179,6 +189,7 @@ function getPreviousFavourite(rowid) {
 		};
 		result.next();
 	}
+	db.close();
 	favourite = {
 		row: row,
 		rowData: rowData,
