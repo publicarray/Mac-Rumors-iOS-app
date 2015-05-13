@@ -15,9 +15,7 @@ The app fetches the RSS feed of http://www.macrumors.com and displays them in a 
 
 ### Screenshots
 
-![Main View](http://raw.githubusercontent.com/publicarray/Mac-Rumors-iOS-app/gh-pages/images/screenshots/main.png)
-
-![Sharing View](http://raw.githubusercontent.com/publicarray/Mac-Rumors-iOS-app/gh-pages/images/screenshots/Share.png)
+![](https://cloud.githubusercontent.com/assets/5497998/7611579/a794ae80-f9c8-11e4-90c0-5879fa6ed684.png)
 
 ### Dependency
 
