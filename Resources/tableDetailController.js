@@ -1,8 +1,8 @@
 //share button - from: https://github.com/viezel/TiSocial.Framework
 shareBtn.addEventListener('click', function(e) {
-	var sound = Ti.App.Properties.getBool('mute', true);
+	var mute = Ti.App.Properties.getBool('mute', true);
 
-	if (sound) {
+	if (mute === false) {
 		var share = Ti.Media.createSound({
 			url: "sound/swosh2.mp3",
 			volume: Ti.App.Properties.getDouble('volume', 1),
@@ -42,7 +42,7 @@ shareBtn.addEventListener('click', function(e) {
 			switch (e.activity)
 			{
 				case Social.ACTIVITY_TWITTER:
-					if (sound) {
+					if (mute === false) {
 						share.play();
 					}
 					break;
@@ -50,10 +50,10 @@ shareBtn.addEventListener('click', function(e) {
 				case Social.ACTIVITY_CUSTOM:
 					// Safari
 					if (e.activityName == "open.safari") {
-						if (sound) {
+						if (mute === false) {
 							share.play();
 						}
-						var currLink = webView.getUrl();  
+						var currLink = webView.getUrl();
 						if(currLink.indexOf("http") == 0 || currLink.indexOf("https") == 0){
 							Titanium.Platform.openURL(currLink);
 						}
@@ -63,7 +63,7 @@ shareBtn.addEventListener('click', function(e) {
 					};
 					// favourite
 					if (e.activityName == "open.favourite") {
-						if (sound) {
+						if (mute === false) {
 							share.play();
 						}
 

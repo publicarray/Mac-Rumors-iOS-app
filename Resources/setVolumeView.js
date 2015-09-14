@@ -1,4 +1,8 @@
 var volumeWin = new Window('Sound');
+volumeWin.backgroundGradient = {
+	colors: ["#C7D6E9", "#fff"]
+};
+
 var volumeLabel = Ti.UI.createLabel({
 	text: 'Volume:',
 	width: '100%',
@@ -14,6 +18,7 @@ var volumeLabel = Ti.UI.createLabel({
 
 var volumeSlider = Titanium.UI.createSlider({
 	top: 120,
+	left: '5%',
 	min: 0,
 	max: 1,
 	width: '90%',
@@ -33,12 +38,12 @@ var volumeLabelValue = Ti.UI.createLabel({
 	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER
 });
 
-volumeSlider.addEventListener('change', function(e) {
+volumeSlider.addEventListener('stop', function(e) {
 	var volume = e.value;
 	// converts the double to a decimal with a 1 decimal point number
 	volumeLabelValue.text = String.format("%3.1f", volume);
 	Ti.App.Properties.setDouble('volume', volume);
-	if (sound) {
+	if (mute === false) {
 		deleteSound.setVolume(volume);
 		swosh.setVolume(volume);
 	}
@@ -58,15 +63,15 @@ var muteLabel = Ti.UI.createLabel({
 });
 
 var muteSwitch = Ti.UI.createSwitch({
-	value: Ti.App.Properties.getBool('mute', true),
+	value: !Ti.App.Properties.getBool('mute', true),
 	left: '55%',
 	width: '50%',
 	top: 250,
 });
 
 muteSwitch.addEventListener('change', function(e) {
-	var sound = muteSwitch.value;
-	Ti.App.Properties.setBool('mute', sound);
+	var mute = muteSwitch.value;
+	Ti.App.Properties.setBool('mute', !mute);
 });
 
 volumeWin.add(volumeLabel);

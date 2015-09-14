@@ -32,7 +32,7 @@ function getData(url, f, win) {
 	});
 	win.add(activityIndicator);
 	activityIndicator.show();
-	var sound = Ti.App.Properties.getBool('mute', true);
+	var mute = Ti.App.Properties.getBool('mute', true);
 
 	/*
 	 * if an internet connection is available, than create a network request, get the
@@ -54,7 +54,9 @@ function getData(url, f, win) {
 			getXMLdata(f);
 			showTable();
 			activityIndicator.hide();
-			Ti.App.fireEvent('stopDialup');
+			if (Ti.App.Properties.getBool('mute', true) === false) {
+				Ti.App.fireEvent('stopDialup');
+			}
 		};
 
 		xhr.onerror = function() {
@@ -73,7 +75,7 @@ function getData(url, f, win) {
 				if (!f.exists()) {
 					activityIndicator.hide();
 					// play ohno
-					if (sound) {
+					if (mute === false) {
 						var ohno = Ti.Media.createSound({
 							url: "sound/ohno.mp3",
 							volume: Ti.App.Properties.getDouble('volume', 1),
@@ -179,7 +181,7 @@ function getData(url, f, win) {
 		win.add(tableView);
 
 		// add sound
-		if (sound) {
+		if (mute === false) {
 			var swosh = Ti.Media.createSound({
 				url: "sound/swosh.mp3",
 				volume: Ti.App.Properties.getDouble('volume', 1),
@@ -187,7 +189,7 @@ function getData(url, f, win) {
 		}
 		// add event handler
 		tableView.addEventListener('click', function(e) {
-			if (sound) {
+			if (mute === false) {
 				swosh.play();
 			}
 			// create a back button

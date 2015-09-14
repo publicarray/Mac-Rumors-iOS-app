@@ -1,8 +1,8 @@
 favouriteTableView.addEventListener('click', function(e) {
 
-	var sound = Ti.App.Properties.getBool('mute', true);
+	var mute = Ti.App.Properties.getBool('mute', true);
 
-	if (sound) {
+	if (mute === false) {
 		swosh.play();
 
 		//sound
@@ -219,7 +219,7 @@ favouriteTableView.addEventListener('click', function(e) {
 				switch (e.activity)
 				{
 					case Social.ACTIVITY_TWITTER:
-						if (sound) {
+						if (mute === false) {
 							share.play();
 						}
 						break;
@@ -227,10 +227,10 @@ favouriteTableView.addEventListener('click', function(e) {
 					case Social.ACTIVITY_CUSTOM:
 						// send to Safari
 						if (e.activityName == "open.safari") {
-							if (sound) {
+							if (mute === false) {
 								share.play();
 							}
-							var currLink = webView.getUrl();  
+							var currLink = webView.getUrl();
 							if(currLink.indexOf("http") == 0 || currLink.indexOf("https") == 0){
 								Titanium.Platform.openURL(currLink);
 							}
@@ -240,7 +240,7 @@ favouriteTableView.addEventListener('click', function(e) {
 						};
 						// share as favourite
 						if (e.activityName == "open.favourite") {
-							if (sound) {
+							if (mute === false) {
 								share.play();
 							}
 							var currentFav = {

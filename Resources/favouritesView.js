@@ -16,7 +16,6 @@ var sortbar = Titanium.UI.iOS.createTabbedBar({
 	labels: ['Time Added', 'Published Date', 'Article Title'],
 	backgroundColor: themeColor,
 	bottom: 0,
-	style: Titanium.UI.iPhone.SystemButtonStyle.BAR,
 	height: 30,
 	width: '98%',
 });
@@ -36,7 +35,7 @@ pullView.add(favSearch);
 var favouriteTableView = Ti.UI.createTableView({
 	editable: true,
 	top: 31,
-	data: getFavourites(), // Get the student data from the model
+	data: getFavourites(), // Get data from the model
 	headerView: pullView,
 	searchHidden: true,
 	separatorColor: '#d1d0d5',
@@ -54,9 +53,9 @@ var doneBtn = Titanium.UI.createButton({
 });
 favouritesWin.setRightNavButton(editBtn);
 
-//_____________________________________________________ planned to be removed______________________________
+// TODO remove event listener
 
 // to refresh the table view when a favorite is added
 Ti.App.addEventListener('loadFav', function(e) {
 	favouriteTableView.setData(getFavourites());
-}); 
+});

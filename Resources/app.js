@@ -1,6 +1,6 @@
-/* 
+/*
  * © Sebastian Schmidt and Paris Moletti 2013
- * 
+ *
  * source used to save tab state:
  * http://developer.appcelerator.com/question/122327/save-and-reload-state-from-edited-tab-view
  */
@@ -9,6 +9,7 @@ Ti.include('appModel.js');
 
 //load in Window class
 var Window = require('windowFunction');
+var tabs = [];
 
 // create the tab bar and open it
 if (version >= 7 && (device === 'iPhone OS' || device === 'iPad OS' || device === 'iPod Touch OS')) {
@@ -30,13 +31,14 @@ else
         activeTabIconTint: '#fff',// active icon tint
         activeTabBackgroundImage: '/images/' + Ti.App.Properties.getString("theme", "#980012") +'.png',//active icon background image
     });
-};
+}
 
 
 	// Create Tabs - the names are important to save the state of the tabs
 	// - create Main tab
 	Ti.include('mainView.js');
 	Ti.include('mainController.js');
+
 	var tab0 = Ti.UI.createTab({
 		title: L('Main'),
 		id: 0,
@@ -44,6 +46,7 @@ else
 		activeIcon: '/images/apple_off.png',
 		window: mainWin,
 	});
+	tabs.push(tab0);
 
 	// - create Mac tab
 	Ti.include('macView.js');
@@ -55,6 +58,7 @@ else
 		activeIcon: '/images/mac_off.png',
 		window: macWin
 	});
+	tabs.push(tab1);
 
 	// - create iOS tab
 	Ti.include('iosView.js');
@@ -66,6 +70,7 @@ else
 		activeIcon: '/images/ios_off.png',
 		window: iOSWin
 	});
+	tabs.push(tab2);
 
 	// - create Buyer's Guide tab
 	Ti.include('buyView.js');
@@ -77,6 +82,7 @@ else
 		activeIcon: '/images/buy_off.png',
 		window: buyWin
 	});
+	tabs.push(tab3);
 
 	// - create Roundups tab
 	Ti.include('roundupView.js');
@@ -88,6 +94,7 @@ else
 		activeIcon: '/images/roundup_off.png',
 		window: roundupWin
 	});
+	tabs.push(tab4);
 
 	// - create Forum tab
 	Ti.include('forumView.js');
@@ -99,6 +106,7 @@ else
 		activeIcon: '/images/forum_off.png',
 		window: forumWin
 	});
+	tabs.push(tab5);
 
 	// - create Settings tab
 	Ti.include('settingsView.js');
@@ -110,6 +118,7 @@ else
 		activeIcon: '/images/settings_off.png',
 		window: settingsWin
 	});
+	tabs.push(tab6);
 
 	// - create Favourites tab
 	Ti.include('favouritesView.js');
@@ -121,9 +130,10 @@ else
 		activeIcon: '/images/fav_off.png',
 		window: favouritesWin
 	});
+	tabs.push(tab7);
 
 	// do stuff with the tab group - save the state and load it back up
 	Ti.include('appController.js');
 
 	// open tab Group
-	tabGroup.open(); 
+	tabGroup.open();

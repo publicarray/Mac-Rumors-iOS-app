@@ -10,21 +10,20 @@
 function windowClass(title) {
 	var version = parseInt(Ti.Platform.version[0], 10);
 	var device = Ti.Platform.name;
+	var self;
 
 	// ios 7  create windows withought barImage and barColor
 	if (version >= 7 && (device === 'iPhone OS' || device === 'iPad OS' || device === 'iPod Touch OS')) {
-		var self = Ti.UI.createWindow({
+		self = Ti.UI.createWindow({
 			title: title,
 		});
 	}
 	// ios 6 and lower
 	else {
-		var self = Ti.UI.createWindow({
-			statusBarStyle: Titanium.UI.iPhone.StatusBar.OPAQUE_BLACK, // for a black status
-			// bar
+		self = Ti.UI.createWindow({
+			statusBarStyle: Titanium.UI.iPhone.StatusBar.OPAQUE_BLACK, // for a black status bar
 			title: title,
-			barColor: Ti.App.Properties.getString('theme', '#980012'), // sets user selected
-			// colour,
+			barColor: Ti.App.Properties.getString('theme', '#980012'), // sets user selected colour,
 			barImage: 'images/navbar.png',
 			backButtonTitle: 'Back',
 		});
@@ -71,4 +70,4 @@ function windowClass(title) {
 	// export windowClass and return window object
 	return self;
 };
-module.exports = windowClass; 
+module.exports = windowClass;

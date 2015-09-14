@@ -1,4 +1,7 @@
 var themeWin = new Window('Theme');
+themeWin.backgroundGradient = {
+	colors: ["#C7D6E9", "#fff"]
+};
 // this window is animated when the user uses the keyboard
 var settingsAnimationView = Titanium.UI.createView();
 
@@ -29,7 +32,7 @@ var themeText = Ti.UI.createTextField({
 // given colour Theme while in iOS 7 it resets the colour theme to default
 if (parseInt(Ti.Platform.version[0], 10) >= 7 && (Ti.Platform.name === 'iPhone OS' || Ti.Platform.name === 'iPad OS' || Ti.Platform.name === 'iPod Touch OS')) {
 	var themeBtn = Ti.UI.createButton({
-		title: 'Load Dafault Theme',
+		title: 'Load Default Theme',
 		width: 200,
 		height: 40,
 		minimumFontSize: 18,
@@ -55,7 +58,7 @@ if (parseInt(Ti.Platform.version[0], 10) >= 7 && (Ti.Platform.name === 'iPhone O
 }
 else {
 	var themeBtn = Ti.UI.createButton({
-		title: 'Load Dafault Theme',
+		title: 'Load Default Theme',
 		width: 200,
 		height: 40,
 		minimumFontSize: 18,
@@ -92,4 +95,4 @@ settingsAnimationView.add(themeLabel);
 settingsAnimationView.add(themeText);
 themeWin.add(settingsAnimationView);
 
-Ti.include('setThemeController.js'); 
+Ti.include('setThemeController.js');

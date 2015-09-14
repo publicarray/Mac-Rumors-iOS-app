@@ -4,12 +4,11 @@ The app fetches the RSS feed of http://www.macrumors.com and displays them in a 
 
 ### Features included:
 
-* Support for iOS 7 and iOS 6 (iOS 5 should work but it is *not* tested)
-* A Tablet version is included
-* Saving of favorite articles
+* Works on iPhone and iPads
+* Saving articles as favorites
 * Sorting favorite articles based on title, date published and the order they were added in.
-* Sharing articles to twitter, facebook and email by using the [TiSocial.Framework](https://github.com/viezel/TiSocial.Framework/tree/1.7.3)
-* Saves the feed for off-line viewing.
+* Sharing articles to twitter, facebook and email by using the [TiSocial.Framework](https://github.com/viezel/TiSocial.Framework/)
+* Offline Mode - Saves the feed for off-line viewing.
 * Customisation option to change the colour scheme of the app.
 * Sound FX - volume can be adjusted in the settings
 
@@ -19,22 +18,63 @@ The app fetches the RSS feed of http://www.macrumors.com and displays them in a 
 
 ### Dependency
 
-The app uses the excellent [TiSocial.Framework v1.7.3](https://github.com/viezel/TiSocial.Framework/tree/1.7.3) module:
+The app uses the excellent [TiSocial.Framework](https://github.com/viezel/TiSocial.Framework/tree/master/dist) module:
 
 To install it on Mac OS X place the extracted folder in the `~/Library/Application Support/Titanium/modules/` folder. Where `~` is your home folder
 
-For Windows 7 extract the folder into: `C:\Users\username\AppData\Roaming (or C:\ProgramData\Titanium on Titanium Studio 1.0.1 and earlier)` 
+For Windows 7 extract the folder into: `C:\Users\username\AppData\Roaming`
 
 Or in Titanium Studio you can go to `Help > Install Mobile Module`.
 
 ### Install
 
-The app can be complied by using titanium or using the [Xcode build (see releases)](https://github.com/publicarray/Mac-Rumors-iOS-app/releases). An Apple iOS Developer account with a registered UDID device is needed to install the app.
+The app can be complied by using Titanium Studio or the [Titanium CLI](https://github.com/appcelerator/titanium). An Apple iOS Developer account with a registered UDID device is needed to install the app on the device.
+
+#### Install using Titanium CLI
+First get [Xcode](https://developer.apple.com/xcode/) and [Node.js](https://nodejs.org/)
+
+1. Install Titanium CLI:
+
+    ```sh
+    npm install -g titanium
+    ```
+2. Get Titanium SDK:
+
+    *If you install the latest version make sure that you modify `tiapp.xml` accordingly.*
+
+    ```sh
+    titanium sdk install 3.5.1.GA # or get the latest version: titanium sdk install --default
+    ```
+
+3. Install TiSocial.Framework
+
+   Install version 1.8.2 of the [TiSocial.Framework](https://github.com/viezel/TiSocial.Framework/tree/master/dist) module.
+
+    *If you install the latest version make sure that you modify `tiapp.xml` accordingly.*
+
+4. cd into the directory:
+
+    ```sh
+    cd Mac-Rumors-iOS-app
+    ```
+
+5. Build:
+
+    ```sh
+    titanium build -p ios
+
+    titanium build -p ios --target <value> # one of: simulator, device, dist-appstore, or dist-adhoc.
+    titanium build -p ios --device-id <name> # Name of the device or emulator to install the application to.
+    titanium build -p ios --sim-type <type> # iphone or ipad
+    ```
+
+More Titanium CLI options: http://docs.appcelerator.com/platform/latest/#!/guide/Titanium_Command-Line_Interface_Reference
+
 
 ### Change log
-The change log can be found in the [CHANGELOG.md](../master/CHANGELOG.md) file.
+See: [CHANGELOG.md](../master/CHANGELOG.md).
 
-#Boring legal stuff
+# Boring legal stuff
 
 ### Appcelerator License:
 ----------------------------------

@@ -1,4 +1,14 @@
-#Changelog
+# Changelog
+
+#### 15/9/15 - v1.3.5
++ Update Titanium SDK to 3.5.1.GA
++ Update TiSocial.Framework module to 1.8.2
++ Change about view
++ Sound effects are now off by default
++ minor code style changes
+
+#### 14/6/14 - v1.3.3
++ update tiapp.xml
 
 #### 5/4/14 - v1.3.3
 + sharing via safari now uses current URL

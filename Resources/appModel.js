@@ -27,9 +27,9 @@ var themeColor = Ti.App.Properties.getString('theme', '#980012');
 var volume = Ti.App.Properties.getDouble('volume', 1);
 
 // sound files
-var sound = Ti.App.Properties.getBool('mute', true);
+var mute = Ti.App.Properties.getBool('mute', true);
 
-if (sound) {
+if (mute === false) {
 	var deleteSound = Ti.Media.createSound({
 		url: "sound/zap.mp3",
 		volume: volume,
@@ -58,11 +58,12 @@ function createDatabase() {
 // display in a table view
 function getFavourites(keyword) {
 	var db = Ti.Database.open('database');
+	var result;
 	if (keyword) {
-		var result = db.execute("SELECT rowid, * FROM favourite WHERE LOWER(description) LIKE '%" + keyword + "%' ORDER BY " + Ti.App.Properties.getString('sortby', 'rowid'));
+		result = db.execute("SELECT rowid, * FROM favourite WHERE LOWER(description) LIKE '%" + keyword + "%' ORDER BY " + Ti.App.Properties.getString('sortby', 'rowid'));
 	}
 	else {
-		var result = db.execute('SELECT rowid, * FROM favourite ORDER BY ' + Ti.App.Properties.getString('sortby', 'rowid'));
+		result = db.execute('SELECT rowid, * FROM favourite ORDER BY ' + Ti.App.Properties.getString('sortby', 'rowid'));
 	}
 	var favourite = [];
 

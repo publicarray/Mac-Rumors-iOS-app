@@ -1,8 +1,12 @@
 var aboutWin = new Window('About');
-
-var view = Ti.UI.createView({
-	width: '100%',
-	height: 'auto',
+aboutWin.backgroundGradient = {
+	colors: ["#C7D6E9", "#fff"]
+};
+var aboutView = Ti.UI.createView({
+	// width: '100%',
+	// height: 'auto',
+	top: 10,
+	left: 0,
 });
 
 var version = Ti.UI.createLabel({
@@ -39,28 +43,28 @@ var about = Ti.UI.createLabel({
 	height: 'auto',
 	color: '#000',
 	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
-	text: 'If you have any Feedback or you like to report a bug please email us at: \npublicarray@icloud.com \n \n Fork the project on guithub.com: \nhttp://github.com/publicarray/Mac-Rumors-iOS-app\n \n The app uses the TiSocial.Framework found on: \nhttps://github.com/viezel/TiSocial.Framework',
+	text: 'If you have any feedback or you like to report a bug please open issue at: \nhttp://github.com/publicarray/Mac-Rumors-iOS-app \n \n The app uses the TiSocial.Framework found at: \nhttps://github.com/viezel/TiSocial.Framework',
 	font: {
-		fontSize: 16,
+		fontSize: 15,
 		fontFamily: 'HelveticaNeue-Light'
 	},
 	autoLink: Ti.UI.AUTOLINK_ALL,
 });
 
-view.add(version);
-view.add(copyright);
-view.add(about);
+aboutView.add(version);
+aboutView.add(copyright);
+aboutView.add(about);
 
 //add content to a scroll view (the content grows in landscape, also good if more
 // information is added later)
 var scrollView = Ti.UI.createScrollView({
-	contentWidth: '100%',
-	contentHeight: 'auto',
+	// contentWidth: '100%',
+	// contentHeight: 'auto',
 	showVerticalScrollIndicator: true,
 	showHorizontalScrollIndicator: false,
-	height: '100%',
-	width: '100%'
+	// height: '100%',
+	// width: '100%'
 });
 
-scrollView.add(view);
-aboutWin.add(scrollView); 
+scrollView.add(aboutView);
+aboutWin.add(scrollView);

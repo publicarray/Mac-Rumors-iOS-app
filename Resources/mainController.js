@@ -6,7 +6,7 @@ getData(feedUrlMain, fileMain, mainWin);
 refreshBtnMain.addEventListener('click', function(e) {
 	if (!Titanium.Network.online) {
 		//alert user about internet
-		if (sound) {
+		if (mute === false) {
 			ohno.stop();
 			ohno.play();
 		}

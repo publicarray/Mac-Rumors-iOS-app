@@ -1,14 +1,16 @@
 // Save Tab order when the user tabs on a tab.
+// sorces: https://developer.appcelerator.com/question/122327/save-and-reload-state-from-edited-tab-view
+// http://developer.appcelerator.com/question/18541/is-there-a-way-to-manage-tab-order-in-a-tab-group
 tabGroup.addEventListener('focus', function(e) {
 
 	var currentTabId = e.index;
-	// get the current tab that is in focus. (excluding the more tab - i guess the OS
-	// doent see it as a tab)
+	console.log(e.index);
+	// get the current tab that is in focus. (excluding the more tab)
 	var k = [];
 	for ( i = 0; i < 8; i++)// loop through the tabs
 	{
 		// save the tap's in order as an array
-		if (tabGroup.tabs[i].id != undefined) {// check is the tap has an id
+		if (tabGroup.tabs[i].id !== undefined) {// check is the tap has an id
 			var tabId = tabGroup.tabs[i].id;
 			k.push(tabId);
 		}
@@ -20,20 +22,20 @@ tabGroup.addEventListener('focus', function(e) {
 	//Ti.App.Properties.setList('TB', null); // reset tabs - don't delete
 });
 
+var k = Ti.App.Properties.getList('TB');
+
 // Load saved tabs in 'TB' back in Order
 for ( i = 0; i < 8; i++) {
 	// Try to get saved values for Tab Order
-	var k = Ti.App.Properties.getList('TB');
+	// var k = Ti.App.Properties.getList('TB');
 	if (k === null) {
-		// If 'TB' don't have any saved, populate tabs in Designer order  -- hence the
+		// If 'TB' don't have any saved, populate tabs in Designed order  -- hence the
 		// tab Names
-		var temp = eval('tab' + [i]);
-		tabGroup.addTab(temp);
+		tabGroup.addTab(tabs[i]);
 	}
 	else {
 		// if 'TB' has saved tab ID's use them to add them to the TabGroup
-		var temp = eval('tab' + parseInt(k[i]));
-		tabGroup.addTab(temp);
+		tabGroup.addTab(tabs[k[i]]);
 	}
 }
 //open last opened tab from property
@@ -57,7 +59,7 @@ function checkColour() {
 checkColour();
 
 function internetCheck() {
-	if (Titanium.Network.online && sound) {
+	if (Titanium.Network.online && mute === false) {
 		// play start up sound - dialup
 		var dialup = Ti.Media.createSound({
 			url: "sound/dialup.mp3",
@@ -69,10 +71,9 @@ function internetCheck() {
 			dialup.stop();
 		});
 	}
-	else
-	if (!Titanium.Network.online && !fileIos.exists() && !fileMac.exists() && !fileMain.exists()) {
+	else if (!Titanium.Network.online && !fileIos.exists() && !fileMac.exists() && !fileMain.exists()) {
 		// play start up sound :o
-		if (sound) {
+		if (mute === false) {
 			var ohno = Ti.Media.createSound({
 				url: "sound/ohno.mp3",
 				volume: volume,
@@ -81,10 +82,9 @@ function internetCheck() {
 		}
 		alert('Your device is not connected to the internet.');
 	}
-	else
-	if (!Titanium.Network.online && fileIos.exists() && fileMac.exists() && fileMain.exists()) {
+	else if (!Titanium.Network.online && fileIos.exists() && fileMac.exists() && fileMain.exists()) {
 		// play start up sound :)
-		if (sound) {
+		if (mute === false) {
 			var startSound = Ti.Media.createSound({
 				url: "sound/windows95.mp3",
 				volume: volume,
