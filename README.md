@@ -1,3 +1,5 @@
+# Deprecated in favor of [Apple News App](https://www.apple.com/news/)
+
 # (Unofficial) Mac Rumors App for iOS
 
 The app fetches the RSS feed of http://www.macrumors.com and displays them in a Table view.
